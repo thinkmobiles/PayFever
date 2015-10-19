@@ -3,7 +3,7 @@ package com.payfever.domain.interactors;
 
 import android.os.Handler;
 
-import com.payfever.domain.BaseInteractor;
+import com.payfever.domain.basics.BaseInteractor;
 
 import rx.Observable;
 

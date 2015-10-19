@@ -1,4 +1,4 @@
-package com.payfever.domain;
+package com.payfever.domain.basics;
 
 import android.os.Handler;
 
@@ -14,7 +14,7 @@ import rx.subscriptions.Subscriptions;
  */
 public abstract class BaseInteractor {
 
-    private final Handler mHandler;
+    protected final Handler mHandler;
     private Subscription mGetSubscription = Subscriptions.empty();
 
     public BaseInteractor(Handler _handler) {
