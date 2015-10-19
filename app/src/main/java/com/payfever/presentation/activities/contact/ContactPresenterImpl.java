@@ -62,12 +62,6 @@ public final class ContactPresenterImpl implements ContactPresenter {
         mContactView.hideProgress();
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public void setData(List<ContactModel> _data) {
-        mContactView.setData(_data);
-    }
-
     private Subscriber<List<ContactModel>> getCallback = new Subscriber<List<ContactModel>>() {
         @Override
         public void onCompleted() {

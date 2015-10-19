@@ -17,4 +17,14 @@ public class SplashActivity extends BaseActivity {
         Intent intent = new Intent(SplashActivity.this, ContactActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected int getToolbarId() {
+        return 0;
+    }
+
+    @Override
+    protected int getContainerId() {
+        return 0;
+    }
 }

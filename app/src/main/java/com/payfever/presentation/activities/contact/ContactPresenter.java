@@ -10,7 +10,7 @@ import java.util.List;
  * mRogach on 19.10.2015.
  */
 
-public interface ContactPresenter extends BasePresenter<List<ContactModel>, ContactView> {
+public interface ContactPresenter extends BasePresenter<ContactView> {
 
     void getContactList();
     void invite();

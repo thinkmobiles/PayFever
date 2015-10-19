@@ -76,4 +76,15 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         super.onPause();
         mContactsPresenter.onPause();
     }
+
+    @Override
+    protected int getToolbarId() {
+        return 0;
+    }
+
+    @Override
+    protected int getContainerId() {
+        return 0;
+    }
+
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include android:id="@+id/toolbar_AM"
+        layout="@layout/toolbar"/>
+
+    <RadioGroup
+        android:id="@+id/rgContainer_AM"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <RadioButton
+            android:id="@+id/rbStatistic_AM"
+            style="@style/FooterRadioBtn" />
+
+        <RadioButton
+            android:id="@+id/rbChartView_AM"
+            style="@style/FooterRadioBtn" />
+
+        <RadioButton
+            android:id="@+id/rbChat_AM"
+            style="@style/FooterRadioBtn" />
+
+        <RadioButton
+            android:id="@+id/rbSetRingtone_AM"
+            style="@style/FooterRadioBtn" />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/flContainer_AM"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rgContainer_AM"
+        android:layout_below="@id/toolbar_AM"/>
+
+</RelativeLayout>
