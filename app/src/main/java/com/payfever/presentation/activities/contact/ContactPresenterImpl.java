@@ -33,11 +33,6 @@ public final class ContactPresenterImpl implements ContactPresenter {
     }
 
     @Override
-    public void getContactList() {
-        // TODO: get list from interactor
-    }
-
-    @Override
     public void invite() {
         // TODO: imteractor
     }

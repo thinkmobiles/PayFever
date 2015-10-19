@@ -12,6 +12,5 @@ import java.util.List;
 
 public interface ContactPresenter extends BasePresenter<ContactView> {
 
-    void getContactList();
     void invite();
 }

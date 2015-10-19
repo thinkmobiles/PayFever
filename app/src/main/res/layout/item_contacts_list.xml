@@ -9,7 +9,7 @@
         android:src="@mipmap/ic_launcher"
         android:contentDescription="@string/contact_avatar" />
 
-    <android.support.v7.widget.SwitchCompat
+    <Switch
         android:id="@+id/swContactStatus_ICL"
         style="@style/ListItemStatus"/>
 
