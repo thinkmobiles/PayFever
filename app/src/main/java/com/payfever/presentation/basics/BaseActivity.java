@@ -1,4 +1,4 @@
-package com.payfever.basics;
+package com.payfever.presentation.basics;
 
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;

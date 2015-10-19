@@ -1,8 +1,9 @@
-package com.payfever;
+package com.payfever.presentation.activities;
 
 import android.os.Bundle;
 
-import com.payfever.basics.BaseActivity;
+import com.payfever.R;
+import com.payfever.presentation.basics.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
 
