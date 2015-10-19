@@ -1,18 +1,13 @@
-package com.payfever.data.service_implementation.contact_service_impl;
+package com.payfever.data.services.contacts;
 
 import com.parse.ParseObject;
 import com.payfever.data.api.contact_api.ContactApi;
 import com.payfever.data.api.contact_api.ContactApiImpl;
-import com.payfever.data.api.statistic_api.StatisticApi;
-import com.payfever.data.api.statistic_api.StatisticApiImpl;
 import com.payfever.data.model.ContactModel;
-import com.payfever.data.model.StatisticModel;
-import com.payfever.data.service_implementation.contact_service_impl.contact_logic.ContactProvider;
-import com.payfever.data.service_implementation.contact_service_impl.contact_logic.ContactProviderImpl;
+import com.payfever.data.services.contacts.contact_logic.ContactProvider;
+import com.payfever.data.services.contacts.contact_logic.ContactProviderImpl;
 import com.payfever.data.transformators.BaseTransformation;
 import com.payfever.data.transformators.ContactTransformatorImpl;
-import com.payfever.data.transformators.StatisticTransformatorImpl;
-import com.payfever.domain.services.contacts.ContactService;
 
 import java.text.ParseException;
 import java.util.List;

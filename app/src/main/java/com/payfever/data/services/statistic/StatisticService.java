@@ -1,4 +1,4 @@
-package com.payfever.domain.services.statistic;
+package com.payfever.data.services.statistic;
 
 import com.payfever.data.model.StatisticModel;
 

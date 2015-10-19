@@ -4,7 +4,7 @@ package com.payfever.domain.interactors.network_interactor;
 import android.os.Handler;
 
 import com.payfever.domain.basics.BaseInteractor;
-import com.payfever.domain.services.ServiceProvider;
+import com.payfever.data.services.ServiceProvider;
 
 import rx.Observable;
 

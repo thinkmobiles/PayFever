@@ -1,4 +1,4 @@
-package com.payfever.data.service_implementation.contact_service_impl.contact_logic;
+package com.payfever.data.services.contacts.contact_logic;
 
 import com.payfever.data.model.ContactModel;
 

@@ -1,9 +1,9 @@
-package com.payfever.domain.services;
+package com.payfever.data.services;
 
-import com.payfever.data.service_implementation.StatisticServiceImpl;
-import com.payfever.data.service_implementation.contact_service_impl.ContactServiceImpl;
-import com.payfever.domain.services.contacts.ContactService;
-import com.payfever.domain.services.statistic.StatisticService;
+import com.payfever.data.services.statistic.StatisticServiceImpl;
+import com.payfever.data.services.contacts.ContactServiceImpl;
+import com.payfever.data.services.contacts.ContactService;
+import com.payfever.data.services.statistic.StatisticService;
 
 /**
  * Created by richi on 2015.10.19..

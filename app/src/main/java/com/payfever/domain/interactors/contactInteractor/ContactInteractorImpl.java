@@ -4,7 +4,7 @@ import android.os.Handler;
 
 import com.payfever.data.model.ContactModel;
 import com.payfever.domain.basics.BasePostGetInteractor;
-import com.payfever.domain.services.ServiceProvider;
+import com.payfever.data.services.ServiceProvider;
 
 import java.util.List;
 

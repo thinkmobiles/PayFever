@@ -7,6 +7,7 @@ import com.payfever.data.model.StatisticModel;
  */
 public class MainActivity implements MainView {
 
+
     @Override
     public void showProgress() {
 
