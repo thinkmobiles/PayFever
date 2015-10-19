@@ -1,18 +1,16 @@
 package com.payfever.presentation.activities.contact;
 
-import android.os.Bundle;
 
+import com.payfever.data.model.ContactModel;
 import com.payfever.presentation.basics.BaseView;
+
+import java.util.List;
 
 /**
  * Created by
  * mRogach on 19.10.2015.
  */
 
-public interface ContactView extends BaseView {
-
-    void getContactList();
-    void invite();
-    void initialize(Bundle _savedInstanceState);
+public interface ContactView extends BaseView<List<ContactModel>> {
 
 }

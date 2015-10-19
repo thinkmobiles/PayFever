@@ -1,4 +1,4 @@
-package com.payfever.data.api;
+package com.payfever.data.api.statistic_api;
 
 import com.parse.ParseObject;
 

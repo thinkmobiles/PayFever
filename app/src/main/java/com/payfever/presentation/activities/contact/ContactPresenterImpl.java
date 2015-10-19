@@ -1,10 +1,16 @@
 package com.payfever.presentation.activities.contact;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.payfever.data.model.ContactModel;
+import com.payfever.domain.basics.BasePostGetInteractor;
+import com.payfever.domain.interactors.contactInteractor.ContactInteractorImpl;
+import com.payfever.presentation.PayFeverApplication;
 
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by
@@ -14,7 +20,12 @@ import java.util.List;
 public final class ContactPresenterImpl implements ContactPresenter {
 
     private ContactView mContactView;
+    private BasePostGetInteractor<List<ContactModel>> contactInteractor;
+    private List<ContactModel> contactList;
 
+    public ContactPresenterImpl() {
+        contactInteractor = new ContactInteractorImpl(PayFeverApplication.getApplication().getBackgroundHandler());
+    }
 
     @Override
     public void setView(ContactView _view) {
@@ -23,22 +34,22 @@ public final class ContactPresenterImpl implements ContactPresenter {
 
     @Override
     public void getContactList() {
-        mContactView.getContactList();
+        // TODO: get list from interactor
     }
 
     @Override
     public void invite() {
-        mContactView.invite();
+        // TODO: imteractor
     }
 
     @Override
     public void initialize(Bundle _savedInstanceState) {
-        mContactView.initialize(_savedInstanceState);
+        contactInteractor.executeGET(getCallback);
     }
 
     @Override
     public void onPause() {
-
+        contactInteractor.unSubscribe();
     }
 
     @Override
@@ -56,5 +67,23 @@ public final class ContactPresenterImpl implements ContactPresenter {
     public void setData(List<ContactModel> _data) {
         mContactView.setData(_data);
     }
+
+    private Subscriber<List<ContactModel>> getCallback = new Subscriber<List<ContactModel>>() {
+        @Override
+        public void onCompleted() {
+            mContactView.setData(contactList);
+            mContactView.hideProgress();
+        }
+
+        @Override
+        public void onError(Throwable e) {
+           Log.e("Subscriber", e.getMessage());
+        }
+
+        @Override
+        public void onNext(List<ContactModel> contactModels) {
+            contactList = contactModels;
+        }
+    };
 
 }

@@ -22,7 +22,7 @@ public abstract class BaseInteractor {
     }
 
     @SuppressWarnings("unchecked")
-    private void executeGET(Subscriber _subscriber) {
+    public void executeGET(Subscriber _subscriber) {
         mGetSubscription = buildGetObserver()
                 .subscribeOn(HandlerScheduler.from(mHandler))
                 .observeOn(AndroidSchedulers.mainThread())

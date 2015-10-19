@@ -6,7 +6,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.payfever.R;
+import com.payfever.data.model.ContactModel;
 import com.payfever.presentation.basics.BaseActivity;
+
+import java.util.List;
 
 /**
  * Created by
@@ -18,15 +21,17 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     private ListView listView;
     private TextView tvInvite;
     private ContactPresenter mContactsPresenter;
+    private ContactListAdapter mContactListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         findViews();
+        initObjects();
         setListeners();
-        mContactsPresenter = new ContactPresenterImpl();
         mContactsPresenter.setView(this);
+        mContactsPresenter.initialize(savedInstanceState);
     }
 
 
@@ -41,23 +46,13 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         tvInvite = $(R.id.tvInvite_AC);
     }
 
+    private void initObjects() {
+        mContactsPresenter = new ContactPresenterImpl();
+        mContactListAdapter = new ContactListAdapter();
+    }
+
     private void setListeners() {
         tvInvite.setOnClickListener(this);
-    }
-
-    @Override
-    public void getContactList() {
-
-    }
-
-    @Override
-    public void invite() {
-
-    }
-
-    @Override
-    public void initialize(Bundle _savedInstanceState) {
-
     }
 
     @Override
@@ -71,7 +66,13 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
-    public void setData(Object _data) {
+    public void setData(List<ContactModel> _data) {
+        mContactListAdapter.setContactList(_data);
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mContactsPresenter.onPause();
     }
 }
