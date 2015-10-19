@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PayFever</string>
+    <string name="contact_avatar">Contact avatar</string>
+    <string name="contact_invite">Invite</string>
 </resources>
