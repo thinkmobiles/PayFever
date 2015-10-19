@@ -30,6 +30,7 @@ public final class ContactListAdapter extends BaseAdapter {
 
     public void setContactList(final List<ContactModel> _contactList) {
         mContactList = _contactList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -69,7 +70,7 @@ public final class ContactListAdapter extends BaseAdapter {
         loadAvatarFromURI(_viewHolder, mContactList.get(_position).getAvatar());
         _viewHolder.tvContactName.setText(mContactList.get(_position).getName());
         _viewHolder.tvContactPhone.setText(mContactList.get(_position).getPhoneNumber());
-        setStatus(_viewHolder.swStatus, mContactList.get(_position).getStatus());
+//        setStatus(_viewHolder.swStatus, mContactList.get(_position).getStatus());
     }
 
     private class ViewHolder {
@@ -81,7 +82,7 @@ public final class ContactListAdapter extends BaseAdapter {
 
     private void findViews(final ViewHolder _viewHolder, final View _convertView) {
         _viewHolder.ivAvatar         = (ImageView) _convertView.findViewById(R.id.ivContactAvatar_ICL);
-        _viewHolder.swStatus         = (SwitchCompat) _convertView.findViewById(R.id.swContactStatus_ICL);
+//        _viewHolder.swStatus         = (SwitchCompat) _convertView.findViewById(R.id.swContactStatus_ICL);
         _viewHolder.tvContactName    = (TextView) _convertView.findViewById(R.id.tvContactName_ICL);
         _viewHolder.tvContactPhone   = (TextView) _convertView.findViewById(R.id.tvContactPhone_ICL);
     }
