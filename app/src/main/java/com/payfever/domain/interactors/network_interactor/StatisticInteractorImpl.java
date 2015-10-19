@@ -4,6 +4,7 @@ package com.payfever.domain.interactors.network_interactor;
 import android.os.Handler;
 
 import com.payfever.domain.basics.BaseInteractor;
+import com.payfever.domain.services.ServiceProvider;
 
 import rx.Observable;
 
@@ -18,6 +19,6 @@ public class StatisticInteractorImpl extends BaseInteractor {
 
     @Override
     public Observable buildGetObserver() {
-        return null;
+        return ServiceProvider.getInstance().getStatisticService().getStatisticData();
     }
 }
