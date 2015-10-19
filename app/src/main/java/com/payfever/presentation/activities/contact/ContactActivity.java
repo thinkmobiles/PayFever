@@ -68,6 +68,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void setData(List<ContactModel> _data) {
         mContactListAdapter.setContactList(_data);
+        listView.setAdapter(mContactListAdapter);
     }
 
     @Override

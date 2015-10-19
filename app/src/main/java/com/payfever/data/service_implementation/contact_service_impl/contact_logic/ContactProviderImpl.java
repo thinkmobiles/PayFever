@@ -8,7 +8,9 @@ import com.payfever.data.model.ContactModel;
 import com.payfever.presentation.PayFeverApplication;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by
@@ -31,7 +33,9 @@ public final class ContactProviderImpl implements ContactProvider {
                     contact.setName(phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)));
                     contact.setPhoneNumber(phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)));
                     contact.setAvatar(phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI)));
-                    contactList.add(contact);
+                    if (contactList.isEmpty() || !contactList.get(contactList.size() - 1).getPhoneNumber().equals(contact.getPhoneNumber())) {
+                        contactList.add(contact);
+                    }
                 } while (phones.moveToNext());
                 phones.close();
             }
