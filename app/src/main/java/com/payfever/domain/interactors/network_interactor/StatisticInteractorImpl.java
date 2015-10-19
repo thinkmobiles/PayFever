@@ -1,4 +1,4 @@
-package com.payfever.domain.interactors;
+package com.payfever.domain.interactors.network_interactor;
 
 
 import android.os.Handler;
