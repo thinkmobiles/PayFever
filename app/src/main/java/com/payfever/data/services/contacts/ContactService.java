@@ -1,4 +1,4 @@
-package com.payfever.domain.services.contacts;
+package com.payfever.data.services.contacts;
 
 import com.payfever.data.model.ContactModel;
 

@@ -1,4 +1,4 @@
-package com.payfever.data.service_implementation;
+package com.payfever.data.services.statistic;
 
 import com.parse.ParseObject;
 import com.payfever.data.api.statistic_api.StatisticApi;
@@ -6,7 +6,7 @@ import com.payfever.data.api.statistic_api.StatisticApiImpl;
 import com.payfever.data.model.StatisticModel;
 import com.payfever.data.transformators.BaseTransformation;
 import com.payfever.data.transformators.StatisticTransformatorImpl;
-import com.payfever.domain.services.statistic.StatisticService;
+import com.payfever.data.services.statistic.StatisticService;
 
 import java.text.ParseException;
 

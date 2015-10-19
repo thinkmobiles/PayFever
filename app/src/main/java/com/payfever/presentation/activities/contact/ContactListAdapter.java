@@ -31,6 +31,7 @@ public final class ContactListAdapter extends BaseAdapter {
 
     public void setContactList(final List<ContactModel> _contactList) {
         mContactList = _contactList;
+        notifyDataSetChanged();
     }
 
     @Override
