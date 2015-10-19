@@ -52,6 +52,8 @@ public final class ContactProviderImpl implements ContactProvider {
                 for (ContactModel contactDeviceModel : list) {
                     if (contactDeviceModel.getPhoneNumber().equals(contactModel.getPhoneNumber())) {
                         contactDeviceModel.setStatus(contactModel.getStatus());
+                    } else {
+                        list.add(contactModel);
                     }
                 }
             }
