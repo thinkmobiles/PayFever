@@ -1,10 +1,10 @@
 package com.payfever.presentation.activities.contact;
 
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDialog;
 import android.view.View;
 import android.support.v7.widget.AppCompatCheckBox;
+import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,7 +24,7 @@ import java.util.List;
  * mRogach on 19.10.2015.
  */
 
-public class ContactActivity extends BaseActivity implements View.OnClickListener, ContactView, CompoundButton.OnCheckedChangeListener {
+public class ContactActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, ContactView, CompoundButton.OnCheckedChangeListener {
 
     private ListView listView;
     private TextView tvInvite;
@@ -76,6 +76,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     private void setListeners() {
         tvSkip.setOnClickListener(this);
         tvInvite.setOnClickListener(this);
+        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -128,6 +129,21 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
+    public void setEnableInvite() {
+        tvInvite.setEnabled(true);
+    }
+
+    @Override
+    public void setDisableInvite() {
+        tvInvite.setEnabled(false);
+    }
+
+    @Override
+    public void notifyDataSetChange() {
+        mContactListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     protected int getToolbarId() {
         return 0;
     }
@@ -137,4 +153,13 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         return 0;
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        CheckBox checkBox = (CheckBox) view.findViewById(R.id.chContactStatus_ICL);
+        if (checkBox.getVisibility() == View.VISIBLE) {
+            checkBox.toggle();
+        }
+        mContactsPresenter.onItemClick(position - listView.getHeaderViewsCount());
+
+    }
 }

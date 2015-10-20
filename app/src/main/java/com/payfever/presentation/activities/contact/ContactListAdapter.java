@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.payfever.R;
 import com.payfever.data.model.ContactModel;
+import com.payfever.data.model.ContactStatus;
 import com.payfever.presentation.PayFeverApplication;
 import com.payfever.presentation.activities.utils.CircleTransform;
 import com.squareup.picasso.Picasso;
@@ -61,6 +62,7 @@ public final class ContactListAdapter extends BaseAdapter {
             _convertView = LayoutInflater.from(PayFeverApplication.getApplication()).inflate(R.layout.item_contacts_list, _parent, false);
             viewHolder = new ViewHolder();
             findViews(viewHolder, _convertView);
+            viewHolder.chStatus.setClickable(false);
             _convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) _convertView.getTag();
@@ -78,14 +80,14 @@ public final class ContactListAdapter extends BaseAdapter {
 
     private class ViewHolder {
         public ImageView ivAvatar;
-        public AppCompatCheckBox chStatus;
+        public CheckBox chStatus;
         public TextView tvContactName;
         public TextView tvContactPhone;
     }
 
     private void findViews(final ViewHolder _viewHolder, final View _convertView) {
         _viewHolder.ivAvatar         = (ImageView) _convertView.findViewById(R.id.ivContactAvatar_ICL);
-        _viewHolder.chStatus         = (AppCompatCheckBox) _convertView.findViewById(R.id.chContactStatus_ICL);
+        _viewHolder.chStatus         = (CheckBox) _convertView.findViewById(R.id.chContactStatus_ICL);
         _viewHolder.tvContactName    = (TextView) _convertView.findViewById(R.id.tvContactName_ICL);
         _viewHolder.tvContactPhone   = (TextView) _convertView.findViewById(R.id.tvContactPhone_ICL);
     }
@@ -100,20 +102,10 @@ public final class ContactListAdapter extends BaseAdapter {
     }
 
     private void setStatus(final CheckBox _chStatus, final ContactModel _model) {
-        if (_model.getStatus() == 0) {
+        if (_model.getStatus() == ContactStatus.UNCHECKED.getStatus()) {
             _chStatus.setChecked(false);
-        } else if (_model.getStatus() == 1) {
+        } else if (_model.getStatus() == ContactStatus.CHECKED.getStatus()) {
             _chStatus.setChecked(true);
         }
-        _chStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    _model.setStatus(1);
-                } else {
-                    _model.setStatus(0);
-                }
-            }
-        });
     }
 }

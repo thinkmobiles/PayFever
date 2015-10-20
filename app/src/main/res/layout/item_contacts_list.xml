@@ -9,17 +9,11 @@
         android:contentDescription="@string/contact_avatar"
         android:src="@mipmap/ic_launcher" />
 
-    <android.support.v7.widget.AppCompatCheckBox
+    <CheckBox
         android:id="@+id/chContactStatus_ICL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/contact_avatar_margin_right"
-        android:layout_marginLeft="@dimen/contact_avatar_margin_left"
-        android:layout_marginRight="@dimen/contact_avatar_margin_right"
-        android:layout_marginStart="@dimen/contact_avatar_margin_right" />
+        android:textColorHint="@android:color/black"
+        android:focusable="false"
+        style="@style/ListItemStatus"/>
 
     <TextView
         android:id="@+id/tvContactName_ICL"

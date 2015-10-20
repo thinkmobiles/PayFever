@@ -23,7 +23,8 @@
             android:id="@+id/tvInvite_AC"
             style="@style/ContactSkipInviteTextView"
             android:text="@string/contact_invite"
-            android:background="@drawable/invite_rounded_selector"/>
+            android:background="@drawable/invite_rounded_selector"
+            android:enabled="false"/>
     </LinearLayout>
 
 

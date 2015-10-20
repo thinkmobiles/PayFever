@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="invite_contact_color">#FFEB2224</color>
     <color name="invite_contact_color_selected">#FFAD0507</color>
+    <color name="invite_contact_disable">#cfd0d2</color>
     <color name="skip_contact_color">#FF4B95CB</color>
     <color name="skip_contact_color_selected">#FF0C67A9</color>
     <color name="skip_contact_color_dialog_background">#FF002D58</color>
