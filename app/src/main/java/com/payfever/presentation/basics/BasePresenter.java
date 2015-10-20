@@ -8,7 +8,5 @@ import android.os.Bundle;
 public interface BasePresenter<V extends BaseView> {
     void initialize(Bundle _savedInstanceState);
     void onPause();
-    void showProgress();
-    void hideProgress();
     void setView(V _view);
 }

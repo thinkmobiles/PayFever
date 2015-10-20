@@ -10,8 +10,11 @@ import com.parse.Parse;
  */
 public class PayFeverApplication extends Application {
 
-    private static PayFeverApplication sInstance;
+    private static final String CLIENT_KEY = "9lyw6rDdicYkMmvlTySqrNNREJJl9lGmbM5efQZy";
+    private static final String APPLICATION_ID = "0PQAVB8jydFiqcqABb9m9iY2N2l3QsGhK1dmUS7k";
 
+
+    private static PayFeverApplication sInstance;
     private Handler backgroundHandler;
 
     @Override
@@ -21,8 +24,7 @@ public class PayFeverApplication extends Application {
         BackgroundThread backgroundThread = new BackgroundThread();
         backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
-        //TODO: initialize the Parse SDK
-//        Parse.initialize();
+        Parse.initialize(this, APPLICATION_ID, CLIENT_KEY);
     }
 
     public static PayFeverApplication getApplication() {

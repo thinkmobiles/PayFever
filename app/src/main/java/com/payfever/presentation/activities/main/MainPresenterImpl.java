@@ -40,16 +40,6 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
     public void setView(MainView _view) {
         mMainView = _view;
     }

@@ -47,16 +47,6 @@ public final class ContactPresenterImpl implements ContactPresenter {
         contactInteractor.unSubscribe();
     }
 
-    @Override
-    public void showProgress() {
-        mContactView.showProgress();
-    }
-
-    @Override
-    public void hideProgress() {
-        mContactView.hideProgress();
-    }
-
     private Subscriber<List<ContactModel>> getCallback = new Subscriber<List<ContactModel>>() {
         @Override
         public void onCompleted() {

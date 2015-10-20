@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.payfever.presentation.controllers.FragmentNavigator;
+import com.payfever.presentation.controllers.LoadingProgressManager;
+
 /**
  * Created by richi on 2015.10.15..
  */
@@ -16,6 +19,11 @@ public abstract class BaseFragment extends Fragment {
 
     private int mLayoutRes = -1;
     private View mRootView;
+
+    private FragmentNavigator mFragmentNavigator;
+    private LoadingProgressManager mLoadingManager;
+
+    protected BaseActivity mActivity;
 
     @Nullable
     @Override
@@ -25,6 +33,22 @@ public abstract class BaseFragment extends Fragment {
 
         mRootView = inflater.inflate(mLayoutRes, container, false);
         return mRootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mActivity = (BaseActivity) getActivity();
+        mFragmentNavigator = mActivity.getFragmentNavigator();
+        mLoadingManager = mActivity.getLoadingManager();
+    }
+
+    protected FragmentNavigator getFargmentNavigator() {
+        return mFragmentNavigator;
+    }
+
+    protected LoadingProgressManager getLoadingManager() {
+        return mLoadingManager;
     }
 
     @SuppressWarnings("unchecked")

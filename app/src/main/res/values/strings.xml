@@ -2,4 +2,11 @@
     <string name="app_name">PayFever</string>
     <string name="contact_avatar">Contact avatar</string>
     <string name="contact_invite">Invite</string>
+
+    <!--Register-->
+    <string name="user_name_FR">User name</string>
+    <string name="number_FR">Phone number</string>
+    <string name="register_FR">Register</string>
+    <string name="user_name_error_FR">User name is required!</string>
+    <string name="number_error_FR">Phone number is required!</string>
 </resources>
