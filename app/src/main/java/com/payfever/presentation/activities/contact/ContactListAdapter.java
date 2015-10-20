@@ -1,11 +1,13 @@
 package com.payfever.presentation.activities.contact;
 
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -71,19 +73,19 @@ public final class ContactListAdapter extends BaseAdapter {
         loadAvatarFromURI(_viewHolder, mContactList.get(_position).getAvatar());
         _viewHolder.tvContactName.setText(mContactList.get(_position).getName());
         _viewHolder.tvContactPhone.setText(mContactList.get(_position).getPhoneNumber());
-        setStatus(_viewHolder.swStatus, mContactList.get(_position).getStatus());
+        setStatus(_viewHolder.chStatus, mContactList.get(_position));
     }
 
     private class ViewHolder {
         public ImageView ivAvatar;
-        public Switch swStatus;
+        public AppCompatCheckBox chStatus;
         public TextView tvContactName;
         public TextView tvContactPhone;
     }
 
     private void findViews(final ViewHolder _viewHolder, final View _convertView) {
         _viewHolder.ivAvatar         = (ImageView) _convertView.findViewById(R.id.ivContactAvatar_ICL);
-        _viewHolder.swStatus         = (Switch) _convertView.findViewById(R.id.swContactStatus_ICL);
+        _viewHolder.chStatus         = (AppCompatCheckBox) _convertView.findViewById(R.id.chContactStatus_ICL);
         _viewHolder.tvContactName    = (TextView) _convertView.findViewById(R.id.tvContactName_ICL);
         _viewHolder.tvContactPhone   = (TextView) _convertView.findViewById(R.id.tvContactPhone_ICL);
     }
@@ -97,14 +99,20 @@ public final class ContactListAdapter extends BaseAdapter {
                 .into(_viewHolder.ivAvatar);
     }
 
-    private void setStatus(final Switch _swStatus, final String _status) {
-        if (TextUtils.isEmpty(_status)) {
-            _swStatus.setChecked(false);
+    private void setStatus(final CheckBox _chStatus, final ContactModel _model) {
+        if (_model.getStatus() == 0) {
+            _chStatus.setChecked(false);
+        } else if (_model.getStatus() == 1) {
+            _chStatus.setChecked(true);
         }
-        _swStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        _chStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Toast.makeText(PayFeverApplication.getApplication(), Boolean.toString(isChecked), Toast.LENGTH_LONG).show();
+                if (isChecked) {
+                    _model.setStatus(1);
+                } else {
+                    _model.setStatus(0);
+                }
             }
         });
     }

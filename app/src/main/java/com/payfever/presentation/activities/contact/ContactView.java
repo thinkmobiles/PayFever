@@ -13,4 +13,5 @@ import java.util.List;
 
 public interface ContactView extends BaseView<List<ContactModel>> {
 
+    void skip();
 }

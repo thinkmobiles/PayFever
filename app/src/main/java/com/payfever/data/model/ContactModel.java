@@ -9,7 +9,7 @@ public final class ContactModel {
 
     private String mName;
     private String mPhoneNumber;
-    private String mStatus;
+    private int mStatus;
     private String mAvatar;
 
     public String getName() {
@@ -28,10 +28,10 @@ public final class ContactModel {
         this.mPhoneNumber = _phoneNumber;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return mStatus;
     }
-    public void setStatus(final String _status) {
+    public void setStatus(final int _status) {
         this.mStatus = _status;
     }
 

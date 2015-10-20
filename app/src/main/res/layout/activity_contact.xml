@@ -7,12 +7,24 @@
         android:id="@+id/lvContacts_AC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tvInvite_AC">
-    </ListView>
+        android:layout_above="@+id/llSkipInvite_AC"/>
 
-    <TextView
-        android:id="@+id/tvInvite_AC"
-        style="@style/ContactInviteTextView"
-        android:padding="10dp"/>
+    <LinearLayout
+        android:id="@+id/llSkipInvite_AC"
+        style="@style/LinearLayoutSkipInvite">
+
+        <TextView
+            android:id="@+id/tvSkip_AC"
+            style="@style/ContactSkipInviteTextView"
+            android:text="@string/contact_skip"
+            android:background="@drawable/skip_rounded_selector"/>
+
+        <TextView
+            android:id="@+id/tvInvite_AC"
+            style="@style/ContactSkipInviteTextView"
+            android:text="@string/contact_invite"
+            android:background="@drawable/invite_rounded_selector"/>
+    </LinearLayout>
+
 
 </RelativeLayout>

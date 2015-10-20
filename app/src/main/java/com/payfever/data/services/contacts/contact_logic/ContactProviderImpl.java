@@ -48,13 +48,11 @@ public final class ContactProviderImpl implements ContactProvider {
         List<ContactModel> list = new ArrayList<>(_listDevice);
         if (_listServer == null) return list;
         for (ContactModel contactModel : _listServer) {
-            if (!TextUtils.isEmpty(contactModel.getStatus())) {
-                for (ContactModel contactDeviceModel : list) {
-                    if (contactDeviceModel.getPhoneNumber().equals(contactModel.getPhoneNumber())) {
-                        contactDeviceModel.setStatus(contactModel.getStatus());
-                    } else {
-                        list.add(contactModel);
-                    }
+            for (ContactModel contactDeviceModel : list) {
+                if (contactDeviceModel.getPhoneNumber().equals(contactModel.getPhoneNumber())) {
+                    contactDeviceModel.setStatus(contactModel.getStatus());
+                } else {
+                    list.add(contactModel);
                 }
             }
         }

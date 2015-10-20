@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">PayFever</string>
     <string name="contact_avatar">Contact avatar</string>
+    <string name="contact_invite">INVITE</string>
+    <string name="contact_skip">SKIP</string>
+    <string name="app_contact_select_all">Select All</string>
+    <string name="app_contact_skip_dialog_title">Are you sure?</string>
+    <string name="app_contact_skip_dialog_message">You don\'t want to expand your Network? Without Network, you can\'t make more money!</string>
+    <string name="app_contact_dialog_earn_more">EARN MORE</string>
     <string name="contact_invite">Invite</string>
 
     <!--Register-->
