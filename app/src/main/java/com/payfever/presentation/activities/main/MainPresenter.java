@@ -8,7 +8,7 @@ import com.payfever.presentation.basics.BasePresenter;
 /**
  * Created by richi on 2015.10.19..
  */
-public class MainPresenter implements BasePresenter<StatisticModel, MainView> {
+public class MainPresenter implements BasePresenter<MainView> {
 
     @Override
     public void initialize(Bundle _savedInstanceState) {
@@ -27,11 +27,6 @@ public class MainPresenter implements BasePresenter<StatisticModel, MainView> {
 
     @Override
     public void hideProgress() {
-
-    }
-
-    @Override
-    public void setData(StatisticModel _data) {
 
     }
 

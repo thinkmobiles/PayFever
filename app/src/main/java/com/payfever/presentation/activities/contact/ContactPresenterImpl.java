@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.payfever.data.model.ContactModel;
+import com.payfever.data.model.ContactStatus;
 import com.payfever.domain.basics.BasePostGetInteractor;
 import com.payfever.domain.interactors.contactInteractor.ContactInteractorImpl;
 import com.payfever.presentation.PayFeverApplication;
@@ -38,6 +39,25 @@ public final class ContactPresenterImpl implements ContactPresenter {
     }
 
     @Override
+    public void skip() {
+        mContactView.skip();
+    }
+
+    @Override
+    public void selectAll(final boolean _isChecked) {
+        for (ContactModel contactModel : contactList) {
+            if (_isChecked) {
+                if (contactModel.getStatus() == ContactStatus.UNCHECKED.getStatus()) {
+                    contactModel.setStatus(ContactStatus.CHECKED.getStatus());
+                }
+            } else if (contactModel.getStatus() == ContactStatus.CHECKED.getStatus()) {
+                contactModel.setStatus(ContactStatus.UNCHECKED.getStatus());
+            }
+        }
+        mContactView.setData(contactList);
+    }
+
+    @Override
     public void initialize(Bundle _savedInstanceState) {
         contactInteractor.executeGET(getCallback);
     }
@@ -57,12 +77,6 @@ public final class ContactPresenterImpl implements ContactPresenter {
         mContactView.hideProgress();
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public void setData(List<ContactModel> _data) {
-        mContactView.setData(_data);
-    }
-
     private Subscriber<List<ContactModel>> getCallback = new Subscriber<List<ContactModel>>() {
         @Override
         public void onCompleted() {
@@ -72,7 +86,7 @@ public final class ContactPresenterImpl implements ContactPresenter {
 
         @Override
         public void onError(Throwable e) {
-           Log.e("Subscriber", e.getMessage());
+            Log.e("Subscriber", e.getMessage());
         }
 
         @Override
