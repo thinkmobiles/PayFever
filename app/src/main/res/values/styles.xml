@@ -3,6 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -70,6 +72,13 @@
         <item name="colorAccent">@color/skip_contact_color_dialog_button</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:background">@color/skip_contact_color_dialog_background</item>
+    </style>
+
+    <style name="FooterRadioBtn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
     </style>
 
 </resources>

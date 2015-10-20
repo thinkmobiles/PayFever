@@ -126,4 +126,15 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
             }
         });
     }
+
+    @Override
+    protected int getToolbarId() {
+        return 0;
+    }
+
+    @Override
+    protected int getContainerId() {
+        return 0;
+    }
+
 }
