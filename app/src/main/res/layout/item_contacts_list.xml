@@ -3,11 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivContactAvatar_ICL"
-        style="@style/ListItemContactAvatar"
-        android:contentDescription="@string/contact_avatar"
-        android:src="@mipmap/ic_launcher" />
+    <include android:id="@+id/rlItemContact"
+        layout="@layout/item_list_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/chContactStatus_ICL"
+        />
 
     <CheckBox
         android:id="@+id/chContactStatus_ICL"
@@ -16,18 +17,14 @@
         style="@style/ListItemStatus"/>
 
     <TextView
-        android:id="@+id/tvContactName_ICL"
-        style="@style/ListItemContactName"
-        android:layout_toEndOf="@id/ivContactAvatar_ICL"
-        android:layout_toLeftOf="@id/chContactStatus_ICL"
-        android:layout_toRightOf="@id/ivContactAvatar_ICL"
-        android:layout_toStartOf="@id/chContactStatus_ICL" />
-
-    <TextView
-        android:id="@+id/tvContactPhone_ICL"
-        style="@style/ListItemContactPhone"
-        android:layout_below="@id/tvContactName_ICL"
-        android:layout_toEndOf="@id/ivContactAvatar_ICL"
-        android:layout_toRightOf="@id/ivContactAvatar_ICL" />
+        android:id="@+id/tvContactStatus_ICL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/contact_avatar_margin_right"
+        android:visibility="gone"/>
 
 </RelativeLayout>
