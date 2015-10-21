@@ -47,7 +47,7 @@
 
         <TextView
             android:id="@+id/tvRegister_FR"
-            style="@style/ContactSkipInviteTextView"
+            style="@style/RegisterBtn"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/register_top_margin"
             android:text="@string/register_FR"

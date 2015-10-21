@@ -86,6 +86,11 @@ public class RegisterFragment extends BaseFragment implements RegisterView, View
     }
 
     @Override
+    public void setTitle() {
+        getToolbarController().setTitle(getString(R.string.register_FR));
+    }
+
+    @Override
     public void showServerError(String _message) {
         Toast.makeText(mActivity, _message, Toast.LENGTH_SHORT).show();
     }

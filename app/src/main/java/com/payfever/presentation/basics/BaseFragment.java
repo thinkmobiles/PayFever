@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.payfever.presentation.controllers.FragmentNavigator;
 import com.payfever.presentation.controllers.LoadingProgressManager;
+import com.payfever.presentation.controllers.ToolbarController;
 
 /**
  * Created by richi on 2015.10.15..
@@ -22,6 +23,7 @@ public abstract class BaseFragment extends Fragment {
 
     private FragmentNavigator mFragmentNavigator;
     private LoadingProgressManager mLoadingManager;
+    private ToolbarController mToolbarController;
 
     protected BaseActivity mActivity;
 
@@ -41,6 +43,7 @@ public abstract class BaseFragment extends Fragment {
         mActivity = (BaseActivity) getActivity();
         mFragmentNavigator = mActivity.getFragmentNavigator();
         mLoadingManager = mActivity.getLoadingManager();
+        mToolbarController = mActivity.getToolbarController();
     }
 
     protected FragmentNavigator getFargmentNavigator() {
@@ -49,6 +52,10 @@ public abstract class BaseFragment extends Fragment {
 
     protected LoadingProgressManager getLoadingManager() {
         return mLoadingManager;
+    }
+
+    protected ToolbarController getToolbarController() {
+        return mToolbarController;
     }
 
     @SuppressWarnings("unchecked")

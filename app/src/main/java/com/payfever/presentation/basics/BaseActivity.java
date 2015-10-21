@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.payfever.presentation.controllers.FragmentNavigator;
 import com.payfever.presentation.controllers.LoadingProgressManager;
+import com.payfever.presentation.controllers.ToolbarController;
 
 /**
  * Created by richi on 2015.10.15..
@@ -15,6 +16,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private FragmentNavigator mFragmentNavigator;
     private LoadingProgressManager mProgressManager;
+    private ToolbarController mToolbarController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.setContentView(layoutResID);
         mProgressManager = new LoadingProgressManager();
         mProgressManager.register(this);
+
+        mToolbarController = new ToolbarController();
+        mToolbarController.register(this);
     }
 
     private void registerControllers() {
@@ -40,6 +45,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public LoadingProgressManager getLoadingManager() {
         return mProgressManager;
+    }
+
+    public ToolbarController getToolbarController() {
+        return mToolbarController;
     }
 
     @SuppressWarnings("unchecked")
