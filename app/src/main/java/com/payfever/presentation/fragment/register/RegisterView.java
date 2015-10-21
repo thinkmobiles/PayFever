@@ -11,4 +11,5 @@ public interface RegisterView extends BaseView<UserModel> {
     void showNumberError();
     void showServerError(String _message);
     void setTitle();
+    void showTermsAndConditions();
 }

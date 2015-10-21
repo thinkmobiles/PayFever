@@ -16,14 +16,14 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Intent intent = new Intent(SplashActivity.this, ContactActivity.class);
+        Intent intent = new Intent(SplashActivity.this, PreRegistrationActivity.class);
         startActivity(intent);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        startActivity();
+        startActivity();
     }
 
     private void startActivity() {

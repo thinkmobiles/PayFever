@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.payfever.R;
 import com.payfever.data.model.UserModel;
 import com.payfever.presentation.basics.BaseFragment;
+import com.payfever.presentation.terms_and_conditions.TermsConditionsFragment;
 
 /**
  * Created by richi on 2015.10.20..
@@ -88,6 +89,11 @@ public class RegisterFragment extends BaseFragment implements RegisterView, View
     @Override
     public void setTitle() {
         getToolbarController().setTitle(getString(R.string.register_FR));
+    }
+
+    @Override
+    public void showTermsAndConditions() {
+        mActivity.getFragmentNavigator().showFragment(new TermsConditionsFragment());
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.payfever.presentation.activities.contact;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.support.v7.widget.AppCompatCheckBox;
@@ -31,6 +33,11 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     private TextView tvSkip;
     private ContactPresenter mContactsPresenter;
     private ContactListAdapter mContactListAdapter;
+
+
+    public static Intent getCallingIntent(Context context) {
+        return new Intent(context, ContactActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
