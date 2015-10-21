@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="contact_avatar_size">50dp</dimen>
     <dimen name="contact_avatar_margin_left">10dp</dimen>
+    <dimen name="contact_checkbox_margin_right">10dp</dimen>
     <dimen name="contact_avatar_margin_right">10dp</dimen>
     <dimen name="app_item_text_margin">10dp</dimen>
     <dimen name="app_invite_text_margin">5dp</dimen>
@@ -19,4 +20,11 @@
     <dimen name="first_level_margin">40dp</dimen>
     <dimen name="network_sub_cell_text_size">12sp</dimen>
     <dimen name="network_main_cell_text_size">16sp</dimen>
+    <dimen name="contact_status_text_size">16sp</dimen>
+    <dimen name="contact_select_all_text_size">18sp</dimen>
+    <dimen name="terms_and_conditions_text_size">14sp</dimen>
+    <dimen name="terms_and_conditions_text_margin">20dp</dimen>
+    <dimen name="terms_and_conditions_accept_padding">10dp</dimen>
+    <dimen name="terms_and_conditions_accept_margin_height">20dp</dimen>
+    <dimen name="terms_and_conditions_accept_margin_width">60dp</dimen>
 </resources>

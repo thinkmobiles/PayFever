@@ -63,7 +63,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     private class RegisterSubscriber extends Subscriber<UserModel> {
         @Override
         public void onCompleted() {
-            mView.showServerError("Success! :D");
+            mView.showTermsAndConditions();
         }
 
         @Override

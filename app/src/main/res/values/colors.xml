@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FF002B56</color>
+    <color name="colorPrimaryDark">#FF001931</color>
     <color name="colorAccent">#FF4081</color>
     <color name="invite_contact_color">#FFEB2224</color>
     <color name="invite_contact_color_selected">#FFAD0507</color>
@@ -13,4 +13,5 @@
     <color name="direct_sent_out_HMN">#FFBCBCBC</color>
     <color name="pending_HMN">#FFDEDEDE</color>
     <color name="expired_HMN">#FFF3F3F3</color>
+    <color name="checkbox_selected">#12a342</color>
 </resources>
