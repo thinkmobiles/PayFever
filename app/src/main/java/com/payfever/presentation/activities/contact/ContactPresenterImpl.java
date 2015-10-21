@@ -2,6 +2,7 @@ package com.payfever.presentation.activities.contact;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.payfever.data.model.ContactModel;
 import com.payfever.data.model.ContactStatus;
@@ -9,7 +10,9 @@ import com.payfever.domain.basics.BasePostGetInteractor;
 import com.payfever.domain.interactors.contactInteractor.ContactInteractorImpl;
 import com.payfever.presentation.PayFeverApplication;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import rx.Subscriber;
 
@@ -23,9 +26,11 @@ public final class ContactPresenterImpl implements ContactPresenter {
     private ContactView mContactView;
     private BasePostGetInteractor<List<ContactModel>> contactInteractor;
     private List<ContactModel> contactList;
+    private List<ContactModel> contactListToInvite;
 
     public ContactPresenterImpl() {
         contactInteractor = new ContactInteractorImpl(PayFeverApplication.getApplication().getBackgroundHandler());
+        contactListToInvite = new ArrayList<>();
     }
 
     @Override
@@ -35,7 +40,7 @@ public final class ContactPresenterImpl implements ContactPresenter {
 
     @Override
     public void invite() {
-        // TODO: imteractor
+
     }
 
     @Override
@@ -49,17 +54,38 @@ public final class ContactPresenterImpl implements ContactPresenter {
             if (_isChecked) {
                 if (contactModel.getStatus() == ContactStatus.UNCHECKED.getStatus()) {
                     contactModel.setStatus(ContactStatus.CHECKED.getStatus());
+                    contactListToInvite.add(contactModel);
                 }
-            } else if (contactModel.getStatus() == ContactStatus.CHECKED.getStatus()) {
-                contactModel.setStatus(ContactStatus.UNCHECKED.getStatus());
+            } else {
+                if (contactModel.getStatus() == ContactStatus.CHECKED.getStatus()) {
+                    contactModel.setStatus(ContactStatus.UNCHECKED.getStatus());
+                    if (!contactListToInvite.isEmpty() && contactListToInvite.contains(contactModel)) {
+                        contactListToInvite.remove(contactModel);
+                    }
+                }
             }
         }
-        mContactView.setData(contactList);
+        checkValidateList();
+        mContactView.notifyDataSetChange();
+    }
+
+    @Override
+    public void onItemClick(final int _position) {
+        if (contactList.get(_position).getStatus() == ContactStatus.UNCHECKED.getStatus()) {
+            contactList.get(_position).setStatus(ContactStatus.CHECKED.getStatus());
+            contactListToInvite.add(contactList.get(_position));
+        } else if (contactList.get(_position).getStatus() == ContactStatus.CHECKED.getStatus()) {
+            contactList.get(_position).setStatus(ContactStatus.UNCHECKED.getStatus());
+            if (!contactListToInvite.isEmpty() && contactListToInvite.contains(contactList.get(_position))) {
+                contactListToInvite.remove(contactList.get(_position));
+            }
+        }
+        checkValidateList();
     }
 
     @Override
     public void initialize(Bundle _savedInstanceState) {
-        contactInteractor.executeGET(getCallback);
+        contactInteractor.executeGET(new SubscriberListContact());
     }
 
     @Override
@@ -67,7 +93,8 @@ public final class ContactPresenterImpl implements ContactPresenter {
         contactInteractor.unSubscribe();
     }
 
-    private Subscriber<List<ContactModel>> getCallback = new Subscriber<List<ContactModel>>() {
+
+    private class SubscriberListContact extends Subscriber<List<ContactModel>> {
         @Override
         public void onCompleted() {
             mContactView.setData(contactList);
@@ -83,6 +110,14 @@ public final class ContactPresenterImpl implements ContactPresenter {
         public void onNext(List<ContactModel> contactModels) {
             contactList = contactModels;
         }
-    };
+    }
+
+    private void checkValidateList() {
+        if (contactListToInvite.isEmpty()) {
+            mContactView.setDisableInvite();
+        } else {
+            mContactView.setEnableInvite();
+        }
+    }
 
 }

@@ -15,4 +15,5 @@ public interface ContactPresenter extends BasePresenter<ContactView> {
     void invite();
     void skip();
     void selectAll(final boolean _checked);
+    void onItemClick(final int _position);
 }
