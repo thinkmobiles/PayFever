@@ -11,6 +11,8 @@ import com.payfever.data.model.UserModel;
 public class RegisterApImpl implements RegisterApi {
     @Override
     public ParseUser register(UserModel _userModel) throws ParseException {
-        return ParseCloud.callFunction("sign_up_user", _userModel.getPostMap());
+        ParseUser parseUser = ParseCloud.callFunction("sign_up_user", _userModel.getPostMap());
+        ParseUser.logIn(_userModel.getUserName(), _userModel.getPhoneNumber());
+        return parseUser;
     }
 }
