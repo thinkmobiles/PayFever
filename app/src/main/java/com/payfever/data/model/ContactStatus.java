@@ -7,7 +7,7 @@ package com.payfever.data.model;
 
 public enum ContactStatus {
 
-    UNCHECKED(0), CHECKED(1), PENDING(2), EXPIRED(3);
+    UNCHECKED(0), CHECKED(1), PENDING(2), EXPIRED(3), ACCEPTED(4);
 
     private int mStatus;
 

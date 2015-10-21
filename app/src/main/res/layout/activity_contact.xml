@@ -3,11 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include android:id="@+id/toolbar_AC"
+        layout="@layout/toolbar"/>
+
     <ListView
         android:id="@+id/lvContacts_AC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/llSkipInvite_AC"/>
+        android:layout_above="@+id/llSkipInvite_AC"
+        android:layout_below="@id/toolbar_AC"/>
 
     <LinearLayout
         android:id="@+id/llSkipInvite_AC"

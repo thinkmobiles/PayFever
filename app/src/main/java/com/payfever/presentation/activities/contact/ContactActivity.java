@@ -41,10 +41,8 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         setListeners();
         mContactsPresenter.setView(this);
         mContactsPresenter.initialize(savedInstanceState);
-        View view = View.inflate(this, R.layout.header_contact_list, null);
-        AppCompatCheckBox checkBox = (AppCompatCheckBox) view.findViewById(R.id.chContactStatus_HCL);
-        checkBox.setOnCheckedChangeListener(this);
-        listView.addHeaderView(view);
+        getToolbarController().showSelectAll();
+        getToolbarController().onCheckBoxClick(this);
     }
 
 
@@ -145,7 +143,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public int getToolbarId() {
-        return 0;
+        return R.id.toolbar_AC;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.payfever.presentation.activities.utils;
+package com.payfever.presentation.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivContactAvatar_ILC"
+        style="@style/ListItemContactAvatar"
+        android:contentDescription="@string/contact_avatar"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvContactName_ILC"
+        style="@style/ListItemContactName"
+        android:layout_toEndOf="@id/ivContactAvatar_ILC"
+        android:layout_toRightOf="@id/ivContactAvatar_ILC"/>
+
+    <TextView
+        android:id="@+id/tvContactPhone_ILC"
+        style="@style/ListItemContactPhone"
+        android:layout_below="@+id/tvContactName_ILC"
+        android:layout_alignLeft="@+id/tvContactName_ILC"
+        android:layout_alignStart="@+id/tvContactName_ILC" />
+
+</RelativeLayout>
