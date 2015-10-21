@@ -47,11 +47,11 @@
 
         <TextView
             android:id="@+id/tvRegister_FR"
+            style="@style/ContactSkipInviteTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/register_top_margin"
-            android:gravity="center"
             android:text="@string/register_FR"
+            android:background="@drawable/invite_rounded_selector"
             tools:text="Register"/>
 
     </LinearLayout>
