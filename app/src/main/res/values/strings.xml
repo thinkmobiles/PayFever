@@ -14,4 +14,10 @@
     <string name="register_FR">Register</string>
     <string name="user_name_error_FR">User name is required!</string>
     <string name="number_error_FR">Phone number is required!</string>
+
+    <!--MyNetwork-->
+    <string name="direct_sent_HMN">Direct sent out:</string>
+    <string name="pending_HMN">Pending:</string>
+    <string name="expired_HMN">Expired:</string>
+    <string name="first_level_HMN">1st level</string>
 </resources>

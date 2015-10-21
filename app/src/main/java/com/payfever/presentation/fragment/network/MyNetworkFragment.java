@@ -2,9 +2,11 @@ package com.payfever.presentation.fragment.network;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.payfever.R;
 import com.payfever.data.model.network.NetworkResponse;
@@ -16,6 +18,9 @@ import com.payfever.presentation.basics.BaseFragment;
 public class MyNetworkFragment extends BaseFragment implements NetworkView, AdapterView.OnItemClickListener {
 
     private ListView lvUsers;
+    private View mHeaderView;
+    private TextView tvDirectSentOut, tvPending, tvExpired,
+            tvTotal, tvFirstLevel, tvNetworkLevel;
 
     private NetworkPresenter mPresenter;
     private NetworkAdapter mAdapter;
@@ -36,6 +41,11 @@ public class MyNetworkFragment extends BaseFragment implements NetworkView, Adap
         initListeners();
         initPresenter(savedInstanceState);
         initAdapter();
+    }
+
+    private void initHeaderView() {
+        mHeaderView = LayoutInflater.from(mActivity).inflate(R.layout.header_contact_list, null, false);
+
     }
 
     private void findUI() {

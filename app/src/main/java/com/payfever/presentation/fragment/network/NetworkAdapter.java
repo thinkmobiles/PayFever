@@ -1,14 +1,15 @@
 package com.payfever.presentation.fragment.network;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.payfever.data.model.UserModel;
-import com.payfever.data.model.network.NetworkResponse;
+import com.payfever.R;
 import com.payfever.data.model.network.NetworkUser;
+import com.payfever.presentation.PayFeverApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,11 @@ import java.util.List;
  */
 public class NetworkAdapter extends BaseAdapter {
 
+    private String mFirstLevel;
     private List<NetworkUser> mData;
 
     public NetworkAdapter() {
+        mFirstLevel = PayFeverApplication.getApplication().getString(R.string.first_level_HMN);
         mData = new ArrayList<>();
     }
 
@@ -48,18 +51,33 @@ public class NetworkAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
+            convertView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_my_network, parent, false);
             viewHolder = new ViewHolder();
+            viewHolder.ivAvatar = (ImageView) convertView.findViewById(R.id.ivContactAvatar_ILC);
+            viewHolder.tvName = (TextView) convertView.findViewById(R.id.tvContactName_ILC);
+            viewHolder.tvPhoneNumber = (TextView) convertView.findViewById(R.id.tvContactPhone_ICL);
+            viewHolder.tvLevelIndicator = (TextView) convertView.findViewById(R.id.tvLevelIndicator_IMN);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+        NetworkUser user = getItem(position);
+
+        if (user.getUserName() != null)
+            viewHolder.tvName.setText(user.getUserName());
+
+        if (user.ismIsFirstLevel())
+            viewHolder.tvLevelIndicator.setText(mFirstLevel);
+        else
+            viewHolder.tvLevelIndicator.setText("");
 
         return convertView;
     }
 
     private static class ViewHolder {
         ImageView ivAvatar;
-        TextView tvFirstName, tvLastName, tvLevelIndicator;
+        TextView tvName, tvPhoneNumber, tvLevelIndicator;
     }
 }

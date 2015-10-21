@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -13,13 +14,15 @@
         android:id="@+id/tvContactName_ILC"
         style="@style/ListItemContactName"
         android:layout_toEndOf="@id/ivContactAvatar_ILC"
-        android:layout_toRightOf="@id/ivContactAvatar_ILC"/>
+        android:layout_toRightOf="@id/ivContactAvatar_ILC"
+        tools:text="Sunjay"/>
 
     <TextView
         android:id="@+id/tvContactPhone_ILC"
         style="@style/ListItemContactPhone"
         android:layout_below="@+id/tvContactName_ILC"
         android:layout_alignLeft="@+id/tvContactName_ILC"
-        android:layout_alignStart="@+id/tvContactName_ILC" />
+        android:layout_alignStart="@+id/tvContactName_ILC"
+        tools:text="Winchester"/>
 
 </RelativeLayout>
