@@ -3,6 +3,7 @@
     package="com.payfever" >
 
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".presentation.PayFeverApplication"
@@ -20,6 +21,7 @@
         </activity>
 
         <activity android:name=".presentation.activities.contact.ContactActivity" />
+        <activity android:name=".presentation.activities.pre_registration.PreRegistrationActivity"/>
     </application>
 
 </manifest>

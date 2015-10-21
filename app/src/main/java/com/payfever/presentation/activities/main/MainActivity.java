@@ -74,13 +74,18 @@ public class MainActivity extends BaseActivity implements MainView, RadioGroup.O
     }
 
     @Override
-    protected int getToolbarId() {
+    public int getToolbarId() {
         return R.id.toolbar_AM;
     }
 
     @Override
-    protected int getContainerId() {
+    public int getContainerId() {
         return R.id.flContainer_AM;
+    }
+
+    @Override
+    public int getProgressId() {
+        return 0;
     }
 
     @Override

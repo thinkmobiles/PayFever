@@ -144,12 +144,12 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
-    protected int getToolbarId() {
+    public int getToolbarId() {
         return 0;
     }
 
     @Override
-    protected int getContainerId() {
+    public int getContainerId() {
         return 0;
     }
 
@@ -161,5 +161,9 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         }
         mContactsPresenter.onItemClick(position - listView.getHeaderViewsCount());
 
+    }
+    @Override
+    public int getProgressId() {
+        return 0;
     }
 }

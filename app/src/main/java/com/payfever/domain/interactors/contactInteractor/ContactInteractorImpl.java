@@ -22,7 +22,7 @@ public class ContactInteractorImpl extends BasePostGetInteractor<List<ContactMod
     }
 
     @Override
-    public Observable buildPostObservable() {
+    public Observable buildPostObservable(List<ContactModel> _data) {
         return ServiceProvider.getInstance().getContactService().postContactData();
     }
 

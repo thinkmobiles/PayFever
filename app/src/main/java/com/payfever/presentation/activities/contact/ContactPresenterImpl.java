@@ -93,15 +93,6 @@ public final class ContactPresenterImpl implements ContactPresenter {
         contactInteractor.unSubscribe();
     }
 
-    @Override
-    public void showProgress() {
-        mContactView.showProgress();
-    }
-
-    @Override
-    public void hideProgress() {
-        mContactView.hideProgress();
-    }
 
     private class SubscriberListContact extends Subscriber<List<ContactModel>> {
         @Override

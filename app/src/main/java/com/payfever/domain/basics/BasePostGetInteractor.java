@@ -7,6 +7,7 @@ import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.android.schedulers.HandlerScheduler;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
 
 /**
@@ -22,13 +23,13 @@ public abstract class BasePostGetInteractor<T> extends BaseInteractor {
 
     @SuppressWarnings("unchecked")
     public void executePost(T _data, Subscriber _subscriber) {
-        mPostSubscription = buildPostObservable()
-                .subscribeOn(HandlerScheduler.from(mHandler))
+        mPostSubscription = buildPostObservable(_data)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(_subscriber);
     }
 
-    public abstract Observable buildPostObservable();
+    public abstract Observable buildPostObservable(T _data);
 
     @Override
     public void unSubscribe() {
