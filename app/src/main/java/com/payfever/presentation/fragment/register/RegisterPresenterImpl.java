@@ -23,6 +23,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     @Override
     public void initialize(Bundle _savedInstanceState) {
         mInteractor = new RegisterInteractor(PayFeverApplication.getApplication().getBackgroundHandler());
+        mView.setTitle();
     }
 
     @Override

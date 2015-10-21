@@ -39,7 +39,7 @@ public class PreRegistrationActivity extends BaseActivity implements PreRegistra
 
     @Override
     public int getToolbarId() {
-        return 0;
+        return R.id.toolbar_APR;
     }
 
     @Override
