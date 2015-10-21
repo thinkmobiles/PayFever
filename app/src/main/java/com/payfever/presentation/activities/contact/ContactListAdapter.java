@@ -1,24 +1,18 @@
 package com.payfever.presentation.activities.contact;
 
-import android.support.v7.widget.AppCompatCheckBox;
-import android.support.v7.widget.SwitchCompat;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.payfever.R;
 import com.payfever.data.model.ContactModel;
 import com.payfever.data.model.ContactStatus;
 import com.payfever.presentation.PayFeverApplication;
-import com.payfever.presentation.activities.utils.CircleTransform;
+import com.payfever.presentation.utils.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
