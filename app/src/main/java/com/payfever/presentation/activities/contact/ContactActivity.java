@@ -50,6 +50,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         mContactsPresenter.initialize(savedInstanceState);
         getToolbarController().showSelectAll();
         getToolbarController().onCheckBoxClick(this);
+        getToolbarController().setTitle("Import Contacts");
     }
 
 

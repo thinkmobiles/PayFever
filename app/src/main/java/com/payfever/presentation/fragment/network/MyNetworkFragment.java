@@ -44,7 +44,7 @@ public class MyNetworkFragment extends BaseFragment implements NetworkView, Adap
     }
 
     private void initHeaderView() {
-        mHeaderView = LayoutInflater.from(mActivity).inflate(R.layout.header_contact_list, null, false);
+        mHeaderView = LayoutInflater.from(mActivity).inflate(R.layout.header_my_network, null, false);
 
     }
 

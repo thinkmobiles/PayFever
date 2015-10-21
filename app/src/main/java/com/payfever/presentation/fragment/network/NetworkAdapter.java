@@ -56,7 +56,7 @@ public class NetworkAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.ivAvatar = (ImageView) convertView.findViewById(R.id.ivContactAvatar_ILC);
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.tvContactName_ILC);
-            viewHolder.tvPhoneNumber = (TextView) convertView.findViewById(R.id.tvContactPhone_ICL);
+            viewHolder.tvPhoneNumber = (TextView) convertView.findViewById(R.id.tvContactPhone_ILC);
             viewHolder.tvLevelIndicator = (TextView) convertView.findViewById(R.id.tvLevelIndicator_IMN);
             convertView.setTag(viewHolder);
         } else {

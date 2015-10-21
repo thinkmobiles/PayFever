@@ -8,9 +8,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
-        <!--<item name="colorControlNormal">@android:color/white</item>-->
-        <!--<item name="colorControlActivated">@android:color/white</item>-->
+    </style>
 
+    <style name="myToolbarNavigationButtonStyle" parent="AppTheme">
+        <item name="android:textColorPrimary">#fff</item>
     </style>
 
     <style name="ListItemContactAvatar">
@@ -30,13 +31,9 @@
         <item name="android:layout_alignParentRight">true</item>
     </style>
 
-    <style name="ContactCheckBoxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="colorControlActivated">@android:color/white</item>
-    </style>
-
-    <style name="CustomCheckBoxTheme" parent="Theme.AppCompat.Light">
-        <item name="android:checkboxStyle">@style/ContactCheckBoxStyle</item>
+    <style name="ContactCheckBoxStyle" parent="AppTheme">
+        <item name="colorAccent">@color/checkbox_selected</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
     </style>
 
     <style name="ListItemContactName">
