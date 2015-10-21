@@ -23,48 +23,48 @@ public class Statistic {
         this.mUsers = mUsers;
     }
 
-    public int getmSentOut() {
-        return mSentOut;
+    public String getmSentOut() {
+        return String.valueOf(mSentOut);
     }
 
     public void setmSentOut(int mSentOut) {
         this.mSentOut = mSentOut;
     }
 
-    public int getmPending() {
-        return mPending;
+    public String getmPending() {
+        return String.valueOf(mPending);
     }
 
     public void setmPending(int mPending) {
         this.mPending = mPending;
     }
 
-    public int getmExpired() {
-        return mExpired;
+    public String getmExpired() {
+        return String.valueOf(mExpired);
     }
 
     public void setmExpired(int mExpired) {
         this.mExpired = mExpired;
     }
 
-    public int getmTotalNetworkAccepts() {
-        return mTotalNetworkAccepts;
+    public String getmTotalNetworkAccepts() {
+        return String.valueOf(mTotalNetworkAccepts);
     }
 
     public void setmTotalNetworkAccepts(int mTotalNetworkAccepts) {
         this.mTotalNetworkAccepts = mTotalNetworkAccepts;
     }
 
-    public int getmFirstLevelAccepts() {
-        return mFirstLevelAccepts;
+    public String getmFirstLevelAccepts() {
+        return String.valueOf(mFirstLevelAccepts);
     }
 
     public void setmFirstLevelAccepts(int mFirstLevelAccepts) {
         this.mFirstLevelAccepts = mFirstLevelAccepts;
     }
 
-    public int getmNetworkLevelAccepts() {
-        return mNetworkLevelAccepts;
+    public String getmNetworkLevelAccepts() {
+        return String.valueOf(mNetworkLevelAccepts);
     }
 
     public void setmNetworkLevelAccepts(int mNetworkLevelAccepts) {

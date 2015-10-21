@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.payfever.R;
 import com.payfever.data.model.network.NetworkResponse;
+import com.payfever.data.model.network.Statistic;
 import com.payfever.presentation.basics.BaseFragment;
 
 /**
@@ -37,6 +38,7 @@ public class MyNetworkFragment extends BaseFragment implements NetworkView, Adap
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        initHeaderView();
         findUI();
         initListeners();
         initPresenter(savedInstanceState);
@@ -46,6 +48,12 @@ public class MyNetworkFragment extends BaseFragment implements NetworkView, Adap
     private void initHeaderView() {
         mHeaderView = LayoutInflater.from(mActivity).inflate(R.layout.header_contact_list, null, false);
 
+        tvDirectSentOut     = (TextView) mHeaderView.findViewById(R.id.tvDirectSentOut_HMN);
+        tvPending           = (TextView) mHeaderView.findViewById(R.id.tvPending_HMN);
+        tvExpired           = (TextView) mHeaderView.findViewById(R.id.tvExpired_HMN);
+        tvTotal             = (TextView) mHeaderView.findViewById(R.id.tvTotal_HMN);
+        tvFirstLevel        = (TextView) mHeaderView.findViewById(R.id.tvFirstLevel_HMN);
+        tvNetworkLevel      = (TextView) mHeaderView.findViewById(R.id.tvNetworkLevel_HMN);
     }
 
     private void findUI() {
@@ -81,6 +89,16 @@ public class MyNetworkFragment extends BaseFragment implements NetworkView, Adap
         mData = _data;
         mAdapter.setData(_data.getmNetworkStatistic().getmUsers());
         lvUsers.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void setStaticData(Statistic _statistic) {
+        tvDirectSentOut.setText(_statistic.getmSentOut());
+        tvPending.setText(_statistic.getmPending());
+        tvExpired.setText(_statistic.getmExpired());
+        tvTotal.setText(_statistic.getmTotalNetworkAccepts());
+        tvFirstLevel.setText(_statistic.getmFirstLevelAccepts());
+        tvNetworkLevel.setText(_statistic.getmNetworkLevelAccepts());
     }
 
     @Override

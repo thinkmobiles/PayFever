@@ -6,14 +6,14 @@ import android.widget.RadioGroup;
 import com.payfever.R;
 import com.payfever.data.model.StatisticModel;
 import com.payfever.presentation.basics.BaseActivity;
+import com.payfever.presentation.basics.FABActivity;
 
 /**
  * Created by richi on 2015.10.19..
  */
-public class MainActivity extends BaseActivity implements MainView, RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends FABActivity implements MainView {
 
     private MainPresenter mMainPresenter;
-    private RadioGroup rgContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +21,12 @@ public class MainActivity extends BaseActivity implements MainView, RadioGroup.O
         setContentView(R.layout.activity_main);
 
         initPresenter();
-        findUI();
         initListeners();
     }
 
     private void initPresenter() {
         mMainPresenter = new MainPresenterImpl();
         mMainPresenter.setView(this);
-    }
-
-    private void findUI() {
-        rgContainer = $(R.id.rgContainer_AM);
     }
 
     private void initListeners() {
@@ -74,6 +69,16 @@ public class MainActivity extends BaseActivity implements MainView, RadioGroup.O
     }
 
     @Override
+    public void showFAB() {
+        getFABController().show();
+    }
+
+    @Override
+    public void hideFAB() {
+        getFABController().hide();
+    }
+
+    @Override
     public int getToolbarId() {
         return R.id.toolbar_AM;
     }
@@ -85,23 +90,11 @@ public class MainActivity extends BaseActivity implements MainView, RadioGroup.O
 
     @Override
     public int getProgressId() {
-        return 0;
+        return R.id.pbDownload_AM;
     }
 
     @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId) {
-            case R.id.rbStatistic_AM:
-                mMainPresenter.showStatisticFragment();
-                break;
-            case R.id.rbChartView_AM:
-                mMainPresenter.showChartFragment();
-                break;
-            case R.id.rbChat_AM:
-                mMainPresenter.showChatFragment();
-                break;
-            default:
-                mMainPresenter.showSetRingtoneFragment();
-        }
+    protected int getFabId() {
+        return R.id.fab_AM;
     }
 }

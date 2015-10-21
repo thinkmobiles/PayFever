@@ -45,6 +45,7 @@ public class NetworkPresenterImpl implements NetworkPresenter {
         @Override
         public void onCompleted() {
             mView.setData(mData);
+            mView.setStaticData(mData.getmNetworkStatistic());
             mView.hideProgress();
         }
 

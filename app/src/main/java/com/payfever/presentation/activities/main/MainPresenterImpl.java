@@ -31,12 +31,12 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void initialize(Bundle _savedInstanceState) {
-
+        mMainView.showFAB();
     }
 
     @Override
     public void onPause() {
-
+        mMainView.hideFAB();
     }
 
     @Override

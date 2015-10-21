@@ -12,4 +12,6 @@ public interface MainView extends BaseView<StatisticModel> {
     void showChartFragment();
     void showChatFragment();
     void showSetRingtoneFragment();
+    void showFAB();
+    void hideFAB();
 }
