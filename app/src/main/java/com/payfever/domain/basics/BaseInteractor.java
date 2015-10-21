@@ -34,5 +34,5 @@ public abstract class BaseInteractor {
             mGetSubscription.unsubscribe();
     }
 
-    public abstract Observable buildGetObserver();
+    protected abstract Observable buildGetObserver();
 }

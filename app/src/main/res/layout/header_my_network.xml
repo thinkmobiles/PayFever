@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        style="@style/NetworkHeaderMainCell"
+        android:background="@color/direct_sent_out_HMN">
+
+        <TextView
+            style="@style/NetworkCellTitleTextView"
+            android:text="@string/direct_sent_HMN"
+            tools:text="Direct sent out"/>
+
+        <TextView
+            android:id="@+id/tvDirectSentOut_HMN"
+            style="@style/NetworkMainCellIndicator"
+            tools:text="15"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/NetworkHeaderMainCell"
+        android:background="@color/pending_HMN">
+
+        <TextView
+            style="@style/NetworkCellTitleTextView"
+            android:text="@string/pending_HMN"
+            tools:text="Pending:"/>
+
+        <TextView
+            android:id="@+id/tvPending_HMN"
+            style="@style/NetworkMainCellIndicator"
+            tools:text="5"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/NetworkHeaderMainCell"
+        android:background="@color/expired_HMN">
+
+        <TextView
+            style="@style/NetworkCellTitleTextView"
+            android:text="@string/expired_HMN"
+            tools:text="Expired:"/>
+
+        <TextView
+            android:id="@+id/tvExpired_HMN"
+            style="@style/NetworkMainCellIndicator"
+            tools:text="0"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/simple_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+            <TextView
+                style="@style/NetworkCellTitleTextView"
+                android:text="@string/expired_HMN"
+                android:textStyle="bold"
+                tools:text="Total Network Accepts:"/>
+
+            <TextView
+                android:id="@+id/tvTotal_HMN"
+                style="@style/NetworkMainCellIndicator"
+                android:textStyle="bold"
+                tools:text="789"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+            <TextView
+                style="@style/NetworkSubCellTextView"
+                android:text="@string/expired_HMN"
+                android:paddingLeft="@dimen/first_level_margin"
+                tools:text="1st Level Accepts:"/>
+
+            <TextView
+                android:id="@+id/tvFirstLevel_HMN"
+                style="@style/NetworkSubCellIndicator"
+                tools:text="789"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+            <TextView
+                style="@style/NetworkSubCellTextView"
+                android:text="@string/expired_HMN"
+                android:paddingLeft="@dimen/first_level_margin"
+                tools:text="Network Level Accepts:"/>
+
+            <TextView
+                android:id="@+id/tvNetworkLevel_HMN"
+                style="@style/NetworkSubCellIndicator"
+                tools:text="789"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,5 +1,7 @@
 package com.payfever.data.services;
 
+import com.payfever.data.services.network.NetworkService;
+import com.payfever.data.services.network.NetworkServiceImpl;
 import com.payfever.data.services.registration.RegisterService;
 import com.payfever.data.services.registration.RegisterServiceImpl;
 import com.payfever.data.services.statistic.StatisticServiceImpl;
@@ -17,12 +19,13 @@ public class ServiceProvider {
     private StatisticService mStatisticService;
     private ContactService mContactService;
     private RegisterService mRegisterService;
+    private NetworkService mNetworkService;
 
     private ServiceProvider() {
-        //TODO: create service implementation
         mStatisticService = new StatisticServiceImpl();
         mContactService = new ContactServiceImpl();
         mRegisterService = new RegisterServiceImpl();
+        mNetworkService = new NetworkServiceImpl();
     }
 
     public static ServiceProvider getInstance() {
@@ -42,5 +45,9 @@ public class ServiceProvider {
 
     public RegisterService getRegisterService() {
         return mRegisterService;
+    }
+
+    public NetworkService getNetworkService() {
+        return mNetworkService;
     }
 }

@@ -107,4 +107,33 @@
         <item name="android:paddingRight">@dimen/app_invite_text_padding_width</item>
     </style>
 
+    <style name="NetworkHeaderMainCell">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="NetworkCellTitleTextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:textSize">@dimen/network_main_cell_text_size</item>
+    </style>
+
+    <style name="NetworkSubCellTextView" parent="NetworkCellTitleTextView">
+        <item name="android:textSize">@dimen/network_sub_cell_text_size</item>
+    </style>
+
+    <style name="NetworkMainCellIndicator">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/network_main_cell_text_size</item>
+    </style>
+
+    <style name="NetworkSubCellIndicator" parent="NetworkMainCellIndicator">
+        <item name="android:textSize">@dimen/network_sub_cell_text_size</item>
+    </style>
+
 </resources>

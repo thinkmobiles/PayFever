@@ -10,4 +10,7 @@
     <color name="skip_contact_color_selected">#FF0C67A9</color>
     <color name="skip_contact_color_dialog_background">#FF002D58</color>
     <color name="skip_contact_color_dialog_button">#FF86B9DE</color>
+    <color name="direct_sent_out_HMN">#FFBCBCBC</color>
+    <color name="pending_HMN">#FFDEDEDE</color>
+    <color name="expired_HMN">#FFF3F3F3</color>
 </resources>
