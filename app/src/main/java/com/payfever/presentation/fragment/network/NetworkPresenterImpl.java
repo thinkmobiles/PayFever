@@ -24,16 +24,22 @@ public class NetworkPresenterImpl implements NetworkPresenter {
         mNetworkInteractor = new NetworkInteractor(PayFeverApplication.
                 getApplication().getBackgroundHandler());
         mNetworkInteractor.executeGET(new DownloadListener());
+        mView.showFAB();
+
+        if (mData == null)
+            mNetworkInteractor.executeGET(new DownloadListener());
     }
 
     @Override
     public void onPause() {
         mNetworkInteractor.unSubscribe();
+        mView.hideFAB();
     }
 
     @Override
     public void setView(NetworkView _view) {
         mView = _view;
+        mView.setTitle();
     }
 
     @Override

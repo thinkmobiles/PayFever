@@ -11,12 +11,12 @@ import android.widget.TextView;
 import com.payfever.R;
 import com.payfever.data.model.network.NetworkResponse;
 import com.payfever.data.model.network.Statistic;
-import com.payfever.presentation.basics.BaseFragment;
+import com.payfever.presentation.basics.BaseFABFragment;
 
 /**
  * Created by richi on 2015.10.21..
  */
-public class MyNetworkFragment extends BaseFragment implements NetworkView, AdapterView.OnItemClickListener {
+public class MyNetworkFragment extends BaseFABFragment implements NetworkView, AdapterView.OnItemClickListener {
 
     private ListView lvUsers;
     private View mHeaderView;
@@ -40,6 +40,7 @@ public class MyNetworkFragment extends BaseFragment implements NetworkView, Adap
 
         initHeaderView();
         findUI();
+        addHeaderToList();
         initListeners();
         initPresenter(savedInstanceState);
         initAdapter();
@@ -58,6 +59,10 @@ public class MyNetworkFragment extends BaseFragment implements NetworkView, Adap
 
     private void findUI() {
         lvUsers     = $(R.id.lvUsers_FMN);
+    }
+
+    private void addHeaderToList() {
+        lvUsers.addHeaderView(mHeaderView);
     }
 
     private void initListeners() {
@@ -82,6 +87,21 @@ public class MyNetworkFragment extends BaseFragment implements NetworkView, Adap
     @Override
     public void hideProgress() {
         getLoadingManager().hideProgress();
+    }
+
+    @Override
+    public void showFAB() {
+        getFabController().show();
+    }
+
+    @Override
+    public void hideFAB() {
+        getFabController().hide();
+    }
+
+    @Override
+    public void setTitle() {
+        getToolbarController().setTitle(mActivity.getString(R.string.network_fragment_title_HMN));
     }
 
     @Override

@@ -69,7 +69,7 @@
 
             <TextView
                 style="@style/NetworkCellTitleTextView"
-                android:text="@string/expired_HMN"
+                android:text="@string/total_HMN"
                 android:textStyle="bold"
                 tools:text="Total Network Accepts:"/>
 
@@ -92,7 +92,7 @@
 
             <TextView
                 style="@style/NetworkSubCellTextView"
-                android:text="@string/expired_HMN"
+                android:text="@string/first_level_accepts_HMN"
                 android:paddingLeft="@dimen/first_level_margin"
                 tools:text="1st Level Accepts:"/>
 
@@ -109,11 +109,12 @@
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin">
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin">
 
             <TextView
                 style="@style/NetworkSubCellTextView"
-                android:text="@string/expired_HMN"
+                android:text="@string/network_level_accepts_HMN"
                 android:paddingLeft="@dimen/first_level_margin"
                 tools:text="Network Level Accepts:"/>
 

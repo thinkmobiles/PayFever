@@ -1,5 +1,6 @@
 package com.payfever.presentation.fragment.network;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.payfever.R;
 import com.payfever.data.model.network.NetworkUser;
 import com.payfever.presentation.PayFeverApplication;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +23,12 @@ public class NetworkAdapter extends BaseAdapter {
 
     private String mFirstLevel;
     private List<NetworkUser> mData;
+    private Context mContext;
 
     public NetworkAdapter() {
         mFirstLevel = PayFeverApplication.getApplication().getString(R.string.first_level_HMN);
         mData = new ArrayList<>();
+        mContext = PayFeverApplication.getApplication();
     }
 
     public void setData(List<NetworkUser> _data) {
@@ -65,6 +69,8 @@ public class NetworkAdapter extends BaseAdapter {
 
         NetworkUser user = getItem(position);
 
+        loadAvatar("test url", viewHolder.ivAvatar);
+
         if (user.getUserName() != null)
             viewHolder.tvName.setText(user.getUserName());
 
@@ -74,6 +80,16 @@ public class NetworkAdapter extends BaseAdapter {
             viewHolder.tvLevelIndicator.setText("");
 
         return convertView;
+    }
+
+    private void loadAvatar(String _url, ImageView _avatar) {
+        Picasso.with(mContext)
+                .load(_url)
+                .placeholder(R.drawable.ic_avatar_contact)
+                .error(R.drawable.ic_avatar_contact)
+                .fit()
+                .centerCrop()
+                .into(_avatar);
     }
 
     private static class ViewHolder {

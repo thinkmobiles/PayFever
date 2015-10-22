@@ -22,5 +22,5 @@ public abstract class FABActivity extends BaseActivity {
         return mFabController;
     }
 
-    protected abstract @IdRes int getFabId();
+    public abstract @IdRes int getFabId();
 }

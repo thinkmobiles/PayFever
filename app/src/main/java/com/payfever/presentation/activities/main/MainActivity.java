@@ -1,12 +1,10 @@
 package com.payfever.presentation.activities.main;
 
 import android.os.Bundle;
-import android.widget.RadioGroup;
 
 import com.payfever.R;
-import com.payfever.data.model.StatisticModel;
-import com.payfever.presentation.basics.BaseActivity;
 import com.payfever.presentation.basics.FABActivity;
+import com.payfever.presentation.fragment.network.MyNetworkFragment;
 
 /**
  * Created by richi on 2015.10.19..
@@ -22,6 +20,8 @@ public class MainActivity extends FABActivity implements MainView {
 
         initPresenter();
         initListeners();
+
+        mMainPresenter.initialize(savedInstanceState);
     }
 
     private void initPresenter() {
@@ -35,22 +35,22 @@ public class MainActivity extends FABActivity implements MainView {
 
     @Override
     public void showProgress() {
-
+        getLoadingManager().showProgress();
     }
 
     @Override
     public void hideProgress() {
-
+        getLoadingManager().hideProgress();
     }
 
     @Override
-    public void setData(StatisticModel _data) {
+    public void setData(String _data) {
 
     }
 
     @Override
     public void showStatisticFragment() {
-
+        getFragmentNavigator().replaceFragment(new MyNetworkFragment());
     }
 
     @Override
@@ -94,7 +94,7 @@ public class MainActivity extends FABActivity implements MainView {
     }
 
     @Override
-    protected int getFabId() {
+    public int getFabId() {
         return R.id.fab_AM;
     }
 }

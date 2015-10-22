@@ -14,4 +14,5 @@
     <color name="pending_HMN">#FFDEDEDE</color>
     <color name="expired_HMN">#FFF3F3F3</color>
     <color name="checkbox_selected">#12a342</color>
+    <color name="fab_color">#FFEA2224</color>
 </resources>
