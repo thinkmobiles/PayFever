@@ -1,9 +1,14 @@
 package com.payfever.data.api.contact_api;
 
+import com.parse.ParseCloud;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.payfever.data.model.response.ContactListModel;
 
-import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by
@@ -13,13 +18,22 @@ import java.util.List;
 public final class ContactApiImpl implements ContactApi {
 
     @Override
-    public List<ParseObject> getContactListData() throws ParseException {
+    public List<ParseObject> getContactListData() {
         //TODO: parse object from server
         return null;
     }
 
     @Override
-    public void postContactData() throws ParseException {
-        //TODO: parse object to server
+    public ContactListModel postContactData(final List<String> _contacts) throws ParseException {
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", ParseUser.getCurrentUser().getObjectId());
+        map.put("phoneNumberList", _contacts);
+        Map<String, List<String>> map1 = ParseCloud.callFunction("send_invitation_list", map);
+
+        ContactListModel contactListModel = new ContactListModel();
+        contactListModel.setFailedContacts(map1.get("failedPhoneNumbers"));
+        contactListModel.setAllContacts(map1.get("allPhoneNumber"));
+        contactListModel.setSuccessContacts(map1.get("succeedPhoneNumbers"));
+        return contactListModel;
     }
 }

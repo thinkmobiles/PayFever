@@ -2,17 +2,16 @@ package com.payfever.presentation.activities.contact;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.payfever.data.model.ContactModel;
 import com.payfever.data.model.ContactStatus;
+import com.payfever.data.model.response.ContactListModel;
 import com.payfever.domain.basics.BasePostGetInteractor;
 import com.payfever.domain.interactors.contactInteractor.ContactInteractorImpl;
 import com.payfever.presentation.PayFeverApplication;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import rx.Subscriber;
 
@@ -24,9 +23,10 @@ import rx.Subscriber;
 public final class ContactPresenterImpl implements ContactPresenter {
 
     private ContactView mContactView;
-    private BasePostGetInteractor<List<ContactModel>> contactInteractor;
+    private BasePostGetInteractor<List<String>> contactInteractor;
     private List<ContactModel> contactList;
     private List<ContactModel> contactListToInvite;
+    private ContactListModel contactListModel;
 
     public ContactPresenterImpl() {
         contactInteractor = new ContactInteractorImpl(PayFeverApplication.getApplication().getBackgroundHandler());
@@ -40,7 +40,13 @@ public final class ContactPresenterImpl implements ContactPresenter {
 
     @Override
     public void invite() {
-
+        List<String> contacts = new ArrayList<>();
+        for (ContactModel contactModel : contactListToInvite) {
+            if (contactModel.getStatus() == ContactStatus.CHECKED.getStatus()) {
+                contacts.add(contactModel.getPhoneNumber());
+            }
+        }
+        contactInteractor.executePost(contacts, new SubscriberContactsToInvite());
     }
 
     @Override
@@ -115,6 +121,24 @@ public final class ContactPresenterImpl implements ContactPresenter {
         @Override
         public void onNext(List<ContactModel> contactModels) {
             contactList = contactModels;
+        }
+    }
+
+    private class SubscriberContactsToInvite extends Subscriber<ContactListModel> {
+        @Override
+        public void onCompleted() {
+            mContactView.setData(contactList);
+            mContactView.hideProgress();
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            Log.e("Subscriber", e.getMessage());
+        }
+
+        @Override
+        public void onNext(ContactListModel contactModels) {
+            contactListModel = contactModels;
         }
     }
 

@@ -1,15 +1,16 @@
 package com.payfever.data.services.contacts;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.payfever.data.api.contact_api.ContactApi;
 import com.payfever.data.api.contact_api.ContactApiImpl;
 import com.payfever.data.model.ContactModel;
+import com.payfever.data.model.response.ContactListModel;
 import com.payfever.data.services.contacts.contact_logic.ContactProvider;
 import com.payfever.data.services.contacts.contact_logic.ContactProviderImpl;
 import com.payfever.data.transformators.BaseTransformation;
 import com.payfever.data.transformators.ContactTransformatorImpl;
 
-import java.text.ParseException;
 import java.util.List;
 
 import rx.Observable;
@@ -57,7 +58,19 @@ public final class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Observable postContactData() {
-        return null;
+    public Observable<ContactListModel> postContactData(final List<String> _contacts) {
+        return Observable.create(new Observable.OnSubscribe<ContactListModel>() {
+            @Override
+            public void call(Subscriber<? super ContactListModel> subscriber) {
+                try {
+                    ContactListModel contacts = mContactApi.postContactData(_contacts);
+                    subscriber.onNext(contacts);
+                    subscriber.onCompleted();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    subscriber.onError(e.getCause());
+                }
+            }
+        });
     }
 }
