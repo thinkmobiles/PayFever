@@ -102,6 +102,12 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mContactsPresenter.downloadData();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         mContactsPresenter.onPause();
