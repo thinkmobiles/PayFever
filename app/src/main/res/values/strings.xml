@@ -16,10 +16,15 @@
     <string name="number_error_FR">Phone number is required!</string>
 
     <!--MyNetwork-->
+    <string name="network_fragment_title_HMN">My Network Account</string>
     <string name="direct_sent_HMN">Direct sent out:</string>
     <string name="pending_HMN">Pending:</string>
     <string name="expired_HMN">Expired:</string>
     <string name="first_level_HMN">1st level</string>
+    <string name="total_HMN">Total Network Accepts</string>
+    <string name="first_level_accepts_HMN">1st Level Accepts</string>
+    <string name="network_level_accepts_HMN">Network Level Accepts</string>
+
     <string name="terms_and_conditions">T &amp; C</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>

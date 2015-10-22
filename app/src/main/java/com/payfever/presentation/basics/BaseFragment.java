@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.payfever.presentation.controllers.FABController;
 import com.payfever.presentation.controllers.FragmentNavigator;
 import com.payfever.presentation.controllers.LoadingProgressManager;
 import com.payfever.presentation.controllers.ToolbarController;
@@ -24,6 +25,7 @@ public abstract class BaseFragment extends Fragment {
     private FragmentNavigator mFragmentNavigator;
     private LoadingProgressManager mLoadingManager;
     private ToolbarController mToolbarController;
+    private FABController mFabController;
 
     protected BaseActivity mActivity;
 

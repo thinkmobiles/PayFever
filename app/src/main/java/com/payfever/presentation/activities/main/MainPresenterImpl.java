@@ -32,6 +32,7 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void initialize(Bundle _savedInstanceState) {
         mMainView.showFAB();
+        showStatisticFragment();
     }
 
     @Override

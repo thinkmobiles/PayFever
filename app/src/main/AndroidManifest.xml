@@ -20,8 +20,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.activities.contact.ContactActivity" />
-        <activity android:name=".presentation.activities.pre_registration.PreRegistrationActivity"/>
+        <activity
+            android:name=".presentation.activities.contact.ContactActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.activities.pre_registration.PreRegistrationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.activities.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

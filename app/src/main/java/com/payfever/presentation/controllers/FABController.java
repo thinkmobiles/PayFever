@@ -13,7 +13,7 @@ public final class FABController {
     private FloatingActionButton mFAB;
 
     public void register(FABActivity _activity) {
-        mFAB = _activity.$(_activity.getToolbarId());
+        mFAB = _activity.$(_activity.getFabId());
     }
 
     public void setOnClickListener(View.OnClickListener _listener) {

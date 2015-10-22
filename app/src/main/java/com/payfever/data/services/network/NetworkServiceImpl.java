@@ -2,7 +2,7 @@ package com.payfever.data.services.network;
 
 import com.parse.ParseException;
 import com.payfever.data.api.network_api.NetworkApi;
-import com.payfever.data.api.network_api.NetworkApiImpl;
+import com.payfever.data.api.network_api.NetworkTestApiImpl;
 import com.payfever.data.model.network.NetworkResponse;
 
 import rx.Observable;
@@ -16,7 +16,11 @@ public class NetworkServiceImpl implements NetworkService {
     private NetworkApi mApi;
 
     public NetworkServiceImpl() {
-        mApi = new NetworkApiImpl();
+        //Real
+//        mApi = new NetworkApiImpl();
+
+        //Test
+        mApi = new NetworkTestApiImpl();
     }
 
     @Override

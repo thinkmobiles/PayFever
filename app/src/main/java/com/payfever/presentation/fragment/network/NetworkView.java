@@ -9,4 +9,7 @@ import com.payfever.presentation.basics.BaseView;
  */
 public interface NetworkView extends BaseView<NetworkResponse> {
     void setStaticData(Statistic _statistic);
+    void showFAB();
+    void hideFAB();
+    void setTitle();
 }
