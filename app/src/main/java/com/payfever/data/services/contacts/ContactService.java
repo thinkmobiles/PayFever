@@ -14,6 +14,6 @@ import rx.Observable;
 public interface ContactService {
 
     Observable<List<ContactModel>> getContactData();
-    Observable postContactData();
+    Observable postContactData(List<String> contacts);
 
 }

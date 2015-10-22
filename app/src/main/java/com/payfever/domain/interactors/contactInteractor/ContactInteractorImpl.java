@@ -15,15 +15,15 @@ import rx.Observable;
  * mRogach on 19.10.2015.
  */
 
-public class ContactInteractorImpl extends BasePostGetInteractor<List<ContactModel>> {
+public class ContactInteractorImpl extends BasePostGetInteractor<List<String>> {
 
     public ContactInteractorImpl(Handler _handler) {
         super(_handler);
     }
 
     @Override
-    public Observable buildPostObservable(List<ContactModel> _data) {
-        return ServiceProvider.getInstance().getContactService().postContactData();
+    public Observable buildPostObservable(List<String> _data) {
+        return ServiceProvider.getInstance().getContactService().postContactData(_data);
     }
 
     @Override
