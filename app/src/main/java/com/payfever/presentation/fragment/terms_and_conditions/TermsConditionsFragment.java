@@ -60,6 +60,7 @@ public final class TermsConditionsFragment extends BaseFragment implements View.
     @Override
     public void accept() {
         startActivity(ContactActivity.getCallingIntent(mActivity));
+        mActivity.finish();
     }
 
     @Override

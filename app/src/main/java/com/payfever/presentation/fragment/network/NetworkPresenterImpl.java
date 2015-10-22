@@ -23,17 +23,18 @@ public class NetworkPresenterImpl implements NetworkPresenter {
     public void initialize(Bundle _savedInstanceState) {
         mNetworkInteractor = new NetworkInteractor(PayFeverApplication.
                 getApplication().getBackgroundHandler());
-        mNetworkInteractor.executeGET(new DownloadListener());
-        mView.showFAB();
-
-        if (mData == null)
-            mNetworkInteractor.executeGET(new DownloadListener());
     }
 
     @Override
     public void onPause() {
         mNetworkInteractor.unSubscribe();
-        mView.hideFAB();
+    }
+
+    @Override
+    public void onResume() {
+        if (mData == null)
+            mNetworkInteractor.executeGET(new DownloadListener());
+        mView.showFAB();
     }
 
     @Override
@@ -45,6 +46,11 @@ public class NetworkPresenterImpl implements NetworkPresenter {
     @Override
     public void onItemClicked(int _position) {
 
+    }
+
+    @Override
+    public void fabClicked() {
+        mView.openInviteContacts();
     }
 
     private class DownloadListener extends Subscriber<NetworkResponse> {

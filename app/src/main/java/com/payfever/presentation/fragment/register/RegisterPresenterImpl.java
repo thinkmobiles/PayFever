@@ -1,12 +1,19 @@
 package com.payfever.presentation.fragment.register;
 
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 
+import com.google.i18n.phonenumbers.CountryCodeToRegionCodeMap;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
 import com.payfever.data.model.UserModel;
 import com.payfever.domain.basics.BasePostGetInteractor;
 import com.payfever.domain.interactors.registration.RegisterInteractor;
 import com.payfever.presentation.PayFeverApplication;
+
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 import rx.Subscriber;
 
@@ -52,12 +59,16 @@ public class RegisterPresenterImpl implements RegisterPresenter {
             isValid = false;
         }
 
-        if (TextUtils.isEmpty(_user.getPhoneNumber().trim())) {
+        if (!isValidNumber(_user.getPhoneNumber())) {
             mView.showNumberError();
             isValid = false;
         }
 
         return isValid;
+    }
+
+    private boolean isValidNumber(String _number) {
+        return Pattern.matches("^[+][1][0-9]{10}$", _number);
     }
 
     private class RegisterSubscriber extends Subscriber<UserModel> {

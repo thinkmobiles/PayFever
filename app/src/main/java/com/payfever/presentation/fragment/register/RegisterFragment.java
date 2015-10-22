@@ -2,6 +2,7 @@ package com.payfever.presentation.fragment.register;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,7 +16,8 @@ import com.payfever.presentation.fragment.terms_and_conditions.TermsConditionsFr
 /**
  * Created by richi on 2015.10.20..
  */
-public class RegisterFragment extends BaseFragment implements RegisterView, View.OnClickListener {
+public class RegisterFragment extends BaseFragment
+        implements RegisterView, View.OnClickListener, View.OnKeyListener {
 
     private EditText etUserName, etPhoneNumber;
     private TextView tvRegister;
@@ -52,6 +54,7 @@ public class RegisterFragment extends BaseFragment implements RegisterView, View
     }
 
     private void initListeners() {
+        etUserName.setOnKeyListener(this);
         tvRegister.setOnClickListener(this);
     }
 
@@ -109,5 +112,13 @@ public class RegisterFragment extends BaseFragment implements RegisterView, View
                         etPhoneNumber.getText().toString()));
                 break;
         }
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            etPhoneNumber.setSelection(etPhoneNumber.getText().length());
+        }
+        return false;
     }
 }

@@ -11,12 +11,14 @@ import android.widget.TextView;
 import com.payfever.R;
 import com.payfever.data.model.network.NetworkResponse;
 import com.payfever.data.model.network.Statistic;
+import com.payfever.presentation.activities.contact.ContactActivity;
 import com.payfever.presentation.basics.BaseFABFragment;
 
 /**
  * Created by richi on 2015.10.21..
  */
-public class MyNetworkFragment extends BaseFABFragment implements NetworkView, AdapterView.OnItemClickListener {
+public class MyNetworkFragment extends BaseFABFragment
+        implements NetworkView, AdapterView.OnItemClickListener, View.OnClickListener {
 
     private ListView lvUsers;
     private View mHeaderView;
@@ -67,6 +69,7 @@ public class MyNetworkFragment extends BaseFABFragment implements NetworkView, A
 
     private void initListeners() {
         lvUsers.setOnItemClickListener(this);
+        getFabController().setOnClickListener(this);
     }
 
     private void initPresenter(Bundle savedInstanceState) {
@@ -128,7 +131,27 @@ public class MyNetworkFragment extends BaseFABFragment implements NetworkView, A
     }
 
     @Override
+    public void onResume() {
+        mPresenter.onResume();
+        super.onResume();
+    }
+
+    @Override
+    public void openInviteContacts() {
+        startActivity(ContactActivity.getCallingIntent(mActivity));
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int _position, long id) {
         mPresenter.onItemClicked(_position);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab_AM:
+                mPresenter.fabClicked();
+                break;
+        }
     }
 }

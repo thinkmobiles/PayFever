@@ -7,4 +7,6 @@ import com.payfever.presentation.basics.BasePresenter;
  */
 public interface NetworkPresenter extends BasePresenter<NetworkView> {
     void onItemClicked(int _position);
+    void fabClicked();
+    void onResume();
 }

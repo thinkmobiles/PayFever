@@ -12,4 +12,5 @@ public interface NetworkView extends BaseView<NetworkResponse> {
     void showFAB();
     void hideFAB();
     void setTitle();
+    void openInviteContacts();
 }
