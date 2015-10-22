@@ -1,5 +1,6 @@
 package com.payfever.presentation.activities.main.navigation_drawer;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -45,6 +46,7 @@ public final class FragmentDrawerMenu extends BaseFragment implements AdapterVie
         initPresenter();
         findUI();
         initListeners();
+        mAdapter = new NavigationDrawerAdapter();
         mPresenter.initialize(savedInstanceState);
         mPresenter.setView(this);
     }
@@ -66,8 +68,8 @@ public final class FragmentDrawerMenu extends BaseFragment implements AdapterVie
         mPresenter.onItemClick(view, position);
     }
 
-    public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
-        containerView = mActivity.findViewById(fragmentId);
+    public void setUp(final Activity activity, int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
+        containerView = activity.findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override

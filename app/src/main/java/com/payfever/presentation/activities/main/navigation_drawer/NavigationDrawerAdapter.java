@@ -55,7 +55,7 @@ public final class NavigationDrawerAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) _convertView.getTag();
         }
-//        updateView(viewHolder, _position);
+        updateView(viewHolder, getItem(_position));
         return _convertView;
     }
 
@@ -67,5 +67,10 @@ public final class NavigationDrawerAdapter extends BaseAdapter {
     private void findViews(final ViewHolder _viewHolder, final View _convertView) {
         _viewHolder.ivItemIcon = (ImageView) _convertView.findViewById(R.id.ivNavItem_NDR);
         _viewHolder.tvTitle = (TextView) _convertView.findViewById(R.id.tvTitle_NDR);
+    }
+
+    private void updateView(final ViewHolder _viewHolder, final NavDrawerItem _drawerItem) {
+        _viewHolder.ivItemIcon.setImageResource(_drawerItem.getIdResourceImage());
+        _viewHolder.tvTitle.setText(_drawerItem.getTitle());
     }
 }
