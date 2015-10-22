@@ -1,4 +1,4 @@
-package com.payfever.presentation.terms_and_conditions;
+package com.payfever.presentation.fragment.terms_and_conditions;
 
 
 /**

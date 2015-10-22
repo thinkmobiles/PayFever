@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.payfever.R;
 import com.payfever.data.model.UserModel;
 import com.payfever.presentation.basics.BaseFragment;
-import com.payfever.presentation.terms_and_conditions.TermsConditionsFragment;
+import com.payfever.presentation.fragment.terms_and_conditions.TermsConditionsFragment;
 
 /**
  * Created by richi on 2015.10.20..
