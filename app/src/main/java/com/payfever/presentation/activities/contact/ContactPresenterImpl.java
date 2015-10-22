@@ -84,8 +84,14 @@ public final class ContactPresenterImpl implements ContactPresenter {
     }
 
     @Override
+    public void downloadData() {
+        if (contactList == null) {
+            contactInteractor.executeGET(new SubscriberListContact());
+        }
+    }
+
+    @Override
     public void initialize(Bundle _savedInstanceState) {
-        contactInteractor.executeGET(new SubscriberListContact());
     }
 
     @Override
