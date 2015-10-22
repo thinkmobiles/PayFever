@@ -1,6 +1,7 @@
 package com.payfever.presentation.activities.main;
 
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * Created by richi on 2015.10.19..
@@ -10,13 +11,13 @@ public class MainPresenterImpl implements MainPresenter {
     private MainView mMainView;
 
     @Override
-    public void showStatisticFragment() {
-        mMainView.showStatisticFragment();
+    public void showNetWorkFragment() {
+        mMainView.showNetWorkFragment();
     }
 
     @Override
-    public void showChartFragment() {
-        mMainView.showChartFragment();
+    public void showBalanceFragment() {
+        mMainView.showBalanceFragment();
     }
 
     @Override
@@ -25,14 +26,24 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
+    public void showAboutFragment() {
+        mMainView.showAboutFragment();
+    }
+
+    @Override
     public void showSetRingtoneFragment() {
         mMainView.showSetRingtoneFragment();
     }
 
     @Override
+    public void onDrawerItemSelected(View view, int position) {
+        mMainView.onMenuItemSelected(view, position);
+    }
+
+    @Override
     public void initialize(Bundle _savedInstanceState) {
         mMainView.showFAB();
-        showStatisticFragment();
+        mMainView.setNavigationDrawerMenu();
     }
 
     @Override

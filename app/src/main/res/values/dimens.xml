@@ -27,4 +27,5 @@
     <dimen name="terms_and_conditions_accept_padding">10dp</dimen>
     <dimen name="terms_and_conditions_accept_margin_height">20dp</dimen>
     <dimen name="terms_and_conditions_accept_margin_width">60dp</dimen>
+    <dimen name="nav_drawer_width">260dp</dimen>
 </resources>

@@ -54,4 +54,7 @@ public final class ToolbarController {
         checkBox.setOnCheckedChangeListener(_listener);
     }
 
+    public Toolbar getToolbar() {
+        return mToolbar;
+    }
 }
