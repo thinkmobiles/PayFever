@@ -21,6 +21,7 @@ public class NetworkPresenterImpl implements NetworkPresenter {
 
     @Override
     public void initialize(Bundle _savedInstanceState) {
+        mView.showProgress();
         mNetworkInteractor = new NetworkInteractor(PayFeverApplication.
                 getApplication().getBackgroundHandler());
     }
@@ -63,7 +64,7 @@ public class NetworkPresenterImpl implements NetworkPresenter {
 
         @Override
         public void onError(Throwable e) {
-
+            mView.hideProgress();
         }
 
         @Override
