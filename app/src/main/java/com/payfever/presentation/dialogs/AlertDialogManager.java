@@ -1,5 +1,6 @@
 package com.payfever.presentation.dialogs;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.ColorStateList;
@@ -14,6 +15,13 @@ import com.payfever.R;
  */
 
 public abstract class AlertDialogManager {
+
+    public static ProgressDialog createProgressDialog(final Context _context, final String _message) {
+        ProgressDialog progressDialog = new ProgressDialog(_context);
+        progressDialog.setMessage(_message);
+
+        return progressDialog;
+    }
 
     public static void showAlertDialog(final Context _context, final AlertDialogModel _model, final OneButtonDialogListener _listener) {
         AlertDialog.Builder builder = getAlertDialog(_context, _model, _listener);

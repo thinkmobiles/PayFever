@@ -9,6 +9,7 @@ import com.payfever.presentation.basics.BaseView;
 public interface RegisterView extends BaseView<UserModel> {
     void showUserNameError();
     void showNumberError();
+    void showPasswordError();
     void showServerError(String _message);
     void setTitle();
     void showTermsAndConditions();

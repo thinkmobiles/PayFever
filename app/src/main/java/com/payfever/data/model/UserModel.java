@@ -9,13 +9,15 @@ import java.util.Map;
 public class UserModel {
     private String mUserName = "";
     private String mPhoneNumber = "";
+    private String mPassword = "";
     private String mPushChannel;
 
     public UserModel() {}
 
-    public UserModel(String _name, String _number) {
+    public UserModel(String _name, String _number, String _password) {
         mUserName = _name;
         mPhoneNumber = _number;
+        mPassword = _password;
     }
 
     public String getPushChannel() {
@@ -42,10 +44,19 @@ public class UserModel {
         this.mPhoneNumber = mPhoneNumber;
     }
 
+    public String getPassword() {
+        return mPassword;
+    }
+
+    public void setPassword(String mPassword) {
+        this.mPassword = mPassword;
+    }
+
     public Map<String, String> getPostMap() {
         Map<String, String> map = new HashMap<>();
         map.put("userName", mUserName);
         map.put("phoneNumber", mPhoneNumber);
+        map.put("password", mPassword);
 
         return map;
     }

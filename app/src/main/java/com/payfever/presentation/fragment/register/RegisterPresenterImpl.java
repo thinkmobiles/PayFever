@@ -35,6 +35,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
 
     @Override
     public void onPause() {
+        mView.hideProgress();
         mInteractor.unSubscribe();
     }
 
@@ -48,6 +49,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         if (!isUserValid(_user))
             return;
 
+        mView.showProgress();
         mInteractor.executePost(_user, new RegisterSubscriber());
     }
 
@@ -64,6 +66,11 @@ public class RegisterPresenterImpl implements RegisterPresenter {
             isValid = false;
         }
 
+        if (!isValidPassword(_user.getPassword())) {
+            mView.showPasswordError();
+            isValid = false;
+        }
+
         return isValid;
     }
 
@@ -71,14 +78,25 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         return Pattern.matches("^[+][1][0-9]{10}$", _number);
     }
 
+    private boolean isValidPassword(String _password) {
+        boolean isValid = true;
+        if (_password.length() < 4) {
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
     private class RegisterSubscriber extends Subscriber<UserModel> {
         @Override
         public void onCompleted() {
+            mView.hideProgress();
             mView.showTermsAndConditions();
         }
 
         @Override
         public void onError(Throwable e) {
+            mView.hideProgress();
             mView.showServerError(e.getMessage());
         }
 

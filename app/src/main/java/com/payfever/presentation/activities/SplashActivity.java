@@ -10,6 +10,7 @@ import com.payfever.presentation.activities.contact.ContactActivity;
 import com.payfever.presentation.activities.main.MainActivity;
 import com.payfever.presentation.activities.pre_registration.PreRegistrationActivity;
 import com.payfever.presentation.basics.BaseActivity;
+import com.payfever.presentation.dialogs.AlertDialogManager;
 
 public class SplashActivity extends BaseActivity {
 

@@ -12,7 +12,7 @@ public class RegisterApImpl implements RegisterApi {
     @Override
     public ParseUser register(UserModel _userModel) throws ParseException {
         ParseUser parseUser = ParseCloud.callFunction("sign_up_user", _userModel.getPostMap());
-        ParseUser.logIn(_userModel.getUserName(), _userModel.getPhoneNumber());
+        ParseUser.logIn(_userModel.getUserName(), _userModel.getPassword());
         return parseUser;
     }
 }

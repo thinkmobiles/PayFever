@@ -10,6 +10,7 @@ import com.payfever.R;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerListener;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerMenu;
 import com.payfever.presentation.basics.FABActivity;
+import com.payfever.presentation.fragment.about.AboutUsFragment;
 import com.payfever.presentation.fragment.network.MyNetworkFragment;
 
 /**
@@ -77,7 +78,7 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
 
     @Override
     public void showAboutFragment() {
-        getFragmentNavigator().replaceFragment(new MyNetworkFragment());
+        getFragmentNavigator().replaceFragment(new AboutUsFragment());
     }
 
     @Override

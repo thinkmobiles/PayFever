@@ -1,5 +1,6 @@
 package com.payfever.presentation.fragment.register;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.payfever.R;
 import com.payfever.data.model.UserModel;
 import com.payfever.presentation.basics.BaseFragment;
+import com.payfever.presentation.dialogs.AlertDialogManager;
 import com.payfever.presentation.fragment.terms_and_conditions.TermsConditionsFragment;
 
 /**
@@ -19,8 +21,9 @@ import com.payfever.presentation.fragment.terms_and_conditions.TermsConditionsFr
 public class RegisterFragment extends BaseFragment
         implements RegisterView, View.OnClickListener, View.OnKeyListener {
 
-    private EditText etUserName, etPhoneNumber;
+    private EditText etUserName, etPhoneNumber, etPassword;
     private TextView tvRegister;
+    private ProgressDialog mProgressDialog;
 
     private RegisterPresenter mPresenter;
 
@@ -34,6 +37,7 @@ public class RegisterFragment extends BaseFragment
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        initProgressDialog();
         initPresenter();
         findUI();
         initListeners();
@@ -46,9 +50,14 @@ public class RegisterFragment extends BaseFragment
         mPresenter.setView(this);
     }
 
+    private void initProgressDialog() {
+        mProgressDialog = AlertDialogManager.createProgressDialog(mActivity, "Registration...");
+    }
+
     private void findUI() {
         etPhoneNumber       = $(R.id.etPhoneNumber_FR);
         etUserName          = $(R.id.etUserName_FR);
+        etPassword          = $(R.id.etPassword_FR);
 
         tvRegister          = $(R.id.tvRegister_FR);
     }
@@ -60,12 +69,12 @@ public class RegisterFragment extends BaseFragment
 
     @Override
     public void showProgress() {
-
+        mProgressDialog.show();
     }
 
     @Override
     public void hideProgress() {
-
+        mProgressDialog.cancel();
     }
 
     @Override
@@ -82,6 +91,11 @@ public class RegisterFragment extends BaseFragment
     @Override
     public void showUserNameError() {
         etUserName.setError(mActivity.getString(R.string.user_name_error_FR));
+    }
+
+    @Override
+    public void showPasswordError() {
+        etPassword.setError(mActivity.getString(R.string.password_error_FR));
     }
 
     @Override
@@ -109,7 +123,7 @@ public class RegisterFragment extends BaseFragment
         switch (v.getId()) {
             case R.id.tvRegister_FR:
                 mPresenter.registerUser(new UserModel(etUserName.getText().toString(),
-                        etPhoneNumber.getText().toString()));
+                        etPhoneNumber.getText().toString(), etPassword.getText().toString()));
                 break;
         }
     }

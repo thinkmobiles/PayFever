@@ -18,8 +18,11 @@ import java.util.Map;
 public final class ContactApiImpl implements ContactApi {
 
     @Override
-    public List<ParseObject> getContactListData() {
+    public List<ParseObject> getContactListData() throws ParseException {
         //TODO: parse object from server
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", ParseUser.getCurrentUser().getObjectId());
+        Map<String, String> result = ParseCloud.callFunction("get_invitations", map);
         return null;
     }
 
