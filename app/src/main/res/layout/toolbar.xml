@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_gravity="right"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/tvSelectAll_T"
@@ -26,12 +26,12 @@
             android:textColor="@android:color/white"
             android:text="@string/app_contact_select_all"/>
 
-        <android.support.v7.widget.AppCompatCheckBox
+        <com.rey.material.widget.CheckBox
             android:id="@+id/chContactStatus_T"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/contact_checkbox_margin_right"
-            app:theme="@style/ContactCheckBoxStyle" />
+            android:focusable="false"
+            app:cbd_strokeColor="@android:color/white"
+            app:cbd_tickColor="@color/colorPrimary"
+            style="@style/ListItemStatus"/>
     </LinearLayout>
 
 

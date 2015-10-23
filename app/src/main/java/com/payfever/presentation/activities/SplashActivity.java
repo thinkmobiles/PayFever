@@ -46,11 +46,11 @@ public class SplashActivity extends BaseActivity {
 
     private void startActivity() {
         Intent intent;
-        if (ParseUser.getCurrentUser() == null) {
-            intent = new Intent(SplashActivity.this, PreRegistrationActivity.class);
-        } else {
-            intent = new Intent(this, ContactActivity.class);
-        }
+//        if (ParseUser.getCurrentUser() == null) {
+            intent = new Intent(SplashActivity.this, ContactActivity.class);
+//        } else {
+//            intent = new Intent(this, ContactActivity.class);
+//        }
 
         startActivity(intent);
         finish();

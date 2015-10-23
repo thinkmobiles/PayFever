@@ -3,13 +3,12 @@ package com.payfever.presentation.controllers;
 import android.support.annotation.IdRes;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.payfever.R;
 import com.payfever.presentation.basics.BaseActivity;
+import com.rey.material.widget.CheckBox;
 
 /**
  * Created by richi on 2015.10.20..

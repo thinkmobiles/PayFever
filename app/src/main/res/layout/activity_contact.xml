@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/llSkipInvite_AC"
-        android:layout_below="@id/toolbar_AC"/>
+        android:layout_below="@id/toolbar_AC"
+        android:choiceMode="multipleChoice"/>
 
     <LinearLayout
         android:id="@+id/llSkipInvite_AC"

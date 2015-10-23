@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.support.v7.widget.AppCompatCheckBox;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +16,7 @@ import com.payfever.presentation.basics.BaseActivity;
 import com.payfever.presentation.dialogs.AlertDialogManager;
 import com.payfever.presentation.dialogs.AlertDialogModel;
 import com.payfever.presentation.dialogs.TwoButtonDialogListener;
+import com.rey.material.widget.CheckBox;
 
 import java.util.List;
 
