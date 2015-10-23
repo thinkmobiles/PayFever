@@ -1,5 +1,6 @@
 package com.payfever.presentation.controllers;
 
+import android.app.Activity;
 import android.support.annotation.IdRes;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -55,5 +56,11 @@ public final class ToolbarController {
 
     public Toolbar getToolbar() {
         return mToolbar;
+    }
+
+    public void showBackButton(final BaseActivity _activity) {
+        _activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        _activity.getSupportActionBar().setHomeButtonEnabled(true);
+        _activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 }

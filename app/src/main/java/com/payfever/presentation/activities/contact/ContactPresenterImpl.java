@@ -92,6 +92,7 @@ public final class ContactPresenterImpl implements ContactPresenter {
     @Override
     public void downloadData() {
         if (contactList == null) {
+            mContactView.showProgress();
             contactInteractor.executeGET(new SubscriberListContact());
         }
     }
