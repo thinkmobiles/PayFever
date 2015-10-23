@@ -6,6 +6,7 @@
     <dimen name="contact_avatar_margin_left">10dp</dimen>
     <dimen name="contact_checkbox_margin_right">10dp</dimen>
     <dimen name="contact_avatar_margin_right">10dp</dimen>
+    <dimen name="contact_avatar_margin_vertical">5dp</dimen>
     <dimen name="app_item_text_margin">10dp</dimen>
     <dimen name="app_invite_text_margin">5dp</dimen>
     <dimen name="app_invite_text_padding_width">30dp</dimen>

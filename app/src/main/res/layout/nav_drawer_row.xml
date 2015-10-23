@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:src="@drawable/ic_avatar_contact"
+        android:layout_centerVertical="true"
         android:layout_margin="10dp"/>
 
     <TextView
@@ -17,12 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
-        android:paddingTop="10dp"
         android:textSize="15dp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
         tools:text="test"
         android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@id/ivNavItem_NDR"/>
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import com.parse.ParseUser;
 import com.payfever.R;
+import com.payfever.data.model.response.ContactListModel;
 import com.payfever.presentation.activities.contact.ContactActivity;
 import com.payfever.presentation.activities.main.MainActivity;
 import com.payfever.presentation.activities.pre_registration.PreRegistrationActivity;

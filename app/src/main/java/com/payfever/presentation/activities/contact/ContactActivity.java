@@ -3,10 +3,9 @@ package com.payfever.presentation.activities.contact;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.support.v7.widget.AppCompatCheckBox;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,10 +13,12 @@ import android.widget.Toast;
 
 import com.payfever.R;
 import com.payfever.data.model.ContactModel;
+import com.payfever.presentation.activities.main.MainActivity;
 import com.payfever.presentation.basics.BaseActivity;
 import com.payfever.presentation.dialogs.AlertDialogManager;
 import com.payfever.presentation.dialogs.AlertDialogModel;
 import com.payfever.presentation.dialogs.TwoButtonDialogListener;
+import com.rey.material.widget.CheckBox;
 
 import java.util.List;
 
@@ -40,23 +41,38 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         findViews();
+        initToolbarController();
         initObjects();
         setListeners();
         mContactsPresenter.setView(this);
         mContactsPresenter.initialize(savedInstanceState);
+    }
+
+    private void initToolbarController() {
         getToolbarController().showSelectAll();
         getToolbarController().onCheckBoxClick(this);
         getToolbarController().setTitle("Import Contacts");
+        setSupportActionBar(getToolbarController().getToolbar());
+        getToolbarController().showBackButton(this);
     }
 
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.tvSkip_AC:
                 mContactsPresenter.skip();
@@ -87,12 +103,12 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void showProgress() {
-
+        getLoadingManager().showProgress();
     }
 
     @Override
     public void hideProgress() {
-
+        getLoadingManager().hideProgress();
     }
 
     @Override
@@ -130,12 +146,11 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         AlertDialogManager.showAlertDialog(this, model, new TwoButtonDialogListener() {
             @Override
             public void secondButtonClick() {
-                Toast.makeText(ContactActivity.this, "Skip", Toast.LENGTH_LONG).show();
+                startActivity(MainActivity.getCallingIntent(ContactActivity.this));
             }
 
             @Override
             public void oneButtonClick() {
-                Toast.makeText(ContactActivity.this, "Earn monney", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -162,7 +177,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public int getContainerId() {
-        return 0;
+        return R.id.rlContainer_AC;
     }
 
     @Override
@@ -176,6 +191,6 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     }
     @Override
     public int getProgressId() {
-        return 0;
+        return R.id.pbLoadingIndicator_AC;
     }
 }

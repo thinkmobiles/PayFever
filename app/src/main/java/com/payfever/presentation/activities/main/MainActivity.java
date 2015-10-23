@@ -1,5 +1,7 @@
 package com.payfever.presentation.activities.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -20,6 +22,10 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
 
     private MainPresenter mMainPresenter;
     private FragmentDrawerMenu drawerFragment;
+
+    public static Intent getCallingIntent(Context context) {
+        return new Intent(context, MainActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

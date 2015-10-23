@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include android:id="@+id/rlItemContact"
         layout="@layout/item_list_contact"
@@ -10,10 +11,12 @@
         android:layout_toLeftOf="@+id/chContactStatus_ICL"
         />
 
-    <CheckBox
+    <com.rey.material.widget.CheckBox
         android:id="@+id/chContactStatus_ICL"
         android:focusable="false"
-        style="@style/ListItemStatus" />
+        app:cbd_strokeColor="@color/colorPrimary"
+        app:cbd_tickColor="@android:color/white"
+        style="@style/ListItemStatus"/>
 
     <TextView
         android:id="@+id/tvContactStatus_ICL"

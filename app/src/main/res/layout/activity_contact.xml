@@ -1,35 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:id="@+id/pbLoadingIndicator_AC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
     <include android:id="@+id/toolbar_AC"
         layout="@layout/toolbar"/>
 
-    <ListView
-        android:id="@+id/lvContacts_AC"
+    <RelativeLayout
+        android:id="@+id/rlContainer_AC"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/llSkipInvite_AC"
-        android:layout_below="@id/toolbar_AC"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_AC">
 
-    <LinearLayout
-        android:id="@+id/llSkipInvite_AC"
-        style="@style/LinearLayoutSkipInvite">
+        <ListView
+            android:id="@+id/lvContacts_AC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/llSkipInvite_AC"
+            android:choiceMode="multipleChoice"/>
 
-        <TextView
-            android:id="@+id/tvSkip_AC"
-            style="@style/ContactSkipInviteTextView"
-            android:text="@string/contact_skip"
-            android:background="@drawable/skip_rounded_selector"/>
+        <LinearLayout
+            android:id="@+id/llSkipInvite_AC"
+            style="@style/LinearLayoutSkipInvite">
 
-        <TextView
-            android:id="@+id/tvInvite_AC"
-            style="@style/ContactSkipInviteTextView"
-            android:text="@string/contact_invite"
-            android:background="@drawable/invite_rounded_selector"
-            android:enabled="false"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvSkip_AC"
+                style="@style/ContactSkipInviteTextView"
+                android:text="@string/contact_skip"
+                android:background="@drawable/skip_rounded_selector"/>
 
-
+            <TextView
+                android:id="@+id/tvInvite_AC"
+                style="@style/ContactSkipInviteTextView"
+                android:text="@string/contact_invite"
+                android:background="@drawable/invite_rounded_selector"
+                android:enabled="false"/>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
+
