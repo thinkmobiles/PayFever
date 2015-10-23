@@ -1,5 +1,6 @@
 package com.payfever.presentation.fragment.network;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import com.payfever.data.model.network.NetworkResponse;
 import com.payfever.data.model.network.Statistic;
 import com.payfever.presentation.activities.contact.ContactActivity;
 import com.payfever.presentation.basics.BaseFABFragment;
+import com.payfever.presentation.global.Constants;
 
 /**
  * Created by richi on 2015.10.21..
@@ -138,7 +140,9 @@ public class MyNetworkFragment extends BaseFABFragment
 
     @Override
     public void openInviteContacts() {
-        startActivity(ContactActivity.getCallingIntent(mActivity));
+        Intent intent = ContactActivity.getCallingIntent(mActivity);
+        intent.putExtra(Constants.FROM_NETWORK_FRAGMENT, true);
+        startActivity(intent);
     }
 
     @Override
