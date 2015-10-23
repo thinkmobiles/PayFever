@@ -58,26 +58,31 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
 
     @Override
     public void showNetWorkFragment() {
+        getFABController().show();
         getFragmentNavigator().replaceFragment(new MyNetworkFragment());
     }
 
     @Override
     public void showBalanceFragment() {
+        getFABController().hide();
         getFragmentNavigator().replaceFragment(new MyNetworkFragment());
     }
 
     @Override
     public void showChatFragment() {
+        getFABController().hide();
         getFragmentNavigator().replaceFragment(new MyNetworkFragment());
     }
 
     @Override
     public void showSetRingtoneFragment() {
+        getFABController().hide();
         getFragmentNavigator().replaceFragment(new MyNetworkFragment());
     }
 
     @Override
     public void showAboutFragment() {
+        getFABController().hide();
         getFragmentNavigator().replaceFragment(new AboutUsFragment());
     }
 

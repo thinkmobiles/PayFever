@@ -39,16 +39,14 @@
         Porto top Champions League Group G after victory over Maccabi Tel Aviv Read more The teams destiny in Group G remains in their own hands, and there will be confidence the remaining home fixtures can be won, together with the trip to the whipping boys Maccabi Tel Aviv, to smooth passage into the knockout phase. The sense of satisfaction obtained here, though, should maintain the optimism generated fros welcome win over Aston Villa. said Mourinho. We are recovering some of that compactness, solidarity, effort, tactical discipline, qualities which are very important when you are not flying or playing with that confidence or flair, when your attacking players are not killing [opponents]. So in three days, two solid performances are good for us
         There was, inevitably, one gripe that needed to be aired. The game had edged just beyond the quarter-hour mark when Cesc Fàbregas wriggled into the penalty area and was clipped by Serhiy Rybalka, only for the Slovenian official, Damir Skomina, to wave away the appeals for a spot-kick.</string>
 
-    <string name="about_us_AU">The social network that\'s unleashing Smart Tech and Rewards Programs to automatically make you money - especially with that Supercomputer already in your hand.
-
-Making money is a universal common denominator and PayFever is the communicator.\\n
-
-It\'s all about the money - Trump, Kanye, Kim, Shark Tank, Fantasy Games, Billionaires, Royalty, Russians, Chinese, Indians, Entitlement and Passive Income.
-Money Making Machines – Smart computers and artificial intelligence already make Wall Street big money and they’re coming to Main Street and a Smartphone near you.\\n
-
-They won\’t take over your job and you won’t fear for your life… they’ll be your job and you\'ll love your life.  They will work tirelessly to make you money.\\n
-
-Like with everything popular though, demand will outstrip supply. The lines to turn your Smart Device into a “PayMachine” won’t be around the block… they’ll be around the planet.\\n
-
-So... Sign up for PayFever today and get others signed up under you before they sign you up under them.</string>
+    <!--AboutUs-->
+    <string name="about_us_AU">The social network that\'s unleashing Smart Tech and Rewards Programs to automatically make you money - especially with that Supercomputer already in your hand.\n\n
+        Making money is a universal common denominator and PayFever is the communicator.\n\n
+        It\'s all about the money - Trump, Kanye, Kim, Shark Tank, Fantasy Games, Billionaires, Royalty, Russians, Chinese, Indians, Entitlement and Passive Income.
+        Money Making Machines – Smart computers and artificial intelligence already make Wall Street big money and they’re coming to Main Street and a Smartphone near you.\n\n
+        They won\’t take over your job and you won’t fear for your life… they’ll be your job and you\'ll love your life.  They will work tirelessly to make you money.\n\n
+        Like with everything popular though, demand will outstrip supply. The lines to turn your Smart Device into a “PayMachine” won’t be around the block… they’ll be around the planet.\n\n
+        So... Sign up for PayFever today and get others signed up under you before they sign you up under them.\n\n
+    </string>
+    <string name="about_us_title_AU">About us</string>
 </resources>

@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/about_us_AU"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/about_us_text_size"
+            android:padding="@dimen/simple_padding"/>
 
     </ScrollView>
 
