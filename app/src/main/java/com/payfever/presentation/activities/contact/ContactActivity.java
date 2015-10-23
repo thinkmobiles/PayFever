@@ -18,6 +18,7 @@ import com.payfever.presentation.basics.BaseActivity;
 import com.payfever.presentation.dialogs.AlertDialogManager;
 import com.payfever.presentation.dialogs.AlertDialogModel;
 import com.payfever.presentation.dialogs.TwoButtonDialogListener;
+import com.payfever.presentation.global.Constants;
 import com.rey.material.widget.CheckBox;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     private TextView tvSkip;
     private ContactPresenter mContactsPresenter;
     private ContactListAdapter mContactListAdapter;
+    private boolean isFromNetwork = false;
 
 
     public static Intent getCallingIntent(Context context) {
@@ -56,6 +58,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_contact);
         findViews();
         initToolbarController();
+        hideSkipShowBack();
         initObjects();
         setListeners();
         mContactsPresenter.setView(this);
@@ -66,8 +69,15 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         getToolbarController().showSelectAll();
         getToolbarController().onCheckBoxClick(this);
         getToolbarController().setTitle("Import Contacts");
-        setSupportActionBar(getToolbarController().getToolbar());
-        getToolbarController().showBackButton(this);
+    }
+
+    private void hideSkipShowBack() {
+            isFromNetwork = getIntent().getBooleanExtra(Constants.FROM_NETWORK_FRAGMENT, false);
+            if (isFromNetwork) {
+                setSupportActionBar(getToolbarController().getToolbar());
+                getToolbarController().showBackButton(this);
+                tvSkip.setVisibility(View.GONE);
+            }
     }
 
 
