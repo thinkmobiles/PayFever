@@ -2,6 +2,7 @@ package com.payfever.data.api.contact_api;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.payfever.data.model.GetContactResponse;
 import com.payfever.data.model.response.ContactListModel;
 
 import java.util.List;
@@ -13,6 +14,6 @@ import java.util.List;
 
 public interface ContactApi {
 
-    List<ParseObject> getContactListData() throws ParseException;
+    GetContactResponse getContactListData() throws ParseException;
     ContactListModel postContactData(List<String> _contacts) throws ParseException;
 }

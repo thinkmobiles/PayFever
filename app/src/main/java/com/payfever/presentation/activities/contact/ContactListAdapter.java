@@ -1,5 +1,6 @@
 package com.payfever.presentation.activities.contact;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,9 +100,14 @@ public final class ContactListAdapter extends BaseAdapter {
     }
 
     private void setStatus(final ViewHolder _viewHolder, final ContactModel _model) {
+        Log.d("Status", "Number: " + _model.getPhoneNumber() + "; Status: " + _model.getStatus());
         if (_model.getStatus() == ContactStatus.UNCHECKED.getStatus()) {
+            _viewHolder.chStatus.setVisibility(View.VISIBLE);
+            _viewHolder.tvContactStatus.setVisibility(View.GONE);
             _viewHolder.chStatus.setChecked(false);
         } else if (_model.getStatus() == ContactStatus.CHECKED.getStatus()) {
+            _viewHolder.chStatus.setVisibility(View.VISIBLE);
+            _viewHolder.tvContactStatus.setVisibility(View.GONE);
             _viewHolder.chStatus.setChecked(true);
         } else if (_model.getStatus() == ContactStatus.EXPIRED.getStatus()) {
             _viewHolder.chStatus.setVisibility(View.GONE);

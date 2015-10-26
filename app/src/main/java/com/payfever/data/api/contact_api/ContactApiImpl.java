@@ -4,6 +4,7 @@ import com.parse.ParseCloud;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.payfever.data.model.GetContactResponse;
 import com.payfever.data.model.response.ContactListModel;
 
 import java.util.HashMap;
@@ -18,12 +19,16 @@ import java.util.Map;
 public final class ContactApiImpl implements ContactApi {
 
     @Override
-    public List<ParseObject> getContactListData() throws ParseException {
-        //TODO: parse object from server
+    public GetContactResponse getContactListData() throws ParseException {
         Map<String, Object> map = new HashMap<>();
         map.put("userId", ParseUser.getCurrentUser().getObjectId());
-        Map<String, String> result = ParseCloud.callFunction("get_invitations", map);
-        return null;
+        Map<String, List<String>> result = ParseCloud.callFunction("get_invitations", map);
+        GetContactResponse model = new GetContactResponse();
+        model.setmAll(result.get("all"));
+        model.setmExpired(result.get("expired"));
+        model.setmPending(result.get("pending"));
+
+        return model;
     }
 
     @Override

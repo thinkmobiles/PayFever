@@ -1,10 +1,10 @@
 package com.payfever.data.services.contacts;
 
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.payfever.data.api.contact_api.ContactApi;
 import com.payfever.data.api.contact_api.ContactApiImpl;
 import com.payfever.data.model.ContactModel;
+import com.payfever.data.model.GetContactResponse;
 import com.payfever.data.model.response.ContactListModel;
 import com.payfever.data.services.contacts.contact_logic.ContactProvider;
 import com.payfever.data.services.contacts.contact_logic.ContactProviderImpl;
@@ -24,7 +24,7 @@ import rx.functions.Func1;
 
 public final class ContactServiceImpl implements ContactService {
 
-    private BaseTransformation<List<ContactModel>, List<ParseObject>> mTransformation;
+    private BaseTransformation<List<ContactModel>, GetContactResponse> mTransformation;
     private ContactApi mContactApi;
     private ContactProvider mContactProvider;
 

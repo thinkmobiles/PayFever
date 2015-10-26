@@ -1,6 +1,7 @@
 package com.payfever.data.services.contacts.contact_logic;
 
 import com.payfever.data.model.ContactModel;
+import com.payfever.data.model.GetContactResponse;
 
 import java.util.List;
 

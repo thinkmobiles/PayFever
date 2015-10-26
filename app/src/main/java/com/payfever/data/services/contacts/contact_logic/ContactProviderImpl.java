@@ -5,6 +5,8 @@ import android.provider.ContactsContract;
 import android.text.TextUtils;
 
 import com.payfever.data.model.ContactModel;
+import com.payfever.data.model.ContactStatus;
+import com.payfever.data.model.GetContactResponse;
 import com.payfever.presentation.PayFeverApplication;
 
 import java.util.ArrayList;
@@ -48,13 +50,16 @@ public final class ContactProviderImpl implements ContactProvider {
         List<ContactModel> list = new ArrayList<>(_listDevice);
         if (_listServer == null) return list;
         for (ContactModel contactModel : _listServer) {
-            for (ContactModel contactDeviceModel : list) {
+            boolean isContains = false;
+            for (ContactModel contactDeviceModel : _listDevice) {
                 if (contactDeviceModel.getPhoneNumber().equals(contactModel.getPhoneNumber())) {
                     contactDeviceModel.setStatus(contactModel.getStatus());
-                } else {
-                    list.add(contactModel);
+                    isContains = true;
+                    break;
                 }
             }
+            if (!isContains)
+                list.add(contactModel);
         }
         return list;
     }
