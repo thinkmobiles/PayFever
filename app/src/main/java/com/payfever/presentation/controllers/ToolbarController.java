@@ -31,6 +31,10 @@ public final class ToolbarController {
         llSelectAll.setVisibility(View.VISIBLE);
     }
 
+    public void setSelectAllEnabled(final boolean _clickable) {
+        checkBox.setEnabled(_clickable);
+    }
+
     public void hideSelectAll() {
         llSelectAll.setVisibility(View.GONE);
         checkBox.setOnCheckedChangeListener(null);

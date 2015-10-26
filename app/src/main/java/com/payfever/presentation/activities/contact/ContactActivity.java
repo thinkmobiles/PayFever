@@ -1,8 +1,15 @@
 package com.payfever.presentation.activities.contact;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,10 +39,12 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
 
     private ListView listView;
     private TextView tvInvite;
+    private TextView tvEmptyList;
     private TextView tvSkip;
     private ContactPresenter mContactsPresenter;
     private ContactListAdapter mContactListAdapter;
     private boolean isFromNetwork = false;
+    private CoordinatorLayout coordinatorLayout;
 
 
     public static Intent getCallingIntent(Context context) {
@@ -58,9 +67,9 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_contact);
         findViews();
         initToolbarController();
-        hideSkipShowBack();
         initObjects();
         setListeners();
+        hideSkipShowBack();
         mContactsPresenter.setView(this);
         mContactsPresenter.initialize(savedInstanceState);
     }
@@ -68,16 +77,17 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     private void initToolbarController() {
         getToolbarController().showSelectAll();
         getToolbarController().onCheckBoxClick(this);
+        getToolbarController().setSelectAllEnabled(false);
         getToolbarController().setTitle("Import Contacts");
     }
 
     private void hideSkipShowBack() {
-            isFromNetwork = getIntent().getBooleanExtra(Constants.FROM_NETWORK_FRAGMENT, false);
-            if (isFromNetwork) {
-                setSupportActionBar(getToolbarController().getToolbar());
-                getToolbarController().showBackButton(this);
-                tvSkip.setVisibility(View.GONE);
-            }
+        isFromNetwork = getIntent().getBooleanExtra(Constants.FROM_NETWORK_FRAGMENT, false);
+        if (isFromNetwork) {
+            setSupportActionBar(getToolbarController().getToolbar());
+            getToolbarController().showBackButton(this);
+            tvSkip.setVisibility(View.GONE);
+        }
     }
 
 
@@ -98,6 +108,8 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         listView = $(R.id.lvContacts_AC);
         tvSkip = $(R.id.tvSkip_AC);
         tvInvite = $(R.id.tvInvite_AC);
+        tvEmptyList = $(R.id.tvEmptyList_AC);
+        coordinatorLayout = $(R.id.coordinatorLayout);
     }
 
     private void initObjects() {
@@ -125,12 +137,13 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     public void setData(List<ContactModel> _data) {
         mContactListAdapter.setContactList(_data);
         listView.setAdapter(mContactListAdapter);
+        getToolbarController().setSelectAllEnabled(true);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mContactsPresenter.downloadData();
+        mContactsPresenter.checkContactReadPermission();
     }
 
     @Override
@@ -199,8 +212,56 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         mContactsPresenter.onItemClick(position - listView.getHeaderViewsCount());
 
     }
+
     @Override
     public int getProgressId() {
         return R.id.pbLoadingIndicator_AC;
+    }
+
+    @Override
+    public void checkContactReadPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
+                showSnackBar();
+            } else {
+                ActivityCompat.requestPermissions(this,  new String[]{Manifest.permission.READ_CONTACTS},
+                        Constants.REQUEST_READ_CONTACTS);
+            }
+        } else {
+            mContactsPresenter.downloadData();
+        }
+    }
+
+    @Override
+    public void setEmptyListView() {
+        listView.setAdapter(mContactListAdapter);
+        listView.setEmptyView(tvEmptyList);
+        hideProgress();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constants.REQUEST_READ_CONTACTS:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    mContactsPresenter.downloadData();
+                } else {
+                    mContactsPresenter.setEmptyListView();
+                }
+        }
+    }
+
+    private void showSnackBar() {
+        Snackbar.make(coordinatorLayout, R.string.check_permission, Snackbar.LENGTH_INDEFINITE)
+                .setAction("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityCompat.requestPermissions(ContactActivity.this,
+                                new String[]{Manifest.permission.READ_CONTACTS},
+                                Constants.REQUEST_READ_CONTACTS);
+                    }
+                })
+                .setActionTextColor(setColor(android.R.color.white))
+                .show();
     }
 }
