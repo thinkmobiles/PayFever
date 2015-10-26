@@ -17,4 +17,6 @@ public interface ContactView extends BaseView<List<ContactModel>> {
     void setEnableInvite();
     void setDisableInvite();
     void notifyDataSetChange();
+    void checkContactReadPermission();
+    void setEmptyListView();
 }

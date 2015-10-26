@@ -98,6 +98,16 @@ public final class ContactPresenterImpl implements ContactPresenter {
     }
 
     @Override
+    public void checkContactReadPermission() {
+        mContactView.checkContactReadPermission();
+    }
+
+    @Override
+    public void setEmptyListView() {
+        mContactView.setEmptyListView();
+    }
+
+    @Override
     public void initialize(Bundle _savedInstanceState) {
     }
 

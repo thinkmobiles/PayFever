@@ -1,5 +1,6 @@
 package com.payfever.presentation.basics;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -59,4 +60,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract @IdRes int getToolbarId();
     public abstract @IdRes int getContainerId();
     public abstract @IdRes int getProgressId();
+
+    public int setColor(final int _idResource) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return getResources().getColor(_idResource, getTheme());
+        } else
+            return getResources().getColor(_idResource);
+    }
 }
