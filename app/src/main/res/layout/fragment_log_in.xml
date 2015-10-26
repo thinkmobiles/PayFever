@@ -26,7 +26,7 @@
             android:layout_marginTop="@dimen/register_top_margin">
 
             <EditText
-                android:id="@+id/etUserName_FR"
+                android:id="@+id/etUserName_FLI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
@@ -39,22 +39,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/etPhoneNumber_FR"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:text="+"
-                android:inputType="phone"
-                android:hint="@string/number_FR"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/etPassword_FR"
+                android:id="@+id/etPassword_FLI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
@@ -64,22 +49,13 @@
         </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:id="@+id/tvRegister_FR"
+            android:id="@+id/tvLogIn_FLI"
             style="@style/RegisterBtn"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/register_top_margin"
-            android:text="@string/register_FR"
-            android:background="@drawable/invite_rounded_selector"
-            tools:text="Register"/>
-
-        <TextView
-            android:id="@+id/tvLogIn_FR"
-            style="@style/RegisterBtn"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="@string/log_in_btn_FLI"
             android:background="@drawable/selector_log_in"
-            android:text="@string/log_in_btn_FR"
-            tools:text="LogIn"/>
+            tools:text="Log In"/>
 
     </LinearLayout>
 

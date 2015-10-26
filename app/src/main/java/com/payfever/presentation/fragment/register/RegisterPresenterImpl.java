@@ -1,18 +1,13 @@
 package com.payfever.presentation.fragment.register;
 
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 
-import com.google.i18n.phonenumbers.CountryCodeToRegionCodeMap;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.Phonenumber;
 import com.payfever.data.model.UserModel;
 import com.payfever.domain.basics.BasePostGetInteractor;
 import com.payfever.domain.interactors.registration.RegisterInteractor;
 import com.payfever.presentation.PayFeverApplication;
 
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 import rx.Subscriber;
@@ -30,7 +25,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     @Override
     public void initialize(Bundle _savedInstanceState) {
         mInteractor = new RegisterInteractor(PayFeverApplication.getApplication().getBackgroundHandler());
-        mView.setTitle();
+        mView.initActionBar();
     }
 
     @Override
@@ -42,6 +37,11 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     @Override
     public void setView(RegisterView _view) {
         mView = _view;
+    }
+
+    @Override
+    public void logIn() {
+        mView.showLogIn();
     }
 
     @Override

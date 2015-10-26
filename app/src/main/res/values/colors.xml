@@ -15,4 +15,6 @@
     <color name="expired_HMN">#FFF3F3F3</color>
     <color name="checkbox_selected">#12a342</color>
     <color name="fab_color">#FFEA2224</color>
+    <color name="color_log_in_uncheked">#12a342</color>
+    <color name="color_log_in_checked">#06732a</color>
 </resources>

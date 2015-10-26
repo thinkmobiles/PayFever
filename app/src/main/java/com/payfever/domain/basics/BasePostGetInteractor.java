@@ -3,10 +3,9 @@ package com.payfever.domain.basics;
 import android.os.Handler;
 
 import rx.Observable;
-import rx.Subscriber;
+import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.android.schedulers.HandlerScheduler;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
 
@@ -17,12 +16,14 @@ public abstract class BasePostGetInteractor<T> extends BaseInteractor {
 
     private Subscription mPostSubscription = Subscriptions.empty();
 
+    public BasePostGetInteractor() {}
+
     public BasePostGetInteractor(Handler _handler) {
         super(_handler);
     }
 
     @SuppressWarnings("unchecked")
-    public void executePost(T _data, Subscriber _subscriber) {
+    public void executePost(T _data, Observer _subscriber) {
         mPostSubscription = buildPostObservable(_data)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

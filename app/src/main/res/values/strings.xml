@@ -16,6 +16,12 @@
     <string name="user_name_error_FR">User name is required!</string>
     <string name="number_error_FR">Phone number is not correct!</string>
     <string name="password_error_FR">Password is not correct!</string>
+    <string name="log_in_btn_FR">Log In</string>
+
+    <!--LogIn-->
+    <string name="log_in_title_FLI">Log in</string>
+    <string name="log_in_btn_FLI">Log In</string>
+    <string name="log_in_process_FLI">Log in....</string>
 
     <!--MyNetwork-->
     <string name="network_fragment_title_HMN">My Network Account</string>

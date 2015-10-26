@@ -7,6 +7,7 @@ import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.android.schedulers.HandlerScheduler;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
 
 /**
@@ -14,8 +15,10 @@ import rx.subscriptions.Subscriptions;
  */
 public abstract class BaseInteractor {
 
-    protected final Handler mHandler;
+    protected  Handler mHandler;
     private Subscription mGetSubscription = Subscriptions.empty();
+
+    public BaseInteractor() {}
 
     public BaseInteractor(Handler _handler) {
         mHandler = _handler;
@@ -24,7 +27,7 @@ public abstract class BaseInteractor {
     @SuppressWarnings("unchecked")
     public void executeGET(Subscriber _subscriber) {
         mGetSubscription = buildGetObserver()
-                .subscribeOn(HandlerScheduler.from(mHandler))
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(_subscriber);
     }

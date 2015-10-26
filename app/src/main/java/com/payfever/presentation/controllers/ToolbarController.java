@@ -24,6 +24,7 @@ public final class ToolbarController {
     public void register(BaseActivity _activity) {
         mToolbar = _activity.$(_activity.getToolbarId());
         if (mToolbar == null) return;
+        _activity.setSupportActionBar(mToolbar);
         findViews();
     }
 
@@ -59,8 +60,18 @@ public final class ToolbarController {
     }
 
     public void showBackButton(final BaseActivity _activity) {
+        if (_activity.getSupportActionBar() == null)
+            return;
         _activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         _activity.getSupportActionBar().setHomeButtonEnabled(true);
         _activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    public void hideBackBtn(final BaseActivity _activity) {
+        if (_activity.getSupportActionBar() == null)
+            return;
+        _activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        _activity.getSupportActionBar().setHomeButtonEnabled(false);
+        _activity.getSupportActionBar().setDisplayShowHomeEnabled(false);
     }
 }

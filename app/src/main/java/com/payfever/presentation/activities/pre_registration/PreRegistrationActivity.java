@@ -1,6 +1,7 @@
 package com.payfever.presentation.activities.pre_registration;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.payfever.R;
 import com.payfever.presentation.basics.BaseActivity;
@@ -58,7 +59,7 @@ public class PreRegistrationActivity extends BaseActivity implements PreRegistra
     }
 
     @Override
-    public void setData(Object _data) {
+    public void setData(Void _data) {
 
     }
 }

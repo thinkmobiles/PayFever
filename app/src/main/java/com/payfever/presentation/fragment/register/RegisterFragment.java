@@ -13,6 +13,7 @@ import com.payfever.R;
 import com.payfever.data.model.UserModel;
 import com.payfever.presentation.basics.BaseFragment;
 import com.payfever.presentation.dialogs.AlertDialogManager;
+import com.payfever.presentation.fragment.log_in.LogInFragment;
 import com.payfever.presentation.fragment.terms_and_conditions.TermsConditionsFragment;
 
 /**
@@ -22,7 +23,7 @@ public class RegisterFragment extends BaseFragment
         implements RegisterView, View.OnClickListener, View.OnKeyListener {
 
     private EditText etUserName, etPhoneNumber, etPassword;
-    private TextView tvRegister;
+    private TextView tvRegister, tvLogIn;
     private ProgressDialog mProgressDialog;
 
     private RegisterPresenter mPresenter;
@@ -60,11 +61,13 @@ public class RegisterFragment extends BaseFragment
         etPassword          = $(R.id.etPassword_FR);
 
         tvRegister          = $(R.id.tvRegister_FR);
+        tvLogIn             = $(R.id.tvLogIn_FR);
     }
 
     private void initListeners() {
         etUserName.setOnKeyListener(this);
         tvRegister.setOnClickListener(this);
+        tvLogIn.setOnClickListener(this);
     }
 
     @Override
@@ -104,8 +107,9 @@ public class RegisterFragment extends BaseFragment
     }
 
     @Override
-    public void setTitle() {
+    public void initActionBar() {
         getToolbarController().setTitle(getString(R.string.register_FR));
+        getToolbarController().hideBackBtn(mActivity);
     }
 
     @Override
@@ -125,7 +129,15 @@ public class RegisterFragment extends BaseFragment
                 mPresenter.registerUser(new UserModel(etUserName.getText().toString(),
                         etPhoneNumber.getText().toString(), etPassword.getText().toString()));
                 break;
+            case R.id.tvLogIn_FR:
+                mPresenter.logIn();
+                break;
         }
+    }
+
+    @Override
+    public void showLogIn() {
+        getFargmentNavigator().showFragment(new LogInFragment());
     }
 
     @Override
