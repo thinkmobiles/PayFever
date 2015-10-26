@@ -13,6 +13,7 @@ import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawe
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerMenu;
 import com.payfever.presentation.basics.FABActivity;
 import com.payfever.presentation.fragment.about.AboutUsFragment;
+import com.payfever.presentation.fragment.chat.ChatListFragment;
 import com.payfever.presentation.fragment.network.MyNetworkFragment;
 
 /**
@@ -77,7 +78,7 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     @Override
     public void showChatFragment() {
         getFABController().hide();
-        getFragmentNavigator().replaceFragment(new MyNetworkFragment());
+        getFragmentNavigator().replaceFragment(new ChatListFragment());
     }
 
     @Override
