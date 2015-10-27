@@ -24,6 +24,9 @@
             android:name=".presentation.activities.contact.ContactActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".presentation.activities.chat.ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".presentation.activities.pre_registration.PreRegistrationActivity"
             android:screenOrientation="portrait" />
         <activity

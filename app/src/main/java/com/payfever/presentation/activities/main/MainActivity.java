@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 
 import com.payfever.R;
+import com.payfever.presentation.activities.chat.ChatActivity;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerListener;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerMenu;
 import com.payfever.presentation.basics.FABActivity;
@@ -76,7 +77,7 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     @Override
     public void showChatFragment() {
         getFABController().hide();
-        getFragmentNavigator().replaceFragment(new ChatListFragment());
+        startActivity(ChatActivity.getCallingIntent(this));
     }
 
     @Override

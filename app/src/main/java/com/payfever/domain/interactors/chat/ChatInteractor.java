@@ -1,4 +1,4 @@
-package com.payfever.domain.interactors.chat_list;
+package com.payfever.domain.interactors.chat;
 
 import android.os.Handler;
 
@@ -9,17 +9,17 @@ import rx.Observable;
 
 /**
  * Created by
- * mRogach on 26.10.2015.
+ * mRogach on 27.10.2015.
  */
 
-public final class ChatListInteractor extends BaseInteractor {
+public final class ChatInteractor extends BaseInteractor {
 
-    public ChatListInteractor(Handler _handler) {
+    public ChatInteractor(Handler _handler) {
         super(_handler);
     }
 
     @Override
     protected Observable buildGetObserver() {
-        return ServiceProvider.getInstance().getChatListService().getChatData();
+        return ServiceProvider.getInstance().getChatService().getChatData();
     }
 }
