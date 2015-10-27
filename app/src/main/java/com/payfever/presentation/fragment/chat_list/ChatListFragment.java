@@ -19,7 +19,7 @@ import java.util.List;
  * mRogach on 26.10.2015.
  */
 
-public final class ChatListFragment extends BaseFragment implements ChatView, AdapterView.OnItemClickListener {
+public final class ChatListFragment extends BaseFragment implements ChatListView, AdapterView.OnItemClickListener {
 
     private ListView lvChatList;
     private TextView tvEmptyList;

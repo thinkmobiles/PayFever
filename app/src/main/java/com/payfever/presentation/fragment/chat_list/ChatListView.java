@@ -11,7 +11,7 @@ import java.util.List;
  * mRogach on 26.10.2015.
  */
 
-public interface ChatView extends BaseView<List<ChatModel>> {
+public interface ChatListView extends BaseView<List<ChatModel>> {
     void onChatItemClick();
     void setTitle();
 }
