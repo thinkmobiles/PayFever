@@ -20,7 +20,7 @@ import rx.Subscriber;
 
 public final class ChatListPresenterImpl implements ChatListPresenter {
 
-    private ChatView mChatView;
+    private ChatListView mChatListView;
     private BaseInteractor chatListInteractor;
     private List<ChatModel> chatModelList;
 
@@ -39,29 +39,29 @@ public final class ChatListPresenterImpl implements ChatListPresenter {
     }
 
     @Override
-    public void setView(ChatView _view) {
-        mChatView = _view;
-        mChatView.setTitle();
+    public void setView(ChatListView _view) {
+        mChatListView = _view;
+        mChatListView.setTitle();
     }
 
     @Override
     public void downloadData() {
         if (chatModelList == null) {
-            mChatView.showProgress();
+            mChatListView.showProgress();
             chatListInteractor.executeGET(new SubscriberListChat());
         }
     }
 
     @Override
     public void onChatItemClick() {
-        mChatView.onChatItemClick();
+        mChatListView.onChatItemClick();
     }
 
     private class SubscriberListChat extends Subscriber<GetChatListResponse> {
         @Override
         public void onCompleted() {
-            mChatView.setData(chatModelList);
-            mChatView.hideProgress();
+            mChatListView.setData(chatModelList);
+            mChatListView.hideProgress();
         }
 
         @Override
