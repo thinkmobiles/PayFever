@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.payfever.R;
-import com.payfever.data.model.ChatModel;
+import com.payfever.data.model.ChatListModel;
 import com.payfever.presentation.basics.BaseFragment;
 
 import java.util.List;
@@ -83,7 +83,7 @@ public final class ChatListFragment extends BaseFragment implements ChatListView
     }
 
     @Override
-    public void setData(List<ChatModel> _data) {
+    public void setData(List<ChatListModel> _data) {
         mAdapter.setChatList(_data);
         lvChatList.setAdapter(mAdapter);
         lvChatList.setEmptyView(tvEmptyList);

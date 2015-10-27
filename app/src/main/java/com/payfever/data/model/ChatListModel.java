@@ -7,7 +7,7 @@ import java.util.Date;
  * mRogach on 26.10.2015.
  */
 
-public final class ChatModel {
+public final class ChatListModel {
 
     private String mUserName;
     private String mPhoneNumber;

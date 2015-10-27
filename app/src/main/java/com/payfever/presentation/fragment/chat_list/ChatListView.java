@@ -1,7 +1,7 @@
 package com.payfever.presentation.fragment.chat_list;
 
 
-import com.payfever.data.model.ChatModel;
+import com.payfever.data.model.ChatListModel;
 import com.payfever.presentation.basics.BaseView;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * mRogach on 26.10.2015.
  */
 
-public interface ChatListView extends BaseView<List<ChatModel>> {
+public interface ChatListView extends BaseView<List<ChatListModel>> {
     void onChatItemClick();
     void setTitle();
 }

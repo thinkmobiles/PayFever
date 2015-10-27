@@ -3,7 +3,7 @@ package com.payfever.presentation.fragment.chat_list;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.payfever.data.model.ChatModel;
+import com.payfever.data.model.ChatListModel;
 import com.payfever.data.model.response.GetChatListResponse;
 import com.payfever.domain.basics.BaseInteractor;
 import com.payfever.domain.interactors.chat_list.ChatListInteractor;
@@ -22,7 +22,7 @@ public final class ChatListPresenterImpl implements ChatListPresenter {
 
     private ChatListView mChatListView;
     private BaseInteractor chatListInteractor;
-    private List<ChatModel> chatModelList;
+    private List<ChatListModel> chatListModelList;
 
     public ChatListPresenterImpl() {
         chatListInteractor = new ChatListInteractor(PayFeverApplication.getApplication().getBackgroundHandler());
@@ -46,7 +46,7 @@ public final class ChatListPresenterImpl implements ChatListPresenter {
 
     @Override
     public void downloadData() {
-        if (chatModelList == null) {
+        if (chatListModelList == null) {
             mChatListView.showProgress();
             chatListInteractor.executeGET(new SubscriberListChat());
         }
@@ -60,7 +60,7 @@ public final class ChatListPresenterImpl implements ChatListPresenter {
     private class SubscriberListChat extends Subscriber<GetChatListResponse> {
         @Override
         public void onCompleted() {
-            mChatListView.setData(chatModelList);
+            mChatListView.setData(chatListModelList);
             mChatListView.hideProgress();
         }
 
@@ -71,7 +71,7 @@ public final class ChatListPresenterImpl implements ChatListPresenter {
 
         @Override
         public void onNext(GetChatListResponse chatModels) {
-            chatModelList = chatModels.getModels();
+            chatListModelList = chatModels.getModels();
         }
     }
 

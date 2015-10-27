@@ -1,7 +1,7 @@
 package com.payfever.data.api.chat_list_api;
 
 import com.parse.ParseException;
-import com.payfever.data.model.ChatModel;
+import com.payfever.data.model.ChatListModel;
 import com.payfever.data.model.response.GetChatListResponse;
 
 import java.util.ArrayList;
@@ -30,14 +30,14 @@ public class TestChatListApiImpl implements ChatListApi {
         return getChatListResponse;
     }
 
-    private List<ChatModel> getChatList() {
-        List<ChatModel> list = new ArrayList<>();
+    private List<ChatListModel> getChatList() {
+        List<ChatListModel> list = new ArrayList<>();
         for (int i = 0; i < 40; i++) {
-            ChatModel chatModel = new ChatModel();
-            chatModel.setUserName("Name: " + i);
-            chatModel.setDecription("Decription: " + i);
-            chatModel.setPushChannel("push channel: " + i);
-            list.add(chatModel);
+            ChatListModel chatListModel = new ChatListModel();
+            chatListModel.setUserName("Name: " + i);
+            chatListModel.setDecription("Decription: " + i);
+            chatListModel.setPushChannel("push channel: " + i);
+            list.add(chatListModel);
         }
 
         return list;
