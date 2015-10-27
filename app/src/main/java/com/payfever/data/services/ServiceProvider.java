@@ -1,7 +1,7 @@
 package com.payfever.data.services;
 
-import com.payfever.data.services.chat.ChatService;
-import com.payfever.data.services.chat.ChatServiceImpl;
+import com.payfever.data.services.chat_list.ChatListService;
+import com.payfever.data.services.chat_list.ChatListServiceImpl;
 import com.payfever.data.services.network.NetworkService;
 import com.payfever.data.services.network.NetworkServiceImpl;
 import com.payfever.data.services.registration.RegisterService;
@@ -19,13 +19,13 @@ public class ServiceProvider {
     private ContactService mContactService;
     private RegisterService mRegisterService;
     private NetworkService mNetworkService;
-    private ChatService mChatService;
+    private ChatListService mChatListService;
 
     private ServiceProvider() {
         mContactService = new ContactServiceImpl();
         mRegisterService = new RegisterServiceImpl();
         mNetworkService = new NetworkServiceImpl();
-        mChatService = new ChatServiceImpl();
+        mChatListService = new ChatListServiceImpl();
     }
 
     public static ServiceProvider getInstance() {
@@ -47,7 +47,7 @@ public class ServiceProvider {
         return mNetworkService;
     }
 
-    public ChatService getChatService() {
-        return mChatService;
+    public ChatListService getChatService() {
+        return mChatListService;
     }
 }

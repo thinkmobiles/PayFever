@@ -1,10 +1,8 @@
-package com.payfever.data.services.chat;
+package com.payfever.data.services.chat_list;
 
 import com.parse.ParseException;
-import com.payfever.data.api.chat_api.ChatApi;
-import com.payfever.data.api.chat_api.ChatApiImpl;
-import com.payfever.data.api.chat_api.TestChatApiImpl;
-import com.payfever.data.model.network.NetworkResponse;
+import com.payfever.data.api.chat_list_api.ChatListApi;
+import com.payfever.data.api.chat_list_api.TestChatListApiImpl;
 import com.payfever.data.model.response.GetChatListResponse;
 
 import rx.Observable;
@@ -15,13 +13,13 @@ import rx.Subscriber;
  * mRogach on 26.10.2015.
  */
 
-public final class ChatServiceImpl implements ChatService {
+public final class ChatListServiceImpl implements ChatListService {
 
-    private ChatApi chatApi;
+    private ChatListApi chatListApi;
 
-    public ChatServiceImpl() {
-//        chatApi = new ChatApiImpl();
-        chatApi = new TestChatApiImpl();
+    public ChatListServiceImpl() {
+//        chatListApi = new ChatListApiImpl();
+        chatListApi = new TestChatListApiImpl();
     }
 
     @Override
@@ -30,7 +28,7 @@ public final class ChatServiceImpl implements ChatService {
             @Override
             public void call(Subscriber<? super GetChatListResponse> subscriber) {
                 try {
-                    GetChatListResponse data = chatApi.getChatListData();
+                    GetChatListResponse data = chatListApi.getChatListData();
                     subscriber.onNext(data);
                     subscriber.onCompleted();
                 } catch (ParseException e) {

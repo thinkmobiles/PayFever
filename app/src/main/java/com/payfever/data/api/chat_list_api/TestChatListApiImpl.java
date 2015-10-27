@@ -1,8 +1,7 @@
-package com.payfever.data.api.chat_api;
+package com.payfever.data.api.chat_list_api;
 
 import com.parse.ParseException;
 import com.payfever.data.model.ChatModel;
-import com.payfever.data.model.network.NetworkUser;
 import com.payfever.data.model.response.GetChatListResponse;
 
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import java.util.List;
  * mRogach on 26.10.2015.
  */
 
-public class TestChatApiImpl implements ChatApi {
+public class TestChatListApiImpl implements ChatListApi {
 
     @Override
     public GetChatListResponse getChatListData() throws ParseException {

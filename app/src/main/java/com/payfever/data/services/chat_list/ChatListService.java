@@ -1,4 +1,4 @@
-package com.payfever.data.services.chat;
+package com.payfever.data.services.chat_list;
 
 import com.payfever.data.model.response.GetChatListResponse;
 
@@ -10,6 +10,6 @@ import rx.Observable;
  * mRogach on 26.10.2015.
  */
 
-public interface ChatService {
+public interface ChatListService {
     Observable<GetChatListResponse> getChatData();
 }

@@ -5,15 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.payfever.R;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerListener;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerMenu;
 import com.payfever.presentation.basics.FABActivity;
 import com.payfever.presentation.fragment.about.AboutUsFragment;
-import com.payfever.presentation.fragment.chat.ChatListFragment;
+import com.payfever.presentation.fragment.chat_list.ChatListFragment;
 import com.payfever.presentation.fragment.network.MyNetworkFragment;
 
 /**

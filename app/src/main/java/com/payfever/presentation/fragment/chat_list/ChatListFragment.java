@@ -1,4 +1,4 @@
-package com.payfever.presentation.fragment.chat;
+package com.payfever.presentation.fragment.chat_list;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

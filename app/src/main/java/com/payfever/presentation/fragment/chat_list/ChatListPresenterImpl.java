@@ -1,13 +1,12 @@
-package com.payfever.presentation.fragment.chat;
+package com.payfever.presentation.fragment.chat_list;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.payfever.data.model.ChatModel;
-import com.payfever.data.model.ContactModel;
 import com.payfever.data.model.response.GetChatListResponse;
 import com.payfever.domain.basics.BaseInteractor;
-import com.payfever.domain.interactors.chat.ChatListInteractor;
+import com.payfever.domain.interactors.chat_list.ChatListInteractor;
 import com.payfever.presentation.PayFeverApplication;
 
 import java.util.List;

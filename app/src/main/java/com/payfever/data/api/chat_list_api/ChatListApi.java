@@ -1,4 +1,4 @@
-package com.payfever.data.api.chat_api;
+package com.payfever.data.api.chat_list_api;
 
 import com.parse.ParseException;
 import com.payfever.data.model.response.GetChatListResponse;
@@ -8,6 +8,6 @@ import com.payfever.data.model.response.GetChatListResponse;
  * mRogach on 26.10.2015.
  */
 
-public interface ChatApi {
+public interface ChatListApi {
     GetChatListResponse getChatListData() throws ParseException;
 }

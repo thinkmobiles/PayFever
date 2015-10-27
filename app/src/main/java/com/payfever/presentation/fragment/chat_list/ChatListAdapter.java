@@ -1,4 +1,4 @@
-package com.payfever.presentation.fragment.chat;
+package com.payfever.presentation.fragment.chat_list;
 
 import android.view.LayoutInflater;
 import android.view.View;
