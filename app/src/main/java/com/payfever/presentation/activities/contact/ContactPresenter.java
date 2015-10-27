@@ -17,4 +17,6 @@ public interface ContactPresenter extends BasePresenter<ContactView> {
     void selectAll(final boolean _checked);
     void onItemClick(final int _position);
     void downloadData();
+    void checkContactReadPermission();
+    void setEmptyListView();
 }
