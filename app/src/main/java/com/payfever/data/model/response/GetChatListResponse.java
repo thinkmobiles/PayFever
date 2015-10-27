@@ -1,6 +1,6 @@
 package com.payfever.data.model.response;
 
-import com.payfever.data.model.ChatModel;
+import com.payfever.data.model.ChatListModel;
 
 import java.util.List;
 
@@ -11,13 +11,13 @@ import java.util.List;
 
 public final class GetChatListResponse {
 
-    private List<ChatModel> models;
+    private List<ChatListModel> models;
 
-    public List<ChatModel> getModels() {
+    public List<ChatListModel> getModels() {
         return models;
     }
 
-    public void setModels(List<ChatModel> models) {
+    public void setModels(List<ChatListModel> models) {
         this.models = models;
     }
 }
