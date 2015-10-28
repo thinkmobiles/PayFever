@@ -1,4 +1,4 @@
-package com.payfever.presentation.fragment.chat;
+package com.payfever.presentation.fragment.chat_list;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.payfever.R;
-import com.payfever.data.model.ChatModel;
+import com.payfever.data.model.ChatListModel;
 import com.payfever.presentation.basics.BaseFragment;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
  * mRogach on 26.10.2015.
  */
 
-public final class ChatListFragment extends BaseFragment implements ChatView, AdapterView.OnItemClickListener {
+public final class ChatListFragment extends BaseFragment implements ChatListView, AdapterView.OnItemClickListener {
 
     private ListView lvChatList;
     private TextView tvEmptyList;
@@ -83,7 +83,7 @@ public final class ChatListFragment extends BaseFragment implements ChatView, Ad
     }
 
     @Override
-    public void setData(List<ChatModel> _data) {
+    public void setData(List<ChatListModel> _data) {
         mAdapter.setChatList(_data);
         lvChatList.setAdapter(mAdapter);
         lvChatList.setEmptyView(tvEmptyList);

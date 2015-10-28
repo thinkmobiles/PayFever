@@ -6,6 +6,8 @@ import com.payfever.data.services.log_in.LogInService;
 import com.payfever.data.services.log_in.LogInServiceImpl;
 import com.payfever.data.services.chat.ChatService;
 import com.payfever.data.services.chat.ChatServiceImpl;
+import com.payfever.data.services.chat_list.ChatListService;
+import com.payfever.data.services.chat_list.ChatListServiceImpl;
 import com.payfever.data.services.network.NetworkService;
 import com.payfever.data.services.network.NetworkServiceImpl;
 import com.payfever.data.services.registration.RegisterService;
@@ -24,6 +26,7 @@ public class ServiceProvider {
     private RegisterService mRegisterService;
     private NetworkService mNetworkService;
     private LogInService mLogInService;
+    private ChatListService mChatListService;
     private ChatService mChatService;
     private BalanceService mBalanceService;
 
@@ -32,6 +35,7 @@ public class ServiceProvider {
         mRegisterService = new RegisterServiceImpl();
         mNetworkService = new NetworkServiceImpl();
         mLogInService = new LogInServiceImpl();
+        mChatListService = new ChatListServiceImpl();
         mChatService = new ChatServiceImpl();
         mBalanceService = new BalanceServiceImpl();
     }
@@ -53,6 +57,10 @@ public class ServiceProvider {
 
     public NetworkService getNetworkService() {
         return mNetworkService;
+    }
+
+    public ChatListService getChatListService() {
+        return mChatListService;
     }
 
     public LogInService getLogInService() {

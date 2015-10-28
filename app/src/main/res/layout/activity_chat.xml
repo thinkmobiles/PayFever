@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlChat_ACH"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f3"
+    android:fitsSystemWindows="true"
+    android:visibility="visible">
+
+    <ProgressBar
+        android:id="@+id/pbLoadingIndicator_ACH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <include
+        android:id="@+id/toolbar_ACH"
+        layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/rlChatContainer_ACH"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_ACH">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout_ACH"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rlAddMessage_ACH"
+        android:background="#f2f2f3">
+
+        <ListView
+            android:id="@+id/lvChat_ACH"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="40dp"
+            android:addStatesFromChildren="true"
+            android:background="@android:color/transparent"
+            android:choiceMode="multipleChoice"
+            android:divider="#dfdfdf"
+            android:dividerHeight="1dp"
+            android:stackFromBottom="true" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlAddMessage_ACH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white">
+
+        <EditText
+            android:id="@+id/etMessage_ACH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tvSendMessage_ACH"
+            android:background="@android:color/white"
+            android:hint="Compose message"
+            android:maxLines="6"
+            android:minHeight="50dp"
+            android:textSize="16sp"
+            android:paddingLeft="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColorHint="#e54b4b4b"
+            android:textColor="#e54b4b4b"/>
+
+        <TextView
+            android:id="@+id/tvSendMessage_ACH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:text="Send"
+            android:textColor="@android:color/white"
+            android:background="@drawable/invite_rounded_selector"/>
+    </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

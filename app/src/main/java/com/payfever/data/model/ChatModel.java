@@ -4,54 +4,45 @@ import java.util.Date;
 
 /**
  * Created by
- * mRogach on 26.10.2015.
+ * mRogach on 27.10.2015.
  */
 
 public final class ChatModel {
 
     private String mUserName;
-    private String mPhoneNumber;
+    private String mDescription;
     private String mPushChannel;
-    private String mDecription;
-    private Date mDate;
+    private String mDate;
 
-    public Date getDate() {
+    public String getUserName() {
+        return mUserName;
+    }
+
+    public void setUserName(String _userName) {
+        this.mUserName = _userName;
+    }
+
+    public String getDate() {
         return mDate;
     }
 
-    public String getDecription() {
-        return mDecription;
+    public void setDate(String _date) {
+        this.mDate = _date;
     }
 
     public String getPushChannel() {
         return mPushChannel;
     }
 
-    public String getPhoneNumber() {
-        return mPhoneNumber;
+    public void setPushChannel(String _pushChannel) {
+        this.mPushChannel = _pushChannel;
     }
 
-    public String getUserName() {
-        return mUserName;
+    public String getDescription() {
+        return mDescription;
     }
 
-    public void setUserName(String mUserName) {
-        this.mUserName = mUserName;
-    }
-
-    public void setDate(Date mDate) {
-        this.mDate = mDate;
-    }
-
-    public void setDecription(String mDecription) {
-        this.mDecription = mDecription;
-    }
-
-    public void setPushChannel(String mPushChannel) {
-        this.mPushChannel = mPushChannel;
-    }
-
-    public void setPhoneNumber(String mPhoneNumber) {
-        this.mPhoneNumber = mPhoneNumber;
+    public void setDescription(String _desctiption) {
+        this.mDescription = _desctiption;
     }
 }

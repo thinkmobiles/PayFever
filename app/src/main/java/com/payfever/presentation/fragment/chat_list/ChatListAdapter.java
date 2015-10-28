@@ -1,4 +1,4 @@
-package com.payfever.presentation.fragment.chat;
+package com.payfever.presentation.fragment.chat_list;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.payfever.R;
-import com.payfever.data.model.ChatModel;
+import com.payfever.data.model.ChatListModel;
 import com.payfever.presentation.PayFeverApplication;
 
 import java.util.List;
@@ -20,9 +20,9 @@ import java.util.List;
 
 public final class ChatListAdapter extends BaseAdapter {
 
-    private List<ChatModel> mChatList;
+    private List<ChatListModel> mChatList;
 
-    public void setChatList(final List<ChatModel> _list) {
+    public void setChatList(final List<ChatListModel> _list) {
         mChatList = _list;
     }
 
@@ -35,7 +35,7 @@ public final class ChatListAdapter extends BaseAdapter {
     }
 
     @Override
-    public ChatModel getItem(int position) {
+    public ChatListModel getItem(int position) {
         if (mChatList != null)
             return mChatList.get(position);
         else

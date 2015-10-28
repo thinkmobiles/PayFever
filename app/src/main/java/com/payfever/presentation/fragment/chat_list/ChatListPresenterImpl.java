@@ -1,13 +1,12 @@
-package com.payfever.presentation.fragment.chat;
+package com.payfever.presentation.fragment.chat_list;
 
 import android.os.Bundle;
 import android.util.Log;
 
-import com.payfever.data.model.ChatModel;
-import com.payfever.data.model.ContactModel;
+import com.payfever.data.model.ChatListModel;
 import com.payfever.data.model.response.GetChatListResponse;
 import com.payfever.domain.basics.BaseInteractor;
-import com.payfever.domain.interactors.chat.ChatListInteractor;
+import com.payfever.domain.interactors.chat_list.ChatListInteractor;
 import com.payfever.presentation.PayFeverApplication;
 
 import java.util.List;
@@ -21,9 +20,9 @@ import rx.Subscriber;
 
 public final class ChatListPresenterImpl implements ChatListPresenter {
 
-    private ChatView mChatView;
+    private ChatListView mChatListView;
     private BaseInteractor chatListInteractor;
-    private List<ChatModel> chatModelList;
+    private List<ChatListModel> chatListModelList;
 
     public ChatListPresenterImpl() {
         chatListInteractor = new ChatListInteractor(PayFeverApplication.getApplication().getBackgroundHandler());
@@ -40,29 +39,29 @@ public final class ChatListPresenterImpl implements ChatListPresenter {
     }
 
     @Override
-    public void setView(ChatView _view) {
-        mChatView = _view;
-        mChatView.setTitle();
+    public void setView(ChatListView _view) {
+        mChatListView = _view;
+        mChatListView.setTitle();
     }
 
     @Override
     public void downloadData() {
-        if (chatModelList == null) {
-            mChatView.showProgress();
+        if (chatListModelList == null) {
+            mChatListView.showProgress();
             chatListInteractor.executeGET(new SubscriberListChat());
         }
     }
 
     @Override
     public void onChatItemClick() {
-        mChatView.onChatItemClick();
+        mChatListView.onChatItemClick();
     }
 
     private class SubscriberListChat extends Subscriber<GetChatListResponse> {
         @Override
         public void onCompleted() {
-            mChatView.setData(chatModelList);
-            mChatView.hideProgress();
+            mChatListView.setData(chatListModelList);
+            mChatListView.hideProgress();
         }
 
         @Override
@@ -72,7 +71,7 @@ public final class ChatListPresenterImpl implements ChatListPresenter {
 
         @Override
         public void onNext(GetChatListResponse chatModels) {
-            chatModelList = chatModels.getModels();
+            chatListModelList = chatModels.getModels();
         }
     }
 

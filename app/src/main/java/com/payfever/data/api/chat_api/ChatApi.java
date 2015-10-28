@@ -1,13 +1,13 @@
 package com.payfever.data.api.chat_api;
 
 import com.parse.ParseException;
-import com.payfever.data.model.response.GetChatListResponse;
+import com.payfever.data.model.response.GetChatResponse;
 
 /**
  * Created by
- * mRogach on 26.10.2015.
+ * mRogach on 27.10.2015.
  */
 
 public interface ChatApi {
-    GetChatListResponse getChatListData() throws ParseException;
+    GetChatResponse getChatData() throws ParseException;
 }

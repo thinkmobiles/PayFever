@@ -1,17 +1,17 @@
 package com.payfever.data.api.chat_api;
 
 import com.parse.ParseException;
-import com.payfever.data.model.response.GetChatListResponse;
+import com.payfever.data.model.response.GetChatResponse;
 
 /**
  * Created by
- * mRogach on 26.10.2015.
+ * mRogach on 27.10.2015.
  */
 
 public final class ChatApiImpl implements ChatApi {
 
     @Override
-    public GetChatListResponse getChatListData() throws ParseException {
+    public GetChatResponse getChatData() throws ParseException {
         return null;
     }
 }
