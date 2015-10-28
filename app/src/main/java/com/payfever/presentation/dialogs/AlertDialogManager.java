@@ -19,6 +19,7 @@ public abstract class AlertDialogManager {
     public static ProgressDialog createProgressDialog(final Context _context, final String _message) {
         ProgressDialog progressDialog = new ProgressDialog(_context);
         progressDialog.setMessage(_message);
+        progressDialog.setCancelable(false);
 
         return progressDialog;
     }

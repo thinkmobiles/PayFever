@@ -3,6 +3,7 @@ package com.payfever.domain.basics;
 import android.os.Handler;
 
 import rx.Observable;
+import rx.Observer;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -25,7 +26,7 @@ public abstract class BaseInteractor {
     }
 
     @SuppressWarnings("unchecked")
-    public void executeGET(Subscriber _subscriber) {
+    public void executeGET(Observer _subscriber) {
         mGetSubscription = buildGetObserver()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

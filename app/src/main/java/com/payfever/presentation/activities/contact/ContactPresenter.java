@@ -1,5 +1,7 @@
 package com.payfever.presentation.activities.contact;
 
+import android.content.Intent;
+
 import com.payfever.data.model.ContactModel;
 import com.payfever.presentation.basics.BasePresenter;
 
@@ -19,4 +21,5 @@ public interface ContactPresenter extends BasePresenter<ContactView> {
     void downloadData();
     void checkContactReadPermission();
     void setEmptyListView();
+    void setExtra(Intent _intent);
 }

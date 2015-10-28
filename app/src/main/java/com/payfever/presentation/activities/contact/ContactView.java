@@ -19,4 +19,10 @@ public interface ContactView extends BaseView<List<ContactModel>> {
     void notifyDataSetChange();
     void checkContactReadPermission();
     void setEmptyListView();
+    void showInviteProgress();
+    void hideInviteProgress();
+    void showServerError(String _error);
+    void startMainActivity();
+    void onBack();
+    void hideSkipShowBack();
 }

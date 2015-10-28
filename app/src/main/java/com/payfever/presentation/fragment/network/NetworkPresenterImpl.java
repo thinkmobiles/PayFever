@@ -36,12 +36,12 @@ public class NetworkPresenterImpl implements NetworkPresenter {
         if (mData == null)
             mNetworkInteractor.executeGET(new DownloadListener());
         mView.showFAB();
+        mView.setTitle();
     }
 
     @Override
     public void setView(NetworkView _view) {
         mView = _view;
-        mView.setTitle();
     }
 
     @Override

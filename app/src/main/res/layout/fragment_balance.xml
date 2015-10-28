@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvBalance_FB"
+            style="@style/BalanceIndicator"
+            android:text="Balance"
+            tools:text="Balance: 1560$"/>
+
+        <View style="@style/DividerBalance"/>
+
+        <TextView
+            android:id="@+id/tvAverage_FB"
+            style="@style/BalanceIndicator"
+            android:text="Average"
+            tools:text="Average: 1560$"/>
+
+        <View style="@style/DividerBalance"/>
+
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lcBalance_FB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

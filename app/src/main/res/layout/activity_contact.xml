@@ -60,7 +60,8 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="No contacts"
-                android:textSize="30sp"/>
+                android:textSize="30sp"
+                android:visibility="gone"/>
 
         </RelativeLayout>
 

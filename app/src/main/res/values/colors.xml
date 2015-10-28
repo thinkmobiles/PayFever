@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF002B56</color>
-    <color name="colorPrimaryDark">#FF001931</color>
+    <color name="colorPrimary">#72865c</color>
+    <color name="colorPrimaryDark">#526142</color>
     <color name="colorAccent">#FF4081</color>
     <color name="invite_contact_color">#FFEB2224</color>
     <color name="invite_contact_color_selected">#FFAD0507</color>
     <color name="invite_contact_disable">#cfd0d2</color>
     <color name="skip_contact_color">#FF4B95CB</color>
     <color name="skip_contact_color_selected">#FF0C67A9</color>
-    <color name="skip_contact_color_dialog_background">#FF002D58</color>
-    <color name="skip_contact_color_dialog_button">#FF86B9DE</color>
+    <color name="skip_contact_color_dialog_background">#72865c</color>
+    <color name="skip_contact_color_dialog_button">#d6f7b2</color>
     <color name="direct_sent_out_HMN">#FFBCBCBC</color>
     <color name="pending_HMN">#FFDEDEDE</color>
     <color name="expired_HMN">#FFF3F3F3</color>
@@ -17,4 +17,5 @@
     <color name="fab_color">#FFEA2224</color>
     <color name="color_log_in_uncheked">#12a342</color>
     <color name="color_log_in_checked">#06732a</color>
+    <color name="diagram_fill_color">#b6d792</color>
 </resources>

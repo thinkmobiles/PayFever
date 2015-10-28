@@ -1,6 +1,7 @@
 package com.payfever.presentation.activities.contact;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -35,7 +36,9 @@ import java.util.List;
  * mRogach on 19.10.2015.
  */
 
-public class ContactActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, ContactView, CompoundButton.OnCheckedChangeListener {
+public class ContactActivity extends BaseActivity
+        implements View.OnClickListener, AdapterView.OnItemClickListener,
+        ContactView, CompoundButton.OnCheckedChangeListener {
 
     private ListView listView;
     private TextView tvInvite;
@@ -43,8 +46,8 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     private TextView tvSkip;
     private ContactPresenter mContactsPresenter;
     private ContactListAdapter mContactListAdapter;
-    private boolean isFromNetwork = false;
     private CoordinatorLayout coordinatorLayout;
+    private ProgressDialog mProgressDialog;
 
 
     public static Intent getCallingIntent(Context context) {
@@ -69,8 +72,8 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         initToolbarController();
         initObjects();
         setListeners();
-        hideSkipShowBack();
         mContactsPresenter.setView(this);
+        mContactsPresenter.setExtra(getIntent());
         mContactsPresenter.initialize(savedInstanceState);
     }
 
@@ -81,15 +84,12 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         getToolbarController().setTitle("Import Contacts");
     }
 
-    private void hideSkipShowBack() {
-        isFromNetwork = getIntent().getBooleanExtra(Constants.FROM_NETWORK_FRAGMENT, false);
-        if (isFromNetwork) {
-            setSupportActionBar(getToolbarController().getToolbar());
-            getToolbarController().showBackButton(this);
-            tvSkip.setVisibility(View.GONE);
-        }
+    @Override
+    public void hideSkipShowBack() {
+        setSupportActionBar(getToolbarController().getToolbar());
+        getToolbarController().showBackButton(this);
+        tvSkip.setVisibility(View.GONE);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -101,15 +101,14 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
                 mContactsPresenter.invite();
                 break;
         }
-
     }
 
     private void findViews() {
-        listView = $(R.id.lvContacts_AC);
-        tvSkip = $(R.id.tvSkip_AC);
-        tvInvite = $(R.id.tvInvite_AC);
-        tvEmptyList = $(R.id.tvEmptyList_AC);
-        coordinatorLayout = $(R.id.coordinatorLayout);
+        listView            = $(R.id.lvContacts_AC);
+        tvSkip              = $(R.id.tvSkip_AC);
+        tvInvite            = $(R.id.tvInvite_AC);
+        tvEmptyList         = $(R.id.tvEmptyList_AC);
+        coordinatorLayout   = $(R.id.coordinatorLayout);
     }
 
     private void initObjects() {
@@ -131,6 +130,34 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void hideProgress() {
         getLoadingManager().hideProgress();
+    }
+
+    @Override
+    public void startMainActivity() {
+        startActivity(MainActivity.getCallingIntent(ContactActivity.this));
+        finish();
+    }
+
+    @Override
+    public void onBack() {
+        finish();
+    }
+
+    @Override
+    public void showInviteProgress() {
+        mProgressDialog = AlertDialogManager.createProgressDialog(this, "Invite...");
+        mProgressDialog.show();
+    }
+
+    @Override
+    public void hideInviteProgress() {
+        mProgressDialog.cancel();
+    }
+
+    @Override
+    public void showServerError(String _error) {
+        Toast.makeText(this, _error, Toast.LENGTH_SHORT)
+                .show();
     }
 
     @Override
@@ -169,7 +196,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
         AlertDialogManager.showAlertDialog(this, model, new TwoButtonDialogListener() {
             @Override
             public void secondButtonClick() {
-                startActivity(MainActivity.getCallingIntent(ContactActivity.this));
+                startMainActivity();
             }
 
             @Override
@@ -234,6 +261,7 @@ public class ContactActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void setEmptyListView() {
+        tvEmptyList.setVisibility(View.VISIBLE);
         listView.setAdapter(mContactListAdapter);
         listView.setEmptyView(tvEmptyList);
         hideProgress();

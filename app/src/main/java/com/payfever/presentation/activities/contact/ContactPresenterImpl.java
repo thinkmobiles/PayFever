@@ -1,5 +1,6 @@
 package com.payfever.presentation.activities.contact;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,6 +10,7 @@ import com.payfever.data.model.response.ContactListModel;
 import com.payfever.domain.basics.BasePostGetInteractor;
 import com.payfever.domain.interactors.contactInteractor.ContactInteractorImpl;
 import com.payfever.presentation.PayFeverApplication;
+import com.payfever.presentation.global.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public final class ContactPresenterImpl implements ContactPresenter {
     private List<ContactModel> contactList;
     private List<ContactModel> contactListToInvite;
     private ContactListModel contactListModel;
+    private boolean mIsFromNetwork;
 
     public ContactPresenterImpl() {
         contactInteractor = new ContactInteractorImpl(PayFeverApplication.getApplication().getBackgroundHandler());
@@ -39,7 +42,13 @@ public final class ContactPresenterImpl implements ContactPresenter {
     }
 
     @Override
+    public void setExtra(Intent _intent) {
+        mIsFromNetwork = _intent.getBooleanExtra(Constants.FROM_NETWORK_FRAGMENT, false);
+    }
+
+    @Override
     public void invite() {
+        mContactView.showInviteProgress();
         List<String> contacts = new ArrayList<>();
         for (ContactModel contactModel : contactListToInvite) {
             if (contactModel.getStatus() == ContactStatus.CHECKED.getStatus()) {
@@ -109,13 +118,19 @@ public final class ContactPresenterImpl implements ContactPresenter {
 
     @Override
     public void initialize(Bundle _savedInstanceState) {
+        hideSkipBtnIfNeed();
+    }
+
+    private void hideSkipBtnIfNeed() {
+        if (mIsFromNetwork) {
+            mContactView.hideSkipShowBack();
+        }
     }
 
     @Override
     public void onPause() {
         contactInteractor.unSubscribe();
     }
-
 
     private class SubscriberListContact extends Subscriber<List<ContactModel>> {
         @Override
@@ -138,13 +153,14 @@ public final class ContactPresenterImpl implements ContactPresenter {
     private class SubscriberContactsToInvite extends Subscriber<ContactListModel> {
         @Override
         public void onCompleted() {
-            mContactView.setData(contactList);
-            mContactView.hideProgress();
+            mContactView.hideInviteProgress();
+            startNetworkMainActivity();
         }
 
         @Override
         public void onError(Throwable e) {
             Log.e("Subscriber", e.getMessage());
+            mContactView.showServerError(e.getMessage());
         }
 
         @Override
@@ -159,6 +175,13 @@ public final class ContactPresenterImpl implements ContactPresenter {
         } else {
             mContactView.setEnableInvite();
         }
+    }
+
+    private void startNetworkMainActivity() {
+        if (!mIsFromNetwork)
+            mContactView.startMainActivity();
+        else
+            mContactView.onBack();
     }
 
 }

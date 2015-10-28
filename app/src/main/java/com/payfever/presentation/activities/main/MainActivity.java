@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.payfever.R;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerListener;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerMenu;
 import com.payfever.presentation.basics.FABActivity;
 import com.payfever.presentation.fragment.about.AboutUsFragment;
+import com.payfever.presentation.fragment.balance.BalanceFragment;
 import com.payfever.presentation.fragment.chat.ChatListFragment;
 import com.payfever.presentation.fragment.network.MyNetworkFragment;
 
@@ -72,7 +71,7 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     @Override
     public void showBalanceFragment() {
         getFABController().hide();
-        getFragmentNavigator().replaceFragment(new MyNetworkFragment());
+        getFragmentNavigator().replaceFragment(new BalanceFragment());
     }
 
     @Override
