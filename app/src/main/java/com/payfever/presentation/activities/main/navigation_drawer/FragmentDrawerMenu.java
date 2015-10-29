@@ -20,7 +20,8 @@ import java.util.List;
  * mRogach on 22.10.2015.
  */
 
-public final class FragmentDrawerMenu extends BaseFragment implements AdapterView.OnItemClickListener, NavigationDrawerView {
+public final class FragmentDrawerMenu extends BaseFragment
+        implements AdapterView.OnItemClickListener, NavigationDrawerView {
 
     private ListView mListView;
     private NavigationDrawerAdapter mAdapter;

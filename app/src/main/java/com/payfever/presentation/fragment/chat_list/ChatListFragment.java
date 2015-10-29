@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.payfever.R;
 import com.payfever.data.model.ChatListModel;
+import com.payfever.presentation.activities.chat.ChatActivity;
+import com.payfever.presentation.basics.BaseFABFragment;
 import com.payfever.presentation.basics.BaseFragment;
 
 import java.util.List;
@@ -19,12 +21,21 @@ import java.util.List;
  * mRogach on 26.10.2015.
  */
 
-public final class ChatListFragment extends BaseFragment implements ChatListView, AdapterView.OnItemClickListener {
+public final class ChatListFragment extends BaseFABFragment implements ChatListView, AdapterView.OnItemClickListener {
 
     private ListView lvChatList;
     private TextView tvEmptyList;
     private ChatListAdapter mAdapter;
     private ChatListPresenter chatListPresenter;
+
+    public static BaseFABFragment newInstance() {
+        Bundle args = new Bundle();
+
+        BaseFABFragment fabFragment = new ChatListFragment();
+        fabFragment.setArguments(args);
+
+        return fabFragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,7 +108,7 @@ public final class ChatListFragment extends BaseFragment implements ChatListView
 
     @Override
     public void onChatItemClick() {
-        Toast.makeText(mActivity, "click", Toast.LENGTH_LONG).show();
+        startActivity(ChatActivity.getCallingIntent(mActivity));
     }
 
     @Override

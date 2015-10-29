@@ -33,6 +33,15 @@ public class MyNetworkFragment extends BaseFABFragment
 
     private NetworkResponse mData;
 
+    public static BaseFABFragment newInstance() {
+        Bundle args = new Bundle();
+
+        BaseFABFragment fabFragment = new MyNetworkFragment();
+        fabFragment.setArguments(args);
+
+        return fabFragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,15 +104,15 @@ public class MyNetworkFragment extends BaseFABFragment
         getLoadingManager().hideProgress();
     }
 
-    @Override
-    public void showFAB() {
-        getFabController().show();
-    }
-
-    @Override
-    public void hideFAB() {
-        getFabController().hide();
-    }
+//    @Override
+//    public void showFAB() {
+//        getFabController().show();
+//    }
+//
+//    @Override
+//    public void hideFAB() {
+//        getFabController().hide();
+//    }
 
     @Override
     public void setTitle() {

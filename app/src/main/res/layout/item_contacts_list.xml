@@ -2,31 +2,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/rlIndicatorContainer_ICL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/contact_avatar_margin_left"
+        android:layout_marginLeft="@dimen/contact_avatar_margin_left"
+        android:layout_alignParentRight="true">
+
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/chContactStatus_ICL"
+            android:focusable="false"
+            app:cbd_strokeColor="@color/colorPrimary"
+            app:cbd_tickColor="@android:color/white"
+            app:cbd_animDuration="1"
+            android:layout_centerInParent="true"
+            style="@style/ListItemStatus" />
+
+        <TextView
+            android:id="@+id/tvContactStatus_ICL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/contact_status_text_size"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            tools:text="Pending"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <include android:id="@+id/rlItemContact"
         layout="@layout/item_list_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/chContactStatus_ICL" />
-
-    <com.rey.material.widget.CheckBox
-        android:id="@+id/chContactStatus_ICL"
-        android:focusable="false"
-        app:cbd_strokeColor="@color/colorPrimary"
-        app:cbd_tickColor="@android:color/white"
-        app:cbd_animDuration="1"
-        style="@style/ListItemStatus"/>
-
-    <TextView
-        android:id="@+id/tvContactStatus_ICL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/contact_status_text_size"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/contact_avatar_margin_right"
-        android:visibility="gone"/>
+        android:layout_toLeftOf="@id/rlIndicatorContainer_ICL" />
 
 </RelativeLayout>

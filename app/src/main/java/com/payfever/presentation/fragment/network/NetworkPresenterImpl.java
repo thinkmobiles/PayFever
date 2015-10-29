@@ -35,7 +35,7 @@ public class NetworkPresenterImpl implements NetworkPresenter {
     public void onResume() {
         if (mData == null)
             mNetworkInteractor.executeGET(new DownloadListener());
-        mView.showFAB();
+//        mView.showFAB();
         mView.setTitle();
     }
 

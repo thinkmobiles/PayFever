@@ -12,8 +12,9 @@ import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawe
 import com.payfever.presentation.basics.FABActivity;
 import com.payfever.presentation.fragment.about.AboutUsFragment;
 import com.payfever.presentation.fragment.balance.BalanceFragment;
-import com.payfever.presentation.fragment.chat.ChatListFragment;
+import com.payfever.presentation.fragment.chat_list.ChatListFragment;
 import com.payfever.presentation.fragment.network.MyNetworkFragment;
+import com.payfever.presentation.fragment.set_ringtones.RingtonesFragment;
 
 /**
  * Created by richi on 2015.10.19..
@@ -65,31 +66,31 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     @Override
     public void showNetWorkFragment() {
         getFABController().show();
-        getFragmentNavigator().replaceFragment(new MyNetworkFragment());
+        getFragmentNavigator().replaceFragment(MyNetworkFragment.newInstance());
     }
 
     @Override
     public void showBalanceFragment() {
         getFABController().hide();
-        getFragmentNavigator().replaceFragment(new BalanceFragment());
+        getFragmentNavigator().replaceFragment(BalanceFragment.newInstance());
     }
 
     @Override
     public void showChatFragment() {
         getFABController().hide();
-        getFragmentNavigator().replaceFragment(new ChatListFragment());
+        getFragmentNavigator().replaceFragment(ChatListFragment.newInstance());
     }
 
     @Override
     public void showSetRingtoneFragment() {
         getFABController().hide();
-        getFragmentNavigator().replaceFragment(new MyNetworkFragment());
+        getFragmentNavigator().replaceFragment(RingtonesFragment.newInstance());
     }
 
     @Override
     public void showAboutFragment() {
         getFABController().hide();
-        getFragmentNavigator().replaceFragment(new AboutUsFragment());
+        getFragmentNavigator().replaceFragment(AboutUsFragment.newInstance());
     }
 
     @Override
@@ -106,7 +107,9 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     public void setNavigationDrawerMenu() {
         drawerFragment = (FragmentDrawerMenu)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(MainActivity.this, R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), getToolbarController().getToolbar());
+        drawerFragment.setUp(MainActivity.this, R.id.fragment_navigation_drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout),
+                getToolbarController().getToolbar());
         drawerFragment.setDrawerListener(this);
         displayView(0);
     }

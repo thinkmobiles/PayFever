@@ -27,6 +27,8 @@ public class BalancePresenterImpl implements BalancePresenter {
             downloadData();
         else
             mView.hideProgress();
+
+        mView.initMarker();
     }
 
     private void downloadData() {
@@ -42,6 +44,7 @@ public class BalancePresenterImpl implements BalancePresenter {
     @Override
     public void setView(BalanceView _view) {
         mView = _view;
+        mView.initActionBar();
     }
 
     private class DownloadListener implements Observer<BalanceModel> {

@@ -25,13 +25,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar_AM" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_AM"
+        style="@style/FAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
         android:src="@drawable/ic_plus"
         app:backgroundTint="@color/fab_color"/>
 

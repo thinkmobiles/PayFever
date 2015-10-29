@@ -2,9 +2,9 @@
 <resources>
     <color name="colorPrimary">#72865c</color>
     <color name="colorPrimaryDark">#526142</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="invite_contact_color">#FFEB2224</color>
-    <color name="invite_contact_color_selected">#FFAD0507</color>
+    <color name="colorAccent">#c5e99e</color>
+    <color name="invite_contact_color">@color/colorPrimary</color>
+    <color name="invite_contact_color_selected">@color/colorPrimaryDark</color>
     <color name="invite_contact_disable">#cfd0d2</color>
     <color name="skip_contact_color">#FF4B95CB</color>
     <color name="skip_contact_color_selected">#FF0C67A9</color>
@@ -14,8 +14,8 @@
     <color name="pending_HMN">#FFDEDEDE</color>
     <color name="expired_HMN">#FFF3F3F3</color>
     <color name="checkbox_selected">#12a342</color>
-    <color name="fab_color">#FFEA2224</color>
+    <color name="fab_color">@color/colorPrimary</color>
     <color name="color_log_in_uncheked">#12a342</color>
     <color name="color_log_in_checked">#06732a</color>
-    <color name="diagram_fill_color">#b6d792</color>
+    <color name="diagram_fill_color">#9cde55</color>
 </resources>

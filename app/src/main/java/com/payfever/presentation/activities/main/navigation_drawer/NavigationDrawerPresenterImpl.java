@@ -51,7 +51,7 @@ public final class NavigationDrawerPresenterImpl implements NavigationDrawerPres
                 .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_my_network)).build());
         list.add(new NavDrawerItem.Builder()
                 .setIdResourceImage(R.drawable.ic_avatar_contact)
-                .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_about)).build());
+                .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_balance)).build());
         list.add(new NavDrawerItem.Builder()
                 .setIdResourceImage(R.drawable.ic_avatar_contact)
                 .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_pay_chat)).build());

@@ -13,6 +13,15 @@ public class AboutUsFragment extends BaseFABFragment implements AboutUsView {
 
     private AboutUsPresenter mPresenter;
 
+    public static BaseFABFragment newInstance() {
+        Bundle args = new Bundle();
+
+        BaseFABFragment fabFragment = new AboutUsFragment();
+        fabFragment.setArguments(args);
+
+        return fabFragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

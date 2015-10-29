@@ -10,8 +10,8 @@ import com.parse.Parse;
  */
 public class PayFeverApplication extends Application {
 
-    private static final String CLIENT_KEY = "9lyw6rDdicYkMmvlTySqrNNREJJl9lGmbM5efQZy";
-    private static final String APPLICATION_ID = "0PQAVB8jydFiqcqABb9m9iY2N2l3QsGhK1dmUS7k";
+    private static final String CLIENT_KEY = "vljKH0MqIUVkND60Bk1R8Xj8eob1cW9jrw2FEKXk";
+    private static final String APPLICATION_ID = "6QqstrJ9wIguSmW7FdUGcvbV82Iu8G43LHVj8a6D";
 
 
     private static PayFeverApplication sInstance;
