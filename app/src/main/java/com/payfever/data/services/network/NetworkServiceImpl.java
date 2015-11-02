@@ -1,42 +1,39 @@
 package com.payfever.data.services.network;
 
-import com.parse.ParseException;
-import com.payfever.data.api.network_api.NetworkApi;
-import com.payfever.data.api.network_api.NetworkTestApiImpl;
+import com.payfever.data.model.GetContactResponse;
 import com.payfever.data.model.network.NetworkResponse;
+import com.payfever.data.model.network.NetworkUserResponse;
+import com.payfever.data.model.network.Statistic;
+import com.payfever.data.services.ServiceProvider;
 
 import rx.Observable;
-import rx.Subscriber;
+import rx.functions.Func2;
 
 /**
  * Created by richi on 2015.10.21..
  */
 public class NetworkServiceImpl implements NetworkService {
 
-    private NetworkApi mApi;
-
-    public NetworkServiceImpl() {
-        //Real
-//        mApi = new NetworkApiImpl();
-
-        //Test
-        mApi = new NetworkTestApiImpl();
-    }
-
     @Override
     public Observable<NetworkResponse> getNetworkStatistic() {
-        return Observable.create(new Observable.OnSubscribe<NetworkResponse>() {
-            @Override
-            public void call(Subscriber<? super NetworkResponse> subscriber) {
-                try {
-                    NetworkResponse data = mApi.getNetworkStatistic();
-                    subscriber.onNext(data);
-                    subscriber.onCompleted();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    subscriber.onError(e);
-                }
-            }
-        });
+        return Observable.zip(ServiceProvider.getInstance().getContactService().getContactResponse(),
+                ServiceProvider.getInstance().getNetworkUserService().getNetworkUsers(),
+                new Func2<GetContactResponse, NetworkUserResponse, NetworkResponse>() {
+                    @Override
+                    public NetworkResponse call(GetContactResponse contactModels, NetworkUserResponse networkUsers) {
+                        NetworkResponse networkResponse = new NetworkResponse();
+                        Statistic statistic = new Statistic();
+                        networkResponse.setmNetworkStatistic(statistic);
+                        statistic.setmUsers(networkUsers.getmUsers());
+                        statistic.setmPending(contactModels.getmPending().size());
+                        statistic.setmExpired(contactModels.getmExpired().size());
+                        statistic.setmSentOut(contactModels.getmAll().size());
+                        statistic.setmTotalNetworkAccepts(networkUsers.getmNetworkLevel() + networkUsers.getmFirstLevel());
+                        statistic.setmFirstLevelAccepts(networkUsers.getmFirstLevel());
+                        statistic.setmNetworkLevelAccepts(networkUsers.getmNetworkLevel());
+
+                        return networkResponse;
+                    }
+                });
     }
 }

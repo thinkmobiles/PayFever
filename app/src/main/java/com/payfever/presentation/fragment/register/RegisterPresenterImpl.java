@@ -3,12 +3,15 @@ package com.payfever.presentation.fragment.register;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
 import com.payfever.data.model.UserModel;
 import com.payfever.domain.basics.BasePostGetInteractor;
 import com.payfever.domain.interactors.registration.RegisterInteractor;
 import com.payfever.presentation.PayFeverApplication;
 
-import java.util.regex.Pattern;
+import java.util.Locale;
 
 import rx.Subscriber;
 
@@ -49,6 +52,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         if (!isUserValid(_user))
             return;
 
+        _user.setPhoneNumber(formatNumber(_user.getPhoneNumber()));
         mView.showProgress();
         mInteractor.executePost(_user, new RegisterSubscriber());
     }
@@ -75,7 +79,25 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     }
 
     private boolean isValidNumber(String _number) {
-        return Pattern.matches("^[+][1][0-9]{10}$", _number);
+        PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
+        try {
+            Phonenumber.PhoneNumber number = phoneNumberUtil.parse(_number, Locale.US.getCountry());
+            return phoneNumberUtil.isValidNumber(number);
+        } catch (NumberParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private String formatNumber(String _phone) {
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+        try {
+            Phonenumber.PhoneNumber numberProto = phoneUtil.parse(_phone, Locale.US.getCountry());
+            return phoneUtil.format(numberProto, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
+        } catch (NumberParseException e) {
+            System.err.println("NumberParseException was thrown: " + e.toString());
+            return "";
+        }
     }
 
     private boolean isValidPassword(String _password) {

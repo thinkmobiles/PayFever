@@ -1,6 +1,7 @@
 package com.payfever.data.services.contacts;
 
 import com.payfever.data.model.ContactModel;
+import com.payfever.data.model.GetContactResponse;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface ContactService {
 
     Observable<List<ContactModel>> getContactData();
     Observable postContactData(List<String> contacts);
-
+    Observable<GetContactResponse> getContactResponse();
 }

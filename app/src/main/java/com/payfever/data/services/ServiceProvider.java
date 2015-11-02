@@ -10,6 +10,8 @@ import com.payfever.data.services.chat_list.ChatListService;
 import com.payfever.data.services.chat_list.ChatListServiceImpl;
 import com.payfever.data.services.network.NetworkService;
 import com.payfever.data.services.network.NetworkServiceImpl;
+import com.payfever.data.services.network.NetworkUserService;
+import com.payfever.data.services.network.NetworkUserSrviceImpl;
 import com.payfever.data.services.registration.RegisterService;
 import com.payfever.data.services.registration.RegisterServiceImpl;
 import com.payfever.data.services.contacts.ContactServiceImpl;
@@ -29,6 +31,7 @@ public class ServiceProvider {
     private ChatListService mChatListService;
     private ChatService mChatService;
     private BalanceService mBalanceService;
+    private NetworkUserService mNetworkUserService;
 
     private ServiceProvider() {
         mContactService = new ContactServiceImpl();
@@ -38,6 +41,7 @@ public class ServiceProvider {
         mChatListService = new ChatListServiceImpl();
         mChatService = new ChatServiceImpl();
         mBalanceService = new BalanceServiceImpl();
+        mNetworkUserService = new NetworkUserSrviceImpl();
     }
 
     public static ServiceProvider getInstance() {
@@ -73,5 +77,9 @@ public class ServiceProvider {
 
     public BalanceService getBalanceService() {
         return mBalanceService;
+    }
+
+    public NetworkUserService getNetworkUserService() {
+        return mNetworkUserService;
     }
 }

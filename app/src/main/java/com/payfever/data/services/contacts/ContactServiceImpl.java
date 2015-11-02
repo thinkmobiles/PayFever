@@ -35,26 +35,38 @@ public final class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Observable<List<ContactModel>> getContactData() {
-        return Observable.create(new Observable.OnSubscribe<List<ContactModel>>() {
+    public Observable<GetContactResponse> getContactResponse() {
+        return Observable.create(new Observable.OnSubscribe<GetContactResponse>() {
             @Override
-            public void call(Subscriber<? super List<ContactModel>> subscriber) {
+            public void call(Subscriber<? super GetContactResponse> subscriber) {
                 try {
-                    List<ContactModel> contactModels = mTransformation.transform(mContactApi.getContactListData());
-                    subscriber.onNext(contactModels);
+                    GetContactResponse model = mContactApi.getContactListData();
+                    subscriber.onNext(model);
                     subscriber.onCompleted();
                 } catch (ParseException e) {
                     e.printStackTrace();
                     subscriber.onError(e.getCause());
                 }
             }
-        }).map(new Func1<List<ContactModel>, List<ContactModel>>() {
-            @Override
-            public List<ContactModel> call(List<ContactModel> contactModels) {
-                List<ContactModel> contactsFromDevice = mContactProvider.getContactsFromDevice();
-                return mContactProvider.compareContactList(contactsFromDevice, contactModels);
-            }
         });
+    }
+
+    @Override
+    public Observable<List<ContactModel>> getContactData() {
+        return getContactResponse()
+                .map(new Func1<GetContactResponse, List<ContactModel>>() {
+                    @Override
+                    public List<ContactModel> call(GetContactResponse getContactResponse) {
+                        return mTransformation.transform(getContactResponse);
+                    }
+                })
+                .map(new Func1<List<ContactModel>, List<ContactModel>>() {
+                    @Override
+                    public List<ContactModel> call(List<ContactModel> contactModels) {
+                        List<ContactModel> contactsFromDevice = mContactProvider.getContactsFromDevice();
+                        return mContactProvider.compareContactList(contactsFromDevice, contactModels);
+                    }
+                });
     }
 
     @Override

@@ -20,7 +20,7 @@ import com.payfever.presentation.fragment.terms_and_conditions.TermsConditionsFr
  * Created by richi on 2015.10.20..
  */
 public class RegisterFragment extends BaseFragment
-        implements RegisterView, View.OnClickListener, View.OnKeyListener {
+        implements RegisterView, View.OnClickListener {
 
     private EditText etUserName, etPhoneNumber, etPassword;
     private TextView tvRegister, tvLogIn;
@@ -65,7 +65,6 @@ public class RegisterFragment extends BaseFragment
     }
 
     private void initListeners() {
-        etUserName.setOnKeyListener(this);
         tvRegister.setOnClickListener(this);
         tvLogIn.setOnClickListener(this);
     }
@@ -138,13 +137,5 @@ public class RegisterFragment extends BaseFragment
     @Override
     public void showLogIn() {
         getFargmentNavigator().showFragment(new LogInFragment());
-    }
-
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_ENTER) {
-            etPhoneNumber.setSelection(etPhoneNumber.getText().length());
-        }
-        return false;
     }
 }

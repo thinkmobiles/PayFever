@@ -17,7 +17,7 @@ import rx.subscriptions.Subscriptions;
 public abstract class BaseInteractor {
 
     protected  Handler mHandler;
-    private Subscription mGetSubscription = Subscriptions.empty();
+    protected Subscription mGetSubscription = Subscriptions.empty();
 
     public BaseInteractor() {}
 

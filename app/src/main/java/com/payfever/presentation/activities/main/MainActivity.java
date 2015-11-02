@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 
+import com.parse.ParseUser;
 import com.payfever.R;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerListener;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerMenu;
@@ -83,8 +84,10 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
 
     @Override
     public void showSetRingtoneFragment() {
-        getFABController().hide();
-        getFragmentNavigator().replaceFragment(RingtonesFragment.newInstance());
+//        getFABController().hide();
+//        getFragmentNavigator().replaceFragment(RingtonesFragment.newInstance());
+        ParseUser.logOut();
+        finish();
     }
 
     @Override

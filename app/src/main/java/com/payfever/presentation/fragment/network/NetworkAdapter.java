@@ -32,6 +32,8 @@ public class NetworkAdapter extends BaseAdapter {
     }
 
     public void setData(List<NetworkUser> _data) {
+        if (_data == null)
+            _data = new ArrayList<>();
         mData = _data;
         notifyDataSetChanged();
     }
