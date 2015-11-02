@@ -16,6 +16,8 @@ import com.payfever.data.services.registration.RegisterService;
 import com.payfever.data.services.registration.RegisterServiceImpl;
 import com.payfever.data.services.contacts.ContactServiceImpl;
 import com.payfever.data.services.contacts.ContactService;
+import com.payfever.data.services.ringtone.RingtoneService;
+import com.payfever.data.services.ringtone.RingtoneServiceImpl;
 
 /**
  * Created by richi on 2015.10.19..
@@ -32,6 +34,7 @@ public class ServiceProvider {
     private ChatService mChatService;
     private BalanceService mBalanceService;
     private NetworkUserService mNetworkUserService;
+    private RingtoneService mRingtoneService;
 
     private ServiceProvider() {
         mContactService = new ContactServiceImpl();
@@ -42,6 +45,7 @@ public class ServiceProvider {
         mChatService = new ChatServiceImpl();
         mBalanceService = new BalanceServiceImpl();
         mNetworkUserService = new NetworkUserSrviceImpl();
+        mRingtoneService = new RingtoneServiceImpl();
     }
 
     public static ServiceProvider getInstance() {
@@ -81,5 +85,9 @@ public class ServiceProvider {
 
     public NetworkUserService getNetworkUserService() {
         return mNetworkUserService;
+    }
+
+    public RingtoneService getRingtoneService() {
+        return mRingtoneService;
     }
 }
