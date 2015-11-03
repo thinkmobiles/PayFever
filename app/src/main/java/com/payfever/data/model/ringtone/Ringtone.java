@@ -8,36 +8,45 @@ public class Ringtone {
     private String mUrlToFile;
     private String mName;
     private int mRevenue;
+    private boolean isAlreadyBuy;
 
-    public String getmObjectId() {
+    public String getObjectId() {
         return mObjectId;
     }
 
-    public void setmObjectId(String mObjectId) {
+    public void setObjectId(String mObjectId) {
         this.mObjectId = mObjectId;
     }
 
-    public String getmUrlToFile() {
+    public String getUrlToFile() {
         return mUrlToFile;
     }
 
-    public void setmUrlToFile(String mUrlToFile) {
+    public void setUrlToFile(String mUrlToFile) {
         this.mUrlToFile = mUrlToFile;
     }
 
-    public String getmName() {
+    public String getName() {
         return mName;
     }
 
-    public void setmName(String mName) {
+    public void setName(String mName) {
         this.mName = mName;
     }
 
-    public int getmRevenue() {
+    public int getRevenue() {
         return mRevenue;
     }
 
-    public void setmRevenue(int mRevenue) {
+    public void setRevenue(int mRevenue) {
         this.mRevenue = mRevenue;
+    }
+
+    public boolean isAlreadyBuy() {
+        return isAlreadyBuy;
+    }
+
+    public void setIsAlreadyBuy(boolean isAlreadyBuy) {
+        this.isAlreadyBuy = isAlreadyBuy;
     }
 }

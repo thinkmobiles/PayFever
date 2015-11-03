@@ -84,10 +84,8 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
 
     @Override
     public void showSetRingtoneFragment() {
-//        getFABController().hide();
-//        getFragmentNavigator().replaceFragment(RingtonesFragment.newInstance());
-        ParseUser.logOut();
-        finish();
+        getFABController().hide();
+        getFragmentNavigator().replaceFragment(RingtonesFragment.newInstance());
     }
 
     @Override

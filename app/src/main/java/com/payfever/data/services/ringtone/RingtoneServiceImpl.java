@@ -1,5 +1,7 @@
 package com.payfever.data.services.ringtone;
 
+import android.util.Log;
+
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.payfever.data.api.ringtone_api.RingtoneApi;
@@ -9,6 +11,7 @@ import com.payfever.data.transformators.ringtones.RingtoneTranformator;
 import com.payfever.data.transformators.ringtones.RingtoneTransformatorImpl;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -65,7 +68,7 @@ public class RingtoneServiceImpl implements RingtoneService {
         return Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
             public void call(Subscriber<? super Integer> subscriber) {
-                int count;
+                int count, last = -1;
                 try {
                     URL url = new URL(_url);
                     URLConnection connection = url.openConnection();
@@ -73,9 +76,9 @@ public class RingtoneServiceImpl implements RingtoneService {
 
                     int size = connection.getContentLength();
 
-                    InputStream input = new BufferedInputStream(url.openStream());
-                    OutputStream output = new FileOutputStream(_filePath);
-
+                    InputStream input = connection.getInputStream();
+                    OutputStream output = new FileOutputStream(_filePath + ".mp3");
+                    BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(output);
                     byte data[] = new byte[1024];
 
                     long total = 0;
@@ -85,8 +88,12 @@ public class RingtoneServiceImpl implements RingtoneService {
                         if (subscriber.isUnsubscribed()) {
                             break;
                         }
-                        output.write(data, 0, count);
-                        subscriber.onNext((int) ((total * 100) / size));
+                        int progress = (int) ((total * 100) / size);
+                        bufferedOutputStream.write(data, 0, count);
+                        if (last != progress) {
+                            last = progress;
+                            subscriber.onNext(progress);
+                        }
                     }
 
                     output.flush();

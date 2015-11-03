@@ -1,7 +1,5 @@
 package com.payfever.domain.interactors.ringtone_interactor;
 
-import android.os.Handler;
-
 import com.payfever.domain.basics.BaseInteractor;
 
 import rx.Observable;
@@ -20,7 +18,7 @@ public abstract class RingtoneInteractor extends BaseInteractor {
     public RingtoneInteractor() {}
 
     @SuppressWarnings("unchecked")
-    private void downloadRingtone(Observer _subscriber, String _url, String _filePath) {
+    public void downloadRingtone(Observer _subscriber, String _url, String _filePath) {
         mGetSubscription = buildDownloadObserver(_url, _filePath)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

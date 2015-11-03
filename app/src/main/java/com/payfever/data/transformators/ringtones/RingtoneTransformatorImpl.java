@@ -15,11 +15,11 @@ public class RingtoneTransformatorImpl implements RingtoneTranformator {
         List<Ringtone> ringtoneList = new ArrayList<>();
         for (ParseObject parseObject : _data) {
             Ringtone ringtone = new Ringtone();
-            ringtone.setmObjectId(parseObject.getObjectId());
-            ringtone.setmName(parseObject.getString("fileRole"));
-            ringtone.setmRevenue(parseObject.getInt("revenue"));
+            ringtone.setObjectId(parseObject.getObjectId());
+            ringtone.setName(parseObject.getString("fileRole"));
+            ringtone.setRevenue(parseObject.getInt("revenue"));
             if (parseObject.getParseFile("currentFile") != null)
-                ringtone.setmUrlToFile(parseObject.getParseFile("currentFile").getUrl());
+                ringtone.setUrlToFile(parseObject.getParseFile("currentFile").getUrl());
 
             ringtoneList.add(ringtone);
         }
