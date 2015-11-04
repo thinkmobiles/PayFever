@@ -68,7 +68,7 @@ public final class RingtonesAdapter extends BaseAdapter implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ivPlayRingtone_IRL:
-                listener.playRingtone(mRingtones.get((Integer) v.getTag()).getUrlToFile());
+                listener.playRingtone(mRingtones.get((Integer) v.getTag()));
             break;
             case R.id.tvSetPayTone_IRL:
                 Ringtone ringtone = mRingtones.get((Integer) v.getTag());
@@ -99,5 +99,9 @@ public final class RingtonesAdapter extends BaseAdapter implements View.OnClickL
     private void updateView(final ViewHolder _viewHolder, final int _position) {
         _viewHolder.tvRingtoneTitle.setText(mRingtones.get(_position).getName());
         _viewHolder.tvRevenue.setText(String.valueOf(mRingtones.get(_position).getRevenue()));
+        if (mRingtones.get(_position).isPlaying()) {
+            _viewHolder.ivPlayRingtone.setImageResource(R.drawable.ic_pause);
+        } else
+            _viewHolder.ivPlayRingtone.setImageResource(R.drawable.ic_play);
     }
 }

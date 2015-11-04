@@ -27,13 +27,14 @@ public final class RingtoneController {
         values.put(MediaStore.MediaColumns.DATA, file.getAbsolutePath());
         values.put(MediaStore.MediaColumns.TITLE, _name);
         values.put(MediaStore.Audio.Media.IS_RINGTONE, true);
-        values.put(MediaStore.Audio.Media.IS_NOTIFICATION, true);
-        values.put(MediaStore.Audio.Media.IS_ALARM, true);
-        values.put(MediaStore.Audio.Media.IS_MUSIC, true);
 
         Uri uri = MediaStore.Audio.Media.getContentUriForPath(file.getAbsolutePath());
         Uri newUri = context.getContentResolver().insert(uri, values);
 
-        RingtoneManager.setActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE, newUri);
+        try {
+            RingtoneManager.setActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE, newUri);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

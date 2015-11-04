@@ -1,5 +1,6 @@
 package com.payfever.presentation.fragment.set_ringtones;
 
+import com.payfever.data.model.ringtone.Ringtone;
 import com.payfever.presentation.basics.BasePresenter;
 
 /**
@@ -11,4 +12,6 @@ public interface RingtonesPresenter extends BasePresenter<RingtonesView> {
     void downloadRingtones();
     void setPayTone(String _url, String _name);
     void onStop();
+    void playRingtone(Ringtone ringtone);
+    void stopPlaying();
 }

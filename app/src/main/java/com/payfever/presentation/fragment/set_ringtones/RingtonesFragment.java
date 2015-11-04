@@ -1,6 +1,7 @@
 package com.payfever.presentation.fragment.set_ringtones;
 
 import android.app.ProgressDialog;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.payfever.presentation.basics.BaseFABFragment;
 import com.payfever.presentation.fragment.chat_list.ChatListAdapter;
 import com.payfever.presentation.fragment.chat_list.ChatListPresenterImpl;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -29,6 +31,7 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     private ImageView ivPlayTone;
     private TextView tvSetRingTone;
     private ProgressDialog mProgressDialog;
+    private MediaPlayer mMdiaPlayer;
 
     public static BaseFABFragment newInstance() {
         Bundle args = new Bundle();
@@ -53,6 +56,7 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
         initObjects();
         initListeners();
         getToolbarController().setTitle("Ringtone");
+        mPresenter.initialize(savedInstanceState);
     }
 
     @Override
@@ -64,6 +68,7 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     @Override
     public void onStop() {
         super.onStop();
+        mPresenter.stopPlaying();
         mPresenter.onStop();
     }
 
@@ -79,6 +84,7 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
 
     private void initObjects() {
         mAdapter = new RingtonesAdapter();
+        mMdiaPlayer = new MediaPlayer();
     }
 
     private void initListeners() {
@@ -104,8 +110,8 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     }
 
     @Override
-    public void playRingtone(String _url) {
-
+    public void playRingtone(Ringtone _ringtone) {
+        mPresenter.playRingtone(_ringtone);
     }
 
     @Override
@@ -132,5 +138,10 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     @Override
     public void dismiss() {
         mProgressDialog.dismiss();
+    }
+
+    @Override
+    public void notifyData() {
+        mAdapter.notifyDataSetChanged();
     }
 }

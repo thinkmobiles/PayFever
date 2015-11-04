@@ -20,6 +20,7 @@ public abstract class RingtoneInteractor extends BaseInteractor {
     @SuppressWarnings("unchecked")
     public void downloadRingtone(Observer _subscriber, String _url, String _filePath) {
         mGetSubscription = buildDownloadObserver(_url, _filePath)
+                .onBackpressureBuffer()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(_subscriber);

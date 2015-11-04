@@ -15,4 +15,5 @@ public interface RingtonesView extends BaseView<List<Ringtone>> {
     void showDownloadProgress();
     void updateProgress(Integer _value);
     void dismiss();
+    void notifyData();
 }

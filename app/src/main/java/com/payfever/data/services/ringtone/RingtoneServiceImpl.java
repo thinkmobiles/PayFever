@@ -77,7 +77,7 @@ public class RingtoneServiceImpl implements RingtoneService {
                     int size = connection.getContentLength();
 
                     InputStream input = connection.getInputStream();
-                    OutputStream output = new FileOutputStream(_filePath + ".mp3");
+                    OutputStream output = new FileOutputStream(_filePath);
                     BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(output);
                     byte data[] = new byte[1024];
 
