@@ -8,8 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by richi on 2015.10.21..
+ * Created by richi
+ * on 2015.10.21..
  */
+
 public class NetworkApiImpl implements NetworkApi {
     @Override
     public Map<String, Object> getNetworkStatistic() throws ParseException {

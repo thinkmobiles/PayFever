@@ -14,6 +14,7 @@ import java.util.Objects;
  * Created by richi on 2015.11.02..
  */
 public class NetworkTransfromatorImpl implements NetworkTransformator {
+
     @Override
     public NetworkUserResponse transform(Map<String, Object> _data) {
         List<NetworkUser> networkUsers = new ArrayList<>();
@@ -21,9 +22,25 @@ public class NetworkTransfromatorImpl implements NetworkTransformator {
         List<Map<String, Object>> firstLevel = (List<Map<String, Object>>) _data.get("firstLevel");
         for (Map<String, Object> userMap : firstLevel) {
             NetworkUser networkUser = transform((NetworkParseWrapper) userMap.get("item"));
-            networkUser.setmIsFirstLevel(true);
-            if (networkUser != null)
+            if (networkUser != null) {
+                networkUser.setUserName((String) userMap.get("userName"));
+                networkUser.setmPushChannel((String) userMap.get("userName"));
+                networkUser.setmIsFirstLevel(false);
                 networkUsers.add(networkUser);
+            }
+        }
+
+        List<List<Map<String, Object>>> networkLevel = (List<List<Map<String, Object>>>) _data.get("networkLevel");
+        for (List<Map<String, Object>> networkLevelList : networkLevel) {
+            for (Map<String, Object> userMap : networkLevelList) {
+                NetworkUser networkUser = transform((NetworkParseWrapper) userMap.get("item"));
+                if (networkUser != null) {
+                    networkUser.setUserName((String) userMap.get("userName"));
+                    networkUser.setmPushChannel((String) userMap.get("userName"));
+                    networkUser.setmIsFirstLevel(false);
+                    networkUsers.add(networkUser);
+                }
+            }
         }
 
         response.setmUsers(networkUsers);
@@ -36,8 +53,6 @@ public class NetworkTransfromatorImpl implements NetworkTransformator {
         if (!_parseObject.isAccepted())
             return null;
         NetworkUser networkUser = new NetworkUser();
-        networkUser.setUserName(_parseObject.getUserName());
-        networkUser.setmPushChannel(_parseObject.getPushChannel());
         networkUser.setmPhoneNumber(_parseObject.getPhoneNumber());
         return networkUser;
     }
