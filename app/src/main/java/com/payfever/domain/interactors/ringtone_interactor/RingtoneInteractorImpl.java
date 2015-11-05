@@ -16,6 +16,11 @@ public class RingtoneInteractorImpl extends RingtoneInteractor {
 
     @Override
     protected Observable buildGetObserver() {
-        return ServiceProvider.getInstance().getRingtoneService().getRingTones();
+        return ServiceProvider.getInstance().getRingtoneService().getSortedRingTones();
+    }
+
+    @Override
+    protected Observable buildUpdateUserObserver(String _selectedFileItemId) {
+        return ServiceProvider.getInstance().getRingtoneService().updateUserProfile(_selectedFileItemId);
     }
 }

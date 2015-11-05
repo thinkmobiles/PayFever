@@ -1,16 +1,14 @@
 package com.payfever.data.services.ringtone;
 
-import android.util.Log;
-
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.payfever.data.api.ringtone_api.RingtoneApi;
 import com.payfever.data.api.ringtone_api.RingtoneApiImpl;
 import com.payfever.data.model.ringtone.Ringtone;
 import com.payfever.data.transformators.ringtones.RingtoneTranformator;
-import com.payfever.data.transformators.ringtones.RingtoneTransformatorImpl;
+import com.payfever.data.transformators.ringtones.RingToneTransformatorImpl;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -22,6 +20,7 @@ import java.util.List;
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
+import rx.functions.Func2;
 
 /**
  * Created by richi on 2015.11.02..
@@ -33,11 +32,22 @@ public class RingtoneServiceImpl implements RingtoneService {
 
     public RingtoneServiceImpl() {
         mApi = new RingtoneApiImpl();
-        mTransformator = new RingtoneTransformatorImpl();
+        mTransformator = new RingToneTransformatorImpl();
     }
 
     @Override
-    public Observable<List<Ringtone>> getRingTones() {
+    public Observable<List<Ringtone>> getSortedRingTones() {
+        return Observable.zip(getFullRingtoneList(), getSelectedItems(),
+                new Func2<List<Ringtone>, List<String>, List<Ringtone>>() {
+            @Override
+            public List<Ringtone> call(List<Ringtone> ringTones, List<String> _selectedItems) {
+                return mTransformator.checkRingTonesAndShowIfNeed(ringTones, _selectedItems);
+            }
+        });
+    }
+
+    @Override
+    public Observable<List<Ringtone>> getFullRingtoneList() {
         return getParseRingTones()
                 .map(new Func1<List<ParseObject>, List<Ringtone>>() {
                     @Override
@@ -48,12 +58,31 @@ public class RingtoneServiceImpl implements RingtoneService {
     }
 
     @Override
+    public Observable<List<String>> getSelectedItems() {
+        return Observable.create(new Observable.OnSubscribe<List<String>>() {
+            @Override
+            public void call(Subscriber<? super List<String>> subscriber) {
+                ParseUser parseUser = ParseUser.getCurrentUser();
+                try {
+                    parseUser.fetch();
+                    List<String> selectedItems = parseUser.getList("selectedFileItems");
+                    subscriber.onNext(selectedItems);
+                    subscriber.onCompleted();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    subscriber.onError(e.getCause());
+                }
+            }
+        });
+    }
+
+    @Override
     public Observable<List<ParseObject>> getParseRingTones() {
         return Observable.create(new Observable.OnSubscribe<List<ParseObject>>() {
             @Override
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
                 try {
-                    subscriber.onNext(mApi.getRingtones());
+                    subscriber.onNext(mApi.getRingTones());
                     subscriber.onCompleted();
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -85,9 +114,6 @@ public class RingtoneServiceImpl implements RingtoneService {
 
                     while ((count = input.read(data)) != -1) {
                         total += count;
-                        if (subscriber.isUnsubscribed()) {
-                            break;
-                        }
                         int progress = (int) ((total * 100) / size);
                         bufferedOutputStream.write(data, 0, count);
                         if (last != progress) {
@@ -101,6 +127,26 @@ public class RingtoneServiceImpl implements RingtoneService {
                     input.close();
                     subscriber.onCompleted();
                 } catch (Exception e) {
+                    e.printStackTrace();
+                    subscriber.onError(e.getCause());
+                }
+            }
+        });
+    }
+
+    @Override
+    public Observable<Boolean> updateUserProfile(final String _selectedItemId) {
+        return Observable.create(new Observable.OnSubscribe<Boolean>() {
+            @Override
+            public void call(Subscriber<? super Boolean> subscriber) {
+                ParseUser parseUser = ParseUser.getCurrentUser();
+                try {
+                    parseUser.fetch();
+                    parseUser.addUnique("selectedFileItems", _selectedItemId);
+                    parseUser.save();
+                    subscriber.onNext(true);
+                    subscriber.onCompleted();
+                } catch (ParseException e) {
                     e.printStackTrace();
                     subscriber.onError(e.getCause());
                 }
