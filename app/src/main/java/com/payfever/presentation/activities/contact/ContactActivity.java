@@ -14,22 +14,20 @@ import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.payfever.R;
 import com.payfever.data.model.ContactModel;
 import com.payfever.presentation.activities.NetworkExceptionActivity;
 import com.payfever.presentation.activities.main.MainActivity;
-import com.payfever.presentation.basics.BaseActivity;
 import com.payfever.presentation.controllers.LoadingProgressManager;
 import com.payfever.presentation.dialogs.AlertDialogManager;
 import com.payfever.presentation.dialogs.AlertDialogModel;
 import com.payfever.presentation.dialogs.TwoButtonDialogListener;
 import com.payfever.presentation.global.Constants;
-import com.rey.material.widget.CheckBox;
 
 import java.util.List;
 

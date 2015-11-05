@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
@@ -14,13 +13,10 @@
         android:layout_marginLeft="@dimen/contact_avatar_margin_left"
         android:layout_alignParentRight="true">
 
-        <com.rey.material.widget.CheckBox
+        <CheckBox
             android:id="@+id/chContactStatus_ICL"
             android:focusable="false"
-            app:cbd_strokeColor="@color/colorPrimary"
-            app:cbd_tickColor="@android:color/white"
-            app:cbd_animDuration="1"
-            android:layout_centerInParent="true"
+            android:button="@drawable/contact_check_selector"
             style="@style/ListItemStatus" />
 
         <TextView
