@@ -28,10 +28,7 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     private RingtonesAdapter mAdapter;
     private TextView tvEmptyList;
     private RingtonesPresenter mPresenter;
-    private ImageView ivPlayTone;
-    private TextView tvSetRingTone;
     private ProgressDialog mProgressDialog;
-    private MediaPlayer mMdiaPlayer;
 
     public static BaseFABFragment newInstance() {
         Bundle args = new Bundle();
@@ -46,6 +43,12 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_ringtones);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mPresenter.onStart();
     }
 
     @Override
@@ -84,7 +87,6 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
 
     private void initObjects() {
         mAdapter = new RingtonesAdapter();
-        mMdiaPlayer = new MediaPlayer();
     }
 
     private void initListeners() {
@@ -120,6 +122,11 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     }
 
     @Override
+    public void showServerError(Throwable e) {
+        getLoadingManager().showNetworkExceptionMessage(e);
+    }
+
+    @Override
     public void showDownloadProgress() {
         mProgressDialog = new ProgressDialog(mActivity);
         mProgressDialog.setTitle("Downloading Ringtone ...");
@@ -143,5 +150,10 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     @Override
     public void notifyData() {
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void retryRequest() {
+        mPresenter.downloadRingtones();
     }
 }

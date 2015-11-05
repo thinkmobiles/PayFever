@@ -11,6 +11,7 @@ import com.payfever.presentation.basics.BasePresenter;
 public interface RingtonesPresenter extends BasePresenter<RingtonesView> {
     void downloadRingtones();
     void setPayTone(String _url, String _name);
+    void onStart();
     void onStop();
     void playRingtone(Ringtone ringtone);
     void stopPlaying();

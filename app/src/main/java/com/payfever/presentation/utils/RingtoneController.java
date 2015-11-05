@@ -5,6 +5,7 @@ import android.content.Context;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 import com.payfever.presentation.PayFeverApplication;
 
@@ -33,6 +34,7 @@ public final class RingtoneController {
 
         try {
             RingtoneManager.setActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE, newUri);
+            Toast.makeText(context, "New ringtone - " + _name, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

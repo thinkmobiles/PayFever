@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 public interface RingtonesView extends BaseView<List<Ringtone>> {
-
+    void showServerError(Throwable e);
     void showDownloadProgress();
     void updateProgress(Integer _value);
     void dismiss();

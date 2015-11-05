@@ -63,8 +63,15 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
     }
 
     @Override
+    public void onStart() {
+        mMediaPlayer = new MediaPlayer();
+    }
+
+    @Override
     public void onStop() {
         mRingtoneInteractor.unSubscribe();
+        setPlayingAllFalse();
+        mRingtonesView.notifyData();
     }
 
     @Override
@@ -107,6 +114,7 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
         @Override
         public void onError(Throwable e) {
             Log.e("Subscriber", e.getMessage());
+            mRingtonesView.showServerError(e);
         }
 
         @Override

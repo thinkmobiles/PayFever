@@ -6,6 +6,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.payfever.data.api.ringtone_api.RingtoneApi;
 import com.payfever.data.api.ringtone_api.RingtoneApiImpl;
+import com.payfever.data.exceptions.OnSubscribeWithNetworkCheck;
 import com.payfever.data.model.ringtone.Ringtone;
 import com.payfever.data.transformators.ringtones.RingtoneTranformator;
 import com.payfever.data.transformators.ringtones.RingtoneTransformatorImpl;
@@ -49,9 +50,10 @@ public class RingtoneServiceImpl implements RingtoneService {
 
     @Override
     public Observable<List<ParseObject>> getParseRingTones() {
-        return Observable.create(new Observable.OnSubscribe<List<ParseObject>>() {
+        return Observable.create(new OnSubscribeWithNetworkCheck<List<ParseObject>>() {
             @Override
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
+                super.call(subscriber);
                 try {
                     subscriber.onNext(mApi.getRingtones());
                     subscriber.onCompleted();
@@ -65,9 +67,10 @@ public class RingtoneServiceImpl implements RingtoneService {
 
     @Override
     public Observable<Integer> downloadRingtone(final String _url, final String _filePath) {
-        return Observable.create(new Observable.OnSubscribe<Integer>() {
+        return Observable.create(new OnSubscribeWithNetworkCheck<Integer>() {
             @Override
             public void call(Subscriber<? super Integer> subscriber) {
+                super.call(subscriber);
                 int count, last = -1;
                 try {
                     URL url = new URL(_url);

@@ -3,6 +3,7 @@ package com.payfever.data.services.log_in;
 import com.parse.ParseException;
 import com.payfever.data.api.log_in.LogInApi;
 import com.payfever.data.api.log_in.LogInApiImpl;
+import com.payfever.data.exceptions.OnSubscribeWithNetworkCheck;
 import com.payfever.data.model.LogInUserModel;
 
 import rx.Observable;
@@ -21,9 +22,10 @@ public class LogInServiceImpl implements LogInService {
 
     @Override
     public Observable<LogInUserModel> logIn(final LogInUserModel _model) {
-        return Observable.create(new Observable.OnSubscribe<LogInUserModel>() {
+        return Observable.create(new OnSubscribeWithNetworkCheck<LogInUserModel>() {
             @Override
             public void call(Subscriber<? super LogInUserModel> _subscriber) {
+                super.call(_subscriber);
                 try {
                     mApi.logIn(_model);
                     _subscriber.onNext(_model);

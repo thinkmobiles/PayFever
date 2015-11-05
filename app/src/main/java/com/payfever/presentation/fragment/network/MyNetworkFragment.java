@@ -156,6 +156,11 @@ public class MyNetworkFragment extends BaseFABFragment
     }
 
     @Override
+    public void showServerError(Throwable e) {
+        getLoadingManager().showNetworkExceptionMessage(e);
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int _position, long id) {
         mPresenter.onItemClicked(_position);
     }
@@ -167,5 +172,9 @@ public class MyNetworkFragment extends BaseFABFragment
                 mPresenter.fabClicked();
                 break;
         }
+    }
+    @Override
+    public void retryRequest() {
+        mPresenter.downloadData();
     }
 }

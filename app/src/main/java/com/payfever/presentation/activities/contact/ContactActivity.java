@@ -21,8 +21,10 @@ import android.widget.Toast;
 
 import com.payfever.R;
 import com.payfever.data.model.ContactModel;
+import com.payfever.presentation.activities.NetworkExceptionActivity;
 import com.payfever.presentation.activities.main.MainActivity;
 import com.payfever.presentation.basics.BaseActivity;
+import com.payfever.presentation.controllers.LoadingProgressManager;
 import com.payfever.presentation.dialogs.AlertDialogManager;
 import com.payfever.presentation.dialogs.AlertDialogModel;
 import com.payfever.presentation.dialogs.TwoButtonDialogListener;
@@ -36,9 +38,9 @@ import java.util.List;
  * mRogach on 19.10.2015.
  */
 
-public class ContactActivity extends BaseActivity
+public class ContactActivity extends NetworkExceptionActivity
         implements View.OnClickListener, AdapterView.OnItemClickListener,
-        ContactView, CompoundButton.OnCheckedChangeListener {
+        ContactView, CompoundButton.OnCheckedChangeListener, LoadingProgressManager.RetryListener {
 
     private ListView listView;
     private TextView tvInvite;
@@ -75,6 +77,11 @@ public class ContactActivity extends BaseActivity
         mContactsPresenter.setView(this);
         mContactsPresenter.setExtra(getIntent());
         mContactsPresenter.initialize(savedInstanceState);
+    }
+
+    @Override
+    public int getNetworkExceptionLayoutId() {
+        return R.id.rlNetworkConnectionError_AC;
     }
 
     private void initToolbarController() {
@@ -120,6 +127,7 @@ public class ContactActivity extends BaseActivity
         tvSkip.setOnClickListener(this);
         tvInvite.setOnClickListener(this);
         listView.setOnItemClickListener(this);
+        getLoadingManager().setRetryListener(this);
     }
 
     @Override
@@ -155,9 +163,8 @@ public class ContactActivity extends BaseActivity
     }
 
     @Override
-    public void showServerError(String _error) {
-        Toast.makeText(this, _error, Toast.LENGTH_SHORT)
-                .show();
+    public void showServerError(Throwable e) {
+        getLoadingManager().showNetworkExceptionMessage(e);
     }
 
     @Override
@@ -291,5 +298,10 @@ public class ContactActivity extends BaseActivity
                 })
                 .setActionTextColor(setColor(android.R.color.white))
                 .show();
+    }
+
+    @Override
+    public void retryRequest() {
+        mContactsPresenter.downloadData();
     }
 }

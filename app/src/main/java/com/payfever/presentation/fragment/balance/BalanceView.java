@@ -7,7 +7,7 @@ import com.payfever.presentation.basics.BaseView;
  * Created by richi on 2015.10.27..
  */
 public interface BalanceView extends BaseView<BalanceModel> {
-    void showServerError(String _error);
+    void showServerError(Throwable e);
     void initChart();
     void initActionBar();
     void initMarker();

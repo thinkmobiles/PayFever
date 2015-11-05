@@ -3,6 +3,7 @@ package com.payfever.data.services.network;
 import com.parse.ParseException;
 import com.payfever.data.api.network_api.NetworkApi;
 import com.payfever.data.api.network_api.NetworkApiImpl;
+import com.payfever.data.exceptions.OnSubscribeWithNetworkCheck;
 import com.payfever.data.model.network.NetworkUserResponse;
 import com.payfever.data.transformators.network.NetworkTransformator;
 import com.payfever.data.transformators.network.NetworkTransfromatorImpl;
@@ -39,9 +40,10 @@ public class NetworkUserSrviceImpl implements NetworkUserService {
 
     @Override
     public Observable<Map<String, Object>> getNetworkResponse() {
-        return Observable.create(new Observable.OnSubscribe<Map<String, Object>>() {
+        return Observable.create(new OnSubscribeWithNetworkCheck<Map<String, Object>>() {
             @Override
             public void call(Subscriber<? super Map<String, Object>> subscriber) {
+                super.call(subscriber);
                 try {
                     subscriber.onNext(mApi.getNetworkStatistic());
                     subscriber.onCompleted();
