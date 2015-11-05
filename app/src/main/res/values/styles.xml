@@ -79,6 +79,7 @@
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_marginLeft">@dimen/app_linerlayout_contact_margin</item>
         <item name="android:layout_marginRight">@dimen/app_linerlayout_contact_margin</item>
+        <item name="android:layout_marginBottom">@dimen/app_linerlayout_contact_margin</item>
     </style>
 
     <style name="ContactSkipInviteTextView">

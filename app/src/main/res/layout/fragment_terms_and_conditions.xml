@@ -30,6 +30,7 @@
             android:layout_marginLeft="@dimen/terms_and_conditions_text_margin"
             android:layout_marginRight="@dimen/terms_and_conditions_text_margin"
             android:textSize="@dimen/terms_and_conditions_text_size"
+            android:textColor="@android:color/white"
             android:text="@string/terms_and_conditions_text"/>
 
         <TextView
