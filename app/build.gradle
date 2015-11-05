@@ -35,4 +35,5 @@ dependencies {
     apt "com.google.dagger:dagger-compiler:2.0.1"
     provided 'org.glassfish:javax.annotation:10.0-b28'
     compile files('libs/libphonenumber-7.1.1.jar')
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
 }

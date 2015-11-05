@@ -37,7 +37,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mHandler.postDelayed(mRunnable, DELAY);
+//        mHandler.postDelayed(mRunnable, DELAY);
     }
 
     @Override
