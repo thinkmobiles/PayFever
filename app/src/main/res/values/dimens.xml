@@ -18,6 +18,7 @@
     <dimen name="simple_margin">8dp</dimen>
     <dimen name="simple_padding">8dp</dimen>
     <dimen name="half_simple_margin">4dp</dimen>
+    <dimen name="half_simple_padding">4dp</dimen>
     <dimen name="network_contact_level_indicator">32dp</dimen>
     <dimen name="first_level_margin">40dp</dimen>
     <dimen name="network_sub_cell_text_size">12sp</dimen>
@@ -34,4 +35,5 @@
     <dimen name="custom_marker_text_size">12dp</dimen>
     <dimen name="circle_width">2dp</dimen>
     <dimen name="line_width">1dp</dimen>
+    <dimen name="logo_underline_margin">32dp</dimen>
 </resources>

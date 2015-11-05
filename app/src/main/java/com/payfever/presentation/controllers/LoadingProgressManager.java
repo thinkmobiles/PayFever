@@ -41,8 +41,8 @@ public final class LoadingProgressManager implements View.OnClickListener {
 
         mProgressBar.setVisibility(View.VISIBLE);
         mContainerView.setVisibility(View.GONE);
-        rlNetworkException.setVisibility(View.GONE);
-    }
+        if (rlNetworkException != null)
+            rlNetworkException.setVisibility(View.GONE);    }
 
     public void hideProgress() {
         if (mProgressBar == null)
@@ -50,7 +50,8 @@ public final class LoadingProgressManager implements View.OnClickListener {
 
         mProgressBar.setVisibility(View.GONE);
         mContainerView.setVisibility(View.VISIBLE);
-        rlNetworkException.setVisibility(View.GONE);
+        if (rlNetworkException != null)
+            rlNetworkException.setVisibility(View.GONE);
     }
 
     public void showNetworkExceptionMessage(Throwable e) {
