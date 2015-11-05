@@ -6,6 +6,7 @@ import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.payfever.presentation.activities.NetworkExceptionActivity;
 import com.payfever.presentation.controllers.FragmentNavigator;
 import com.payfever.presentation.controllers.LoadingProgressManager;
 import com.payfever.presentation.controllers.ToolbarController;
@@ -16,7 +17,6 @@ import com.payfever.presentation.controllers.ToolbarController;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private FragmentNavigator mFragmentNavigator;
-    private LoadingProgressManager mProgressManager;
     private ToolbarController mToolbarController;
 
     @Override
@@ -29,9 +29,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        mProgressManager = new LoadingProgressManager();
-        mProgressManager.register(this);
-
         mToolbarController = new ToolbarController();
         mToolbarController.register(this);
     }
@@ -42,10 +39,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public FragmentNavigator getFragmentNavigator() {
         return mFragmentNavigator;
-    }
-
-    public LoadingProgressManager getLoadingManager() {
-        return mProgressManager;
     }
 
     public ToolbarController getToolbarController() {

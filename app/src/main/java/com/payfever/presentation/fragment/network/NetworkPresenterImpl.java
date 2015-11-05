@@ -34,9 +34,14 @@ public class NetworkPresenterImpl implements NetworkPresenter {
     @Override
     public void onResume() {
         if (mData == null)
-            mNetworkInteractor.executeGET(new DownloadListener());
+            downloadData();
 //        mView.showFAB();
         mView.setTitle();
+    }
+
+    @Override
+    public void downloadData() {
+        mNetworkInteractor.executeGET(new DownloadListener());
     }
 
     @Override
@@ -64,7 +69,7 @@ public class NetworkPresenterImpl implements NetworkPresenter {
 
         @Override
         public void onError(Throwable e) {
-            mView.hideProgress();
+            mView.showServerError(e);
         }
 
         @Override

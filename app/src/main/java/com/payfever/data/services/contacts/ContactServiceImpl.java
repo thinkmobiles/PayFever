@@ -3,6 +3,7 @@ package com.payfever.data.services.contacts;
 import com.parse.ParseException;
 import com.payfever.data.api.contact_api.ContactApi;
 import com.payfever.data.api.contact_api.ContactApiImpl;
+import com.payfever.data.exceptions.OnSubscribeWithNetworkCheck;
 import com.payfever.data.model.ContactModel;
 import com.payfever.data.model.GetContactResponse;
 import com.payfever.data.model.response.ContactListModel;
@@ -36,9 +37,10 @@ public final class ContactServiceImpl implements ContactService {
 
     @Override
     public Observable<GetContactResponse> getContactResponse() {
-        return Observable.create(new Observable.OnSubscribe<GetContactResponse>() {
+        return Observable.create(new OnSubscribeWithNetworkCheck<GetContactResponse>() {
             @Override
             public void call(Subscriber<? super GetContactResponse> subscriber) {
+                super.call(subscriber);
                 try {
                     GetContactResponse model = mContactApi.getContactListData();
                     subscriber.onNext(model);
@@ -71,9 +73,10 @@ public final class ContactServiceImpl implements ContactService {
 
     @Override
     public Observable<ContactListModel> postContactData(final List<String> _contacts) {
-        return Observable.create(new Observable.OnSubscribe<ContactListModel>() {
+        return Observable.create(new OnSubscribeWithNetworkCheck<ContactListModel>() {
             @Override
             public void call(Subscriber<? super ContactListModel> subscriber) {
+                super.call(subscriber);
                 try {
                     ContactListModel contacts = mContactApi.postContactData(_contacts);
                     subscriber.onNext(contacts);

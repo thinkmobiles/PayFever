@@ -1,5 +1,6 @@
 package com.payfever.presentation.fragment.set_ringtones;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -8,6 +9,7 @@ import com.payfever.domain.interactors.ringtone_interactor.RingtoneInteractor;
 import com.payfever.domain.interactors.ringtone_interactor.RingtoneInteractorImpl;
 import com.payfever.presentation.utils.RingtoneController;
 
+import java.io.IOException;
 import java.util.List;
 
 import rx.Subscriber;
@@ -24,14 +26,16 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
     private List<Ringtone> mRingtones;
     private String ringtoneName = "";
     private String ringtonePath = "";
+    private MediaPlayer mMediaPlayer;
 
     public RingtonesPresenterImpl() {
         mRingtoneInteractor = new RingtoneInteractorImpl();
-        ringtonePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/download/";
     }
 
     @Override
     public void initialize(Bundle _savedInstanceState) {
+        ringtonePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/download/";
+        mMediaPlayer = new MediaPlayer();
     }
 
     @Override
@@ -53,14 +57,51 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
 
     @Override
     public void setPayTone(String _url, String _name) {
-        ringtoneName = _name + ".mp3";
+        ringtoneName = _name;
         mRingtoneInteractor.downloadRingtone(new SubscriberRingTone(), _url, ringtonePath + _name);
         mRingtonesView.showDownloadProgress();
     }
 
     @Override
+    public void onStart() {
+        mMediaPlayer = new MediaPlayer();
+    }
+
+    @Override
     public void onStop() {
         mRingtoneInteractor.unSubscribe();
+        setPlayingAllFalse();
+        mRingtonesView.notifyData();
+    }
+
+    @Override
+    public void playRingtone(Ringtone _ringtone) {
+        if (mMediaPlayer != null) {
+            if (mMediaPlayer.isPlaying() && _ringtone.isPlaying()) {
+                mMediaPlayer.stop();
+                mMediaPlayer.reset();
+                setPlayingAllFalse();
+                mRingtonesView.notifyData();
+            } else {
+                try {
+                    setPlayingAllFalse();
+                    _ringtone.setIsPlaying(true);
+                    mRingtonesView.notifyData();
+                    mMediaPlayer.reset();
+                    mMediaPlayer.setDataSource(_ringtone.getUrlToFile());
+                    mMediaPlayer.prepare();
+                    mMediaPlayer.start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        mRingtonesView.notifyData();
+    }
+
+    @Override
+    public void stopPlaying() {
+        mMediaPlayer.release();
     }
 
     private class SubscriberRingToneList extends Subscriber<List<Ringtone>> {
@@ -73,6 +114,7 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
         @Override
         public void onError(Throwable e) {
             Log.e("Subscriber", e.getMessage());
+            mRingtonesView.showServerError(e);
         }
 
         @Override
@@ -99,6 +141,12 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
             mRingtonesView.updateProgress(ringtone);
             Log.i("progress", "onNext " + ringtone);
 
+        }
+    }
+
+    private void setPlayingAllFalse() {
+        for (Ringtone ringtone : mRingtones) {
+            ringtone.setIsPlaying(false);
         }
     }
 }

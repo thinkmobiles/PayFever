@@ -4,8 +4,6 @@ import android.app.Application;
 import android.os.Handler;
 
 import com.parse.Parse;
-import com.parse.ParseObject;
-import com.payfever.data.model.network.parse.NetworkParseWrapper;
 
 /**
  * Created by richi on 2015.10.19..

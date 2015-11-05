@@ -142,6 +142,7 @@ public final class ContactPresenterImpl implements ContactPresenter {
         @Override
         public void onError(Throwable e) {
             Log.e("Subscriber", e.getMessage());
+            mContactView.showServerError(e);
         }
 
         @Override
@@ -160,7 +161,7 @@ public final class ContactPresenterImpl implements ContactPresenter {
         @Override
         public void onError(Throwable e) {
             Log.e("Subscriber", e.getMessage());
-            mContactView.showServerError(e.getMessage());
+            mContactView.showServerError(e);
         }
 
         @Override

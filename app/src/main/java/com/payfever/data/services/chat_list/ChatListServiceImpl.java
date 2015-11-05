@@ -3,6 +3,7 @@ package com.payfever.data.services.chat_list;
 import com.parse.ParseException;
 import com.payfever.data.api.chat_list_api.ChatListApi;
 import com.payfever.data.api.chat_list_api.TestChatListApiImpl;
+import com.payfever.data.exceptions.OnSubscribeWithNetworkCheck;
 import com.payfever.data.model.response.GetChatListResponse;
 
 import rx.Observable;
@@ -24,9 +25,10 @@ public final class ChatListServiceImpl implements ChatListService {
 
     @Override
     public Observable<GetChatListResponse> getChatData() {
-        return Observable.create(new Observable.OnSubscribe<GetChatListResponse>() {
+        return Observable.create(new OnSubscribeWithNetworkCheck<GetChatListResponse>() {
             @Override
             public void call(Subscriber<? super GetChatListResponse> subscriber) {
+                super.call(subscriber);
                 try {
                     GetChatListResponse data = chatListApi.getChatListData();
                     subscriber.onNext(data);

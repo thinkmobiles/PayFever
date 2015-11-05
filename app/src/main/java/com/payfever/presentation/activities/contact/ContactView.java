@@ -21,7 +21,7 @@ public interface ContactView extends BaseView<List<ContactModel>> {
     void setEmptyListView();
     void showInviteProgress();
     void hideInviteProgress();
-    void showServerError(String _error);
+    void showServerError(Throwable e);
     void startMainActivity();
     void onBack();
     void hideSkipShowBack();

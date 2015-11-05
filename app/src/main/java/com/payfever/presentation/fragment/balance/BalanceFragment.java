@@ -152,9 +152,8 @@ public class BalanceFragment extends BaseFABFragment implements BalanceView {
     }
 
     @Override
-    public void showServerError(String _error) {
-        Toast.makeText(mActivity, _error, Toast.LENGTH_SHORT)
-                .show();
+    public void showServerError(Throwable e) {
+        getLoadingManager().showNetworkExceptionMessage(e);
     }
 
 
@@ -179,4 +178,8 @@ public class BalanceFragment extends BaseFABFragment implements BalanceView {
         lcBalance.notifyDataSetChanged();
     }
 
+    @Override
+    public void retryRequest() {
+        mPresenter.downloadData();
+    }
 }
