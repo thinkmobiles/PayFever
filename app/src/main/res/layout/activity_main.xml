@@ -20,6 +20,11 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true" />
 
+        <include
+            android:id="@+id/rlNetworkConnectionError_AM"
+            layout="@layout/network_exception"
+            android:visibility="gone"/>
+
         <FrameLayout
             android:id="@+id/flContainer_AM"
             android:layout_width="match_parent"

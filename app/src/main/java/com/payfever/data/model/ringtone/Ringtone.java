@@ -9,6 +9,7 @@ public class Ringtone {
     private String mName;
     private int mRevenue;
     private boolean isAlreadyBuy;
+    private boolean isPlaying;
 
     public String getObjectId() {
         return mObjectId;
@@ -48,5 +49,13 @@ public class Ringtone {
 
     public void setIsAlreadyBuy(boolean isAlreadyBuy) {
         this.isAlreadyBuy = isAlreadyBuy;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setIsPlaying(boolean isPlaying) {
+        this.isPlaying = isPlaying;
     }
 }

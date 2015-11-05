@@ -4,6 +4,8 @@ import android.app.Application;
 import android.os.Handler;
 
 import com.parse.Parse;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
 
 /**
  * Created by richi on 2015.10.19..

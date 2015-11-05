@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.payfever.R;
 import com.payfever.data.model.ChatModel;
+import com.payfever.presentation.activities.NetworkExceptionActivity;
 import com.payfever.presentation.basics.BaseActivity;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
  * mRogach on 27.10.2015.
  */
 
-public final class ChatActivity extends BaseActivity implements ChatView, View.OnClickListener {
+public final class ChatActivity extends NetworkExceptionActivity implements ChatView, View.OnClickListener {
 
     private ListView lvChat;
     private TextView tvSendMessage;
@@ -45,6 +46,11 @@ public final class ChatActivity extends BaseActivity implements ChatView, View.O
         initToolbar();
         mChatPresenter.setView(this);
         mChatPresenter.initialize(savedInstanceState);
+    }
+
+    @Override
+    public int getNetworkExceptionLayoutId() {
+        return 0;
     }
 
     private void initToolbar() {

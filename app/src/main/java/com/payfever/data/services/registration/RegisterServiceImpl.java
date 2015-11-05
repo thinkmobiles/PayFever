@@ -4,6 +4,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.payfever.data.api.register_api.RegisterApImpl;
 import com.payfever.data.api.register_api.RegisterApi;
+import com.payfever.data.exceptions.OnSubscribeWithNetworkCheck;
 import com.payfever.data.model.UserModel;
 
 
@@ -23,10 +24,11 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public Observable<UserModel> register(final UserModel _userModel) {
-        return Observable.create(new Observable.OnSubscribe<UserModel>() {
+        return Observable.create(new OnSubscribeWithNetworkCheck<UserModel>() {
             @Override
             public void call(Subscriber<? super UserModel> subscriber) {
                 try {
+                    super.call(subscriber);
                     ParseUser user = mRegisterApi.register(_userModel);
                     _userModel.setPushChannel(user.getString("pushChannel"));
                     subscriber.onNext(_userModel);

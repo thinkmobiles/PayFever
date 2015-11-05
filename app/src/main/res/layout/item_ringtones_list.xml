@@ -24,7 +24,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_weight="1"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/ic_play" />
 
     <TextView
         android:id="@+id/tvRevenue_IRL"

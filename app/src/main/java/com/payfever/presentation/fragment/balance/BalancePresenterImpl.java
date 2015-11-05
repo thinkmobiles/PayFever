@@ -31,7 +31,8 @@ public class BalancePresenterImpl implements BalancePresenter {
         mView.initMarker();
     }
 
-    private void downloadData() {
+    @Override
+    public void downloadData() {
         mView.showProgress();
         mInteractor.executeGET(new DownloadListener());
     }
@@ -57,7 +58,7 @@ public class BalancePresenterImpl implements BalancePresenter {
 
         @Override
         public void onError(Throwable e) {
-            mView.showServerError(e.getMessage());
+            mView.showServerError(e);
         }
 
         @Override

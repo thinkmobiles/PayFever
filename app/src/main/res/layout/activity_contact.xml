@@ -18,6 +18,11 @@
             android:layout_centerInParent="true" />
 
         <include
+            android:id="@+id/rlNetworkConnectionError_AC"
+            layout="@layout/network_exception"
+            android:visibility="gone"/>
+
+        <include
             android:id="@+id/toolbar_AC"
             layout="@layout/toolbar" />
 

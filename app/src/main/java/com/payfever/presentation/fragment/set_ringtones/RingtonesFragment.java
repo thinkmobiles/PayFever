@@ -1,6 +1,7 @@
 package com.payfever.presentation.fragment.set_ringtones;
 
 import android.app.ProgressDialog;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.payfever.presentation.basics.BaseFABFragment;
 import com.payfever.presentation.fragment.chat_list.ChatListAdapter;
 import com.payfever.presentation.fragment.chat_list.ChatListPresenterImpl;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -26,8 +28,6 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     private RingtonesAdapter mAdapter;
     private TextView tvEmptyList;
     private RingtonesPresenter mPresenter;
-    private ImageView ivPlayTone;
-    private TextView tvSetRingTone;
     private ProgressDialog mProgressDialog;
 
     public static BaseFABFragment newInstance() {
@@ -46,6 +46,12 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        mPresenter.onStart();
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initPresenter();
@@ -53,6 +59,7 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
         initObjects();
         initListeners();
         getToolbarController().setTitle("Ringtone");
+        mPresenter.initialize(savedInstanceState);
     }
 
     @Override
@@ -64,6 +71,7 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     @Override
     public void onStop() {
         super.onStop();
+        mPresenter.stopPlaying();
         mPresenter.onStop();
     }
 
@@ -104,13 +112,18 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     }
 
     @Override
-    public void playRingtone(String _url) {
-
+    public void playRingtone(Ringtone _ringtone) {
+        mPresenter.playRingtone(_ringtone);
     }
 
     @Override
     public void setPayTone(String _url, String _name) {
         mPresenter.setPayTone(_url, _name);
+    }
+
+    @Override
+    public void showServerError(Throwable e) {
+        getLoadingManager().showNetworkExceptionMessage(e);
     }
 
     @Override
@@ -132,5 +145,15 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     @Override
     public void dismiss() {
         mProgressDialog.dismiss();
+    }
+
+    @Override
+    public void notifyData() {
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void retryRequest() {
+        mPresenter.downloadRingtones();
     }
 }
