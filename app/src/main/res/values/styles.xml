@@ -35,10 +35,9 @@
     <style name="ListItemStatus">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <!--<item name="android:layout_marginLeft">@dimen/contact_avatar_margin_left</item>-->
-        <!--<item name="android:layout_marginRight">@dimen/contact_avatar_margin_right</item>-->
         <item name="android:layout_centerVertical">true</item>
-        <!--<item name="android:layout_alignParentRight">true</item>-->
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
     </style>
 
     <style name="ContactCheckBoxStyle" parent="AppTheme">
@@ -83,6 +82,7 @@
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_marginLeft">@dimen/app_linerlayout_contact_margin</item>
         <item name="android:layout_marginRight">@dimen/app_linerlayout_contact_margin</item>
+        <item name="android:layout_marginBottom">@dimen/app_linerlayout_contact_margin</item>
     </style>
 
     <style name="ContactSkipInviteTextView">

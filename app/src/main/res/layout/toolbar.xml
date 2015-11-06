@@ -35,11 +35,10 @@
             android:textColor="@android:color/white"
             android:text="@string/app_contact_select_all"/>
 
-        <com.rey.material.widget.CheckBox
+        <CheckBox
             android:id="@+id/chContactStatus_T"
             android:focusable="false"
-            app:cbd_strokeColor="@android:color/white"
-            app:cbd_tickColor="@color/colorPrimary"
+            android:button="@drawable/contact_check_selector"
             style="@style/ListItemStatus"/>
     </LinearLayout>
 

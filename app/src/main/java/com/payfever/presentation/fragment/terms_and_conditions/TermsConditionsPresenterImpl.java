@@ -24,6 +24,7 @@ public final class TermsConditionsPresenterImpl implements TermsConditionsPresen
     @Override
     public void setView(TermsConditionsView _view) {
         mView = _view;
+        mView.setTitle();
     }
 
     @Override

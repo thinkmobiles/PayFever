@@ -8,11 +8,11 @@
     <color name="invite_contact_disable">#cfd0d2</color>
     <color name="skip_contact_color">#FF4B95CB</color>
     <color name="skip_contact_color_selected">#FF0C67A9</color>
-    <color name="skip_contact_color_dialog_background">#72865c</color>
-    <color name="skip_contact_color_dialog_button">#d6f7b2</color>
-    <color name="direct_sent_out_HMN">#FFBCBCBC</color>
-    <color name="pending_HMN">#FFDEDEDE</color>
-    <color name="expired_HMN">#FFF3F3F3</color>
+    <color name="skip_contact_color_dialog_background">#106bae</color>
+    <color name="skip_contact_color_dialog_button">#FF66B9F5</color>
+    <color name="direct_sent_out_HMN">#FF00A551</color>
+    <color name="pending_HMN">#FF8ECF6D</color>
+    <color name="expired_HMN">#FFDAE692</color>
     <color name="checkbox_selected">#12a342</color>
     <color name="fab_color">@color/colorPrimary</color>
     <color name="color_log_in_uncheked">#4b95cc</color>
