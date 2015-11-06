@@ -9,8 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/contact_avatar_margin_left"
-        android:layout_marginLeft="@dimen/contact_avatar_margin_left"
+        android:paddingRight="@dimen/contact_avatar_margin_left"
+        android:paddingLeft="@dimen/contact_avatar_margin_left"
         android:layout_alignParentRight="true">
 
         <CheckBox

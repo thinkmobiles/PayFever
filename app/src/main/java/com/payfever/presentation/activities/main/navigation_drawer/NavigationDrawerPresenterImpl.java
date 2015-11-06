@@ -47,19 +47,19 @@ public final class NavigationDrawerPresenterImpl implements NavigationDrawerPres
     private List<NavDrawerItem> getMenuList() {
         List<NavDrawerItem> list = new ArrayList<>();
         list.add(new NavDrawerItem.Builder()
-                .setIdResourceImage(R.drawable.ic_avatar_contact)
+                .setIdResourceImage(R.drawable.users25)
                 .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_my_network)).build());
         list.add(new NavDrawerItem.Builder()
-                .setIdResourceImage(R.drawable.ic_avatar_contact)
+                .setIdResourceImage(R.drawable.dollar185)
                 .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_balance)).build());
         list.add(new NavDrawerItem.Builder()
-                .setIdResourceImage(R.drawable.ic_avatar_contact)
+                .setIdResourceImage(R.drawable.two398)
                 .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_pay_chat)).build());
         list.add(new NavDrawerItem.Builder()
-                .setIdResourceImage(R.drawable.ic_avatar_contact)
+                .setIdResourceImage(R.drawable.question58)
                 .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_about)).build());
         list.add(new NavDrawerItem.Builder()
-                .setIdResourceImage(R.drawable.ic_avatar_contact)
+                .setIdResourceImage(R.drawable.speaker32)
                 .setTitle(PayFeverApplication.getApplication().getResources().getString(R.string.drawer_item_pay_tone)).build());
         return list;
     }

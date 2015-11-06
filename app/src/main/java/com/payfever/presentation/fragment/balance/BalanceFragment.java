@@ -29,7 +29,7 @@ public class BalanceFragment extends BaseFABFragment implements BalanceView {
 
     private BalancePresenter mPresenter;
 
-    private int mPrimaryColor, mSecondaryColor;
+    private int /*mPrimaryColor,*/ mSecondaryColor;
     private float mLineWidth, mCircleWidth;
 
     protected String[] mMonths = new String[] {
@@ -37,7 +37,7 @@ public class BalanceFragment extends BaseFABFragment implements BalanceView {
     };
 
     protected int[] mValues = new int[] {
-            0,      10,     30,    50,    60,    65,   70,    78,    80,    83,    85,    86
+            0,      100,     300,    500,    600,    650,   700,    780,    800,    830,    850,  860
     };
 
     public static BaseFABFragment newInstance() {
@@ -70,8 +70,8 @@ public class BalanceFragment extends BaseFABFragment implements BalanceView {
     }
 
     private void initColors() {
-        mPrimaryColor = mActivity.getResources().getColor(R.color.colorPrimary);
-        mSecondaryColor = mActivity.getResources().getColor(R.color.diagram_fill_color);
+//        mPrimaryColor = mActivity.getResources().getColor(R.color.colorPrimary);
+        mSecondaryColor = mActivity.getResources().getColor(R.color.color_log_in_checked);
     }
 
     private void initSize() {
@@ -115,22 +115,22 @@ public class BalanceFragment extends BaseFABFragment implements BalanceView {
         lcBalance.setLogEnabled(true);
         lcBalance.setDescription("");
         lcBalance.getAxisLeft().removeAllLimitLines();
-        lcBalance.getAxisLeft().setAxisMaxValue(100f);
+        lcBalance.getAxisLeft().setAxisMaxValue(1200f);
         lcBalance.getAxisLeft().setAxisMinValue(-10f);
         lcBalance.getAxisLeft().setStartAtZero(true);
         lcBalance.getAxisRight().setEnabled(false);
-        lcBalance.getAxisLeft().setDrawGridLines(false);
+//        lcBalance.getAxisLeft().setDrawGridLines(false);
         lcBalance.getAxisLeft().setAxisLineWidth(mLineWidth);
-        lcBalance.getAxisLeft().setAxisLineColor(mPrimaryColor);
-        lcBalance.getAxisLeft().setTextColor(mPrimaryColor);
+//        lcBalance.getAxisLeft().setAxisLineColor(mPrimaryColor);
+//        lcBalance.getAxisLeft().setTextColor(mPrimaryColor);
         lcBalance.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        lcBalance.getXAxis().setDrawGridLines(false);
+//        lcBalance.getXAxis().setDrawGridLines(false);
         lcBalance.getXAxis().setAxisLineWidth(mLineWidth);
         lcBalance.getXAxis().setSpaceBetweenLabels(0);
-        lcBalance.getXAxis().setAxisLineColor(mPrimaryColor);
-        lcBalance.getXAxis().setTextColor(mPrimaryColor);
+//        lcBalance.getXAxis().setAxisLineColor(mPrimaryColor);
+//        lcBalance.getXAxis().setTextColor(mPrimaryColor);
         lcBalance.getLegend().setForm(Legend.LegendForm.LINE);
-        lcBalance.getLegend().setTextColor(mPrimaryColor);
+//        lcBalance.getLegend().setTextColor(mPrimaryColor);
         lcBalance.setMarkerView(mMarkerView);
     }
 
@@ -163,17 +163,18 @@ public class BalanceFragment extends BaseFABFragment implements BalanceView {
         for (int i = 0; i < mValues.length; i++) {
             yVals.add(new Entry(mValues[i], i));
         }
-        set1.setColor(mPrimaryColor);
-        set1.setCircleColor(mPrimaryColor);
-        set1.setValueTextColor(mPrimaryColor);
-        set1.setFillColor(mPrimaryColor);
+        set1.setColor(mSecondaryColor);
+//        set1.setCircleColor(mPrimaryColor);
+//        set1.setValueTextColor(mPrimaryColor);
+//        set1.setFillColor(mPrimaryColor);
         set1.setLineWidth(mLineWidth);
         set1.setDrawCubic(true);
         set1.setDrawValues(false);
-        set1.setDrawFilled(true);
-        set1.setCircleSize(mCircleWidth);
+        set1.setDrawCircles(false);
+//        set1.setDrawFilled(true);
+//        set1.setCircleSize(mCircleWidth);
         LineData data = new LineData(mMonths, set1);
-        data.setValueTextColor(mPrimaryColor);
+//        data.setValueTextColor(mPrimaryColor);
         lcBalance.setData(data);
         lcBalance.notifyDataSetChanged();
     }

@@ -3,6 +3,7 @@ package com.payfever.presentation.activities.main;
 
 import android.view.View;
 
+import com.payfever.presentation.basics.BaseFragment;
 import com.payfever.presentation.basics.BaseView;
 
 /**
@@ -18,4 +19,6 @@ public interface MainView extends BaseView<String> {
     void hideFAB();
     void setNavigationDrawerMenu();
     void onMenuItemSelected(View view, int position);
+    BaseFragment getCurrentFragment();
+    void closeMenu();
 }

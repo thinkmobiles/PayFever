@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/simple_padding"
+    android:paddingBottom="@dimen/simple_padding"
     android:orientation="horizontal">
 
     <TextView
@@ -14,6 +16,9 @@
         android:layout_marginRight="5dp"
         android:layout_weight="1"
         tools:text="Ringtone text"
+        android:textSize="@dimen/ringtone_text_size"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:textColor="@android:color/black"/>
 
     <ImageView
@@ -24,7 +29,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_play" />
+        android:src="@drawable/play_arrow_black_192x192" />
 
     <TextView
         android:id="@+id/tvRevenue_IRL"
@@ -34,7 +39,10 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_weight="1"
+        android:singleLine="true"
+        android:ellipsize="end"
         tools:text="$ ##,##"
+        android:textSize="@dimen/ringtone_text_size"
         android:textColor="@android:color/black"/>
 
     <TextView
@@ -44,6 +52,9 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="@dimen/ringtone_text_size"
         android:layout_weight="1"
         android:text="Set PayTone"
         android:textColor="@android:color/black"/>

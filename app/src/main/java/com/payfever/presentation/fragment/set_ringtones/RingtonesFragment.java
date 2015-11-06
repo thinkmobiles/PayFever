@@ -1,22 +1,15 @@
 package com.payfever.presentation.fragment.set_ringtones;
 
 import android.app.ProgressDialog;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.payfever.R;
 import com.payfever.data.model.ringtone.Ringtone;
 import com.payfever.presentation.basics.BaseFABFragment;
-import com.payfever.presentation.fragment.chat_list.ChatListAdapter;
-import com.payfever.presentation.fragment.chat_list.ChatListPresenterImpl;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -25,7 +18,7 @@ import java.util.List;
 public class RingtonesFragment extends BaseFABFragment implements RingtonesView, OnPayToneItemListener {
 
     private ListView lvRingtones;
-    private RingtonesAdapter mAdapter;
+    private RingTonesAdapter mAdapter;
     private TextView tvEmptyList;
     private RingtonesPresenter mPresenter;
     private ProgressDialog mProgressDialog;
@@ -86,7 +79,7 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     }
 
     private void initObjects() {
-        mAdapter = new RingtonesAdapter();
+        mAdapter = new RingTonesAdapter();
     }
 
     private void initListeners() {
@@ -117,8 +110,8 @@ public class RingtonesFragment extends BaseFABFragment implements RingtonesView,
     }
 
     @Override
-    public void setPayTone(String _url, String _name) {
-        mPresenter.setPayTone(_url, _name);
+    public void setPayTone(Ringtone _ringtone) {
+        mPresenter.setPayTone(_ringtone);
     }
 
     @Override

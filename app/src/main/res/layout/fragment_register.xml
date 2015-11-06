@@ -21,6 +21,8 @@
             android:textColor="@color/white"
             android:text="PayFever"/>
 
+        <View style="@style/LogoUnderline"/>
+
         <android.support.design.widget.TextInputLayout
             style="@style/TextInputLayoutPreReg"
             android:layout_marginTop="@dimen/register_top_margin">

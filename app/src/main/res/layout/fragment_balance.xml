@@ -14,17 +14,23 @@
             android:id="@+id/tvBalance_FB"
             style="@style/BalanceIndicator"
             android:text="Balance"
-            tools:text="Balance: 1560$"/>
+            tools:text="Balance: 1560$" />
 
-        <View style="@style/DividerBalance"/>
+        <!--<View style="@style/DividerBalance"/>-->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="2dp" />
 
         <TextView
             android:id="@+id/tvAverage_FB"
             style="@style/BalanceIndicator"
             android:text="Average"
-            tools:text="Average: 1560$"/>
+            tools:text="Average: 1560$" />
 
-        <View style="@style/DividerBalance"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="2dp" />
 
     </LinearLayout>
 

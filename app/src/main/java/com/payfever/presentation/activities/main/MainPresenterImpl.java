@@ -3,6 +3,12 @@ package com.payfever.presentation.activities.main;
 import android.os.Bundle;
 import android.view.View;
 
+import com.payfever.presentation.fragment.about.AboutUsFragment;
+import com.payfever.presentation.fragment.balance.BalanceFragment;
+import com.payfever.presentation.fragment.chat_list.ChatListFragment;
+import com.payfever.presentation.fragment.network.MyNetworkFragment;
+import com.payfever.presentation.fragment.set_ringtones.RingtonesFragment;
+
 /**
  * Created by richi on 2015.10.19..
  */
@@ -12,27 +18,42 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void showNetWorkFragment() {
-        mMainView.showNetWorkFragment();
+        if (mMainView.getCurrentFragment() instanceof MyNetworkFragment)
+            mMainView.closeMenu();
+        else
+            mMainView.showNetWorkFragment();
     }
 
     @Override
     public void showBalanceFragment() {
-        mMainView.showBalanceFragment();
+        if (mMainView.getCurrentFragment() instanceof BalanceFragment)
+            mMainView.closeMenu();
+        else
+            mMainView.showBalanceFragment();
     }
 
     @Override
     public void showChatFragment() {
-        mMainView.showChatFragment();
+        if (mMainView.getCurrentFragment() instanceof ChatListFragment)
+            mMainView.closeMenu();
+        else
+            mMainView.showChatFragment();
     }
 
     @Override
     public void showAboutFragment() {
-        mMainView.showAboutFragment();
+        if (mMainView.getCurrentFragment() instanceof AboutUsFragment)
+            mMainView.closeMenu();
+        else
+            mMainView.showAboutFragment();
     }
 
     @Override
     public void showSetRingtoneFragment() {
-        mMainView.showSetRingtoneFragment();
+        if (mMainView.getCurrentFragment() instanceof RingtonesFragment)
+            mMainView.closeMenu();
+        else
+            mMainView.showSetRingtoneFragment();
     }
 
     @Override

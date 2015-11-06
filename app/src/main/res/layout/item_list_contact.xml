@@ -8,8 +8,7 @@
         android:id="@+id/ivContactAvatar_ILC"
         style="@style/ListItemContactAvatar"
         android:contentDescription="@string/contact_avatar"
-        android:src="@drawable/ic_avatar_contact"
-        />
+        android:src="@drawable/ic_avatar_contact" />
 
     <LinearLayout
         android:layout_width="wrap_content"

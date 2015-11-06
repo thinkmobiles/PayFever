@@ -18,27 +18,27 @@ import java.util.List;
  * mRogach on 03.11.2015.
  */
 
-public final class RingtonesAdapter extends BaseAdapter implements View.OnClickListener {
+public final class RingTonesAdapter extends BaseAdapter implements View.OnClickListener {
 
-    private List<Ringtone> mRingtones;
+    private List<Ringtone> mRingTones;
     private OnPayToneItemListener listener;
 
     public void setOnPayToneItemListener(final OnPayToneItemListener _listener) {
         this.listener = _listener;
     }
 
-    public void setRingtones(final List<Ringtone> _ringtones) {
-        this.mRingtones = _ringtones;
+    public void setRingtones(final List<Ringtone> _ringTones) {
+        this.mRingTones = _ringTones;
     }
 
     @Override
     public int getCount() {
-        return mRingtones.size();
+        return mRingTones.size();
     }
 
     @Override
     public Ringtone getItem(int position) {
-        return mRingtones.get(position);
+        return mRingTones.get(position);
     }
 
     @Override
@@ -68,11 +68,11 @@ public final class RingtonesAdapter extends BaseAdapter implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ivPlayRingtone_IRL:
-                listener.playRingtone(mRingtones.get((Integer) v.getTag()));
-            break;
+                listener.playRingtone(mRingTones.get((Integer) v.getTag()));
+                break;
             case R.id.tvSetPayTone_IRL:
-                Ringtone ringtone = mRingtones.get((Integer) v.getTag());
-                listener.setPayTone(ringtone.getUrlToFile(), ringtone.getName());
+                Ringtone ringtone = mRingTones.get((Integer) v.getTag());
+                listener.setPayTone(ringtone);
                 break;
         }
     }
@@ -97,11 +97,11 @@ public final class RingtonesAdapter extends BaseAdapter implements View.OnClickL
     }
 
     private void updateView(final ViewHolder _viewHolder, final int _position) {
-        _viewHolder.tvRingtoneTitle.setText(mRingtones.get(_position).getName());
-        _viewHolder.tvRevenue.setText(String.valueOf(mRingtones.get(_position).getRevenue()));
-        if (mRingtones.get(_position).isPlaying()) {
-            _viewHolder.ivPlayRingtone.setImageResource(R.drawable.ic_pause);
+        _viewHolder.tvRingtoneTitle.setText(mRingTones.get(_position).getName());
+        _viewHolder.tvRevenue.setText(String.valueOf(mRingTones.get(_position).getRevenue()));
+        if (mRingTones.get(_position).isPlaying()) {
+            _viewHolder.ivPlayRingtone.setImageResource(R.drawable.pause_white_192x192);
         } else
-            _viewHolder.ivPlayRingtone.setImageResource(R.drawable.ic_play);
+            _viewHolder.ivPlayRingtone.setImageResource(R.drawable.play_arrow_black_192x192);
     }
 }

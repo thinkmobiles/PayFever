@@ -12,5 +12,5 @@ import com.payfever.data.model.ringtone.Ringtone;
 public interface OnPayToneItemListener {
 
     void playRingtone(Ringtone _model);
-    void setPayTone(String _url, String _name);
+    void setPayTone(Ringtone _model);
 }

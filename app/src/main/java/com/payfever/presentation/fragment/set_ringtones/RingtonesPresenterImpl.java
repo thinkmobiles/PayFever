@@ -12,6 +12,8 @@ import com.payfever.presentation.utils.RingtoneController;
 import java.io.IOException;
 import java.util.List;
 
+import rx.Observable;
+import rx.Observer;
 import rx.Subscriber;
 
 /**
@@ -27,6 +29,7 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
     private String ringtoneName = "";
     private String ringtonePath = "";
     private MediaPlayer mMediaPlayer;
+    private Ringtone mRingtone;
 
     public RingtonesPresenterImpl() {
         mRingtoneInteractor = new RingtoneInteractorImpl();
@@ -56,9 +59,12 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
     }
 
     @Override
-    public void setPayTone(String _url, String _name) {
-        ringtoneName = _name;
-        mRingtoneInteractor.downloadRingtone(new SubscriberRingTone(), _url, ringtonePath + _name);
+    public void setPayTone(Ringtone _ringtone) {
+        mRingtone = _ringtone;
+        ringtoneName = _ringtone.getName();
+        mRingtoneInteractor.downloadRingtone(new SubscriberRingTone(),
+                _ringtone.getUrlToFile(),
+                ringtonePath + _ringtone.getName());
         mRingtonesView.showDownloadProgress();
     }
 
@@ -127,6 +133,10 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
         @Override
         public void onCompleted() {
             RingtoneController.setRingtone(ringtonePath, ringtoneName);
+            mRingtoneInteractor.updateUserProfile(new SubscriberRIngtoneSetted(),
+                    mRingtone.getObjectId());
+            mRingtones.remove(mRingtone);
+            mRingtonesView.notifyData();
             mRingtonesView.dismiss();
         }
 
@@ -140,6 +150,23 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
         public void onNext(Integer ringtone) {
             mRingtonesView.updateProgress(ringtone);
             Log.i("progress", "onNext " + ringtone);
+
+        }
+    }
+
+    private class SubscriberRIngtoneSetted implements Observer<Boolean> {
+        @Override
+        public void onCompleted() {
+
+        }
+
+        @Override
+        public void onError(Throwable e) {
+
+        }
+
+        @Override
+        public void onNext(Boolean aBoolean) {
 
         }
     }

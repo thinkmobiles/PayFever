@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.View;
 
 import com.parse.ParseUser;
 import com.payfever.R;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerListener;
 import com.payfever.presentation.activities.main.navigation_drawer.FragmentDrawerMenu;
+import com.payfever.presentation.basics.BaseFragment;
 import com.payfever.presentation.basics.FABActivity;
 import com.payfever.presentation.fragment.about.AboutUsFragment;
 import com.payfever.presentation.fragment.balance.BalanceFragment;
@@ -121,6 +123,16 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     }
 
     @Override
+    public BaseFragment getCurrentFragment() {
+        return getFragmentNavigator().getTopFragment();
+    }
+
+    @Override
+    public void closeMenu() {
+        drawerFragment.getDrawerLayout().closeDrawer(Gravity.LEFT);
+    }
+
+    @Override
     public int getToolbarId() {
         return R.id.toolbar_AM;
     }
@@ -153,19 +165,19 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     private void displayView(int position) {
         switch (position) {
             case 0:
-                showNetWorkFragment();
+                mMainPresenter.showNetWorkFragment();
                 break;
             case 1:
-                showBalanceFragment();
+                mMainPresenter.showBalanceFragment();
                 break;
             case 2:
-                showChatFragment();
+                mMainPresenter.showChatFragment();
                 break;
             case 3:
-                showAboutFragment();
+                mMainPresenter.showAboutFragment();
                 break;
             case 4:
-                showSetRingtoneFragment();
+                mMainPresenter.showSetRingtoneFragment();
                 break;
             default:
                 break;

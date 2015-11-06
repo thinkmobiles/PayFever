@@ -113,4 +113,8 @@ public final class FragmentDrawerMenu extends BaseFragment
         mAdapter.setMenuItems(_items);
         mListView.setAdapter(mAdapter);
     }
+
+    public DrawerLayout getDrawerLayout() {
+        return mDrawerLayout;
+    }
 }

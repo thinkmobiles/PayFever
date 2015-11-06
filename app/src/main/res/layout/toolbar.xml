@@ -33,13 +33,15 @@
             android:layout_gravity="center_vertical"
             android:textSize="@dimen/contact_select_all_text_size"
             android:textColor="@android:color/white"
-            android:text="@string/app_contact_select_all"/>
+            android:text="@string/app_contact_select_all"
+            android:layout_marginRight="@dimen/half_simple_margin"/>
 
         <CheckBox
             android:id="@+id/chContactStatus_T"
             android:focusable="false"
             android:button="@drawable/contact_check_selector"
             style="@style/ListItemStatus"/>
+
     </LinearLayout>
 
 
