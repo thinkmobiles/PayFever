@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.payfever.presentation.activities.NetworkExceptionActivity;
 import com.payfever.presentation.controllers.FABController;
 import com.payfever.presentation.controllers.FragmentNavigator;
 import com.payfever.presentation.controllers.LoadingProgressManager;
@@ -17,7 +18,7 @@ import com.payfever.presentation.controllers.ToolbarController;
 /**
  * Created by richi on 2015.10.15..
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements LoadingProgressManager.RetryListener {
 
     private int mLayoutRes = -1;
     private View mRootView;
@@ -27,7 +28,7 @@ public abstract class BaseFragment extends Fragment {
     private ToolbarController mToolbarController;
     private FABController mFabController;
 
-    protected BaseActivity mActivity;
+    protected NetworkExceptionActivity mActivity;
 
     @Nullable
     @Override
@@ -42,10 +43,15 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mActivity = (BaseActivity) getActivity();
+        mActivity = (NetworkExceptionActivity) getActivity();
         mFragmentNavigator = mActivity.getFragmentNavigator();
         mLoadingManager = mActivity.getLoadingManager();
         mToolbarController = mActivity.getToolbarController();
+        setListeners();
+    }
+
+    private void setListeners() {
+        mLoadingManager.setRetryListener(this);
     }
 
     protected FragmentNavigator getFargmentNavigator() {
@@ -67,5 +73,9 @@ public abstract class BaseFragment extends Fragment {
 
     protected void setContentView(@LayoutRes int _resLayout) {
         mLayoutRes = _resLayout;
+    }
+
+    @Override
+    public void retryRequest() {
     }
 }

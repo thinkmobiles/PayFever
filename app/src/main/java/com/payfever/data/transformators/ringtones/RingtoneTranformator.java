@@ -10,4 +10,5 @@ import java.util.List;
  * Created by richi on 2015.11.02..
  */
 public interface RingtoneTranformator extends BaseTransformation<List<Ringtone>, List<ParseObject>> {
+    List<Ringtone> checkRingTonesAndShowIfNeed(List<Ringtone> _ringtone, List<String> _id);
 }

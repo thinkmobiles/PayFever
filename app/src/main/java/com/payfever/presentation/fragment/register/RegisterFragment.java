@@ -85,6 +85,12 @@ public class RegisterFragment extends BaseFragment
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.onResume();
+    }
+
+    @Override
     public void onPause() {
         mPresenter.onPause();
         super.onPause();
@@ -107,7 +113,7 @@ public class RegisterFragment extends BaseFragment
 
     @Override
     public void initActionBar() {
-        getToolbarController().setTitle(getString(R.string.register_FR));
+        getToolbarController().setTitleCenter(getString(R.string.register_FR));
         getToolbarController().hideBackBtn(mActivity);
     }
 

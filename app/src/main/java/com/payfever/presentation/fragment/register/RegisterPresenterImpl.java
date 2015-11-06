@@ -28,6 +28,10 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     @Override
     public void initialize(Bundle _savedInstanceState) {
         mInteractor = new RegisterInteractor(PayFeverApplication.getApplication().getBackgroundHandler());
+    }
+
+    @Override
+    public void onResume() {
         mView.initActionBar();
     }
 
@@ -40,6 +44,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     @Override
     public void setView(RegisterView _view) {
         mView = _view;
+
     }
 
     @Override

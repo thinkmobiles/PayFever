@@ -9,4 +9,5 @@ public interface NetworkPresenter extends BasePresenter<NetworkView> {
     void onItemClicked(int _position);
     void fabClicked();
     void onResume();
+    void downloadData();
 }

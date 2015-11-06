@@ -73,13 +73,9 @@ public class NetworkAdapter extends BaseAdapter {
 
         loadAvatar("test url", viewHolder.ivAvatar);
 
-        if (user.getUserName() != null)
-            viewHolder.tvName.setText(user.getUserName());
-
-        if (user.ismIsFirstLevel())
-            viewHolder.tvLevelIndicator.setText(mFirstLevel);
-        else
-            viewHolder.tvLevelIndicator.setText("");
+        viewHolder.tvName.setText(user.getUserName() != null ? user.getUserName() : "");
+        viewHolder.tvPhoneNumber.setText(user.getmPhoneNumber() != null ? user.getmPhoneNumber() : "");
+        viewHolder.tvLevelIndicator.setText(user.ismIsFirstLevel() ? mFirstLevel : "");
 
         return convertView;
     }

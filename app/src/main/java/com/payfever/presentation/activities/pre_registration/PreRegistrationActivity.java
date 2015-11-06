@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.payfever.R;
+import com.payfever.presentation.activities.NetworkExceptionActivity;
 import com.payfever.presentation.basics.BaseActivity;
 import com.payfever.presentation.fragment.register.RegisterFragment;
 
 /**
  * Created by richi on 2015.10.20..
  */
-public class PreRegistrationActivity extends BaseActivity implements PreRegistrationView {
+public class PreRegistrationActivity extends NetworkExceptionActivity implements PreRegistrationView {
 
     private PreRegistrationPresenter mPresenter;
 
@@ -21,6 +22,11 @@ public class PreRegistrationActivity extends BaseActivity implements PreRegistra
         getLoadingManager().hideProgress();
         initPresenter();
         mPresenter.initialize(savedInstanceState);
+    }
+
+    @Override
+    public int getNetworkExceptionLayoutId() {
+        return 0;
     }
 
     private void initPresenter() {

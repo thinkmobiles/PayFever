@@ -136,6 +136,11 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     }
 
     @Override
+    public int getNetworkExceptionLayoutId() {
+        return R.id.rlNetworkConnectionError_AM;
+    }
+
+    @Override
     public int getFabId() {
         return R.id.fab_AM;
     }

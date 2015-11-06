@@ -13,7 +13,7 @@ import java.util.List;
 public class RingtoneApiImpl implements RingtoneApi {
 
     @Override
-    public List<ParseObject> getRingtones() throws ParseException {
+    public List<ParseObject> getRingTones() throws ParseException {
         ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("FileContainer");
         List<ParseObject> ringTones = parseQuery.find();
         return ringTones;
