@@ -36,4 +36,5 @@
     <dimen name="circle_width">2dp</dimen>
     <dimen name="line_width">1dp</dimen>
     <dimen name="logo_underline_margin">32dp</dimen>
+    <dimen name="action_bar_title_size">22sp</dimen>
 </resources>

@@ -9,4 +9,5 @@ import com.payfever.presentation.basics.BasePresenter;
 public interface RegisterPresenter extends BasePresenter<RegisterView> {
     void registerUser(UserModel _user);
     void logIn();
+    void onResume();
 }

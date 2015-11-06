@@ -145,6 +145,10 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
     }
 
     private void setPlayingAllFalse() {
+        if (mRingtones == null)
+            return;
+
+
         for (Ringtone ringtone : mRingtones) {
             ringtone.setIsPlaying(false);
         }

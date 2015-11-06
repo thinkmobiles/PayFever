@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#e33935</color>
     <color name="colorPrimaryDark">#c52828</color>
-    <color name="colorAccent">#ffff</color>
+    <color name="colorAccent">#e46461</color>
     <color name="invite_contact_color">@color/colorPrimary</color>
     <color name="invite_contact_color_selected">@color/colorPrimaryDark</color>
     <color name="invite_contact_disable">#cfd0d2</color>
@@ -18,4 +18,5 @@
     <color name="color_log_in_uncheked">#4b95cc</color>
     <color name="color_log_in_checked">#1d73b3</color>
     <color name="diagram_fill_color">#c47371</color>
+    <color name="white">#ffffff</color>
 </resources>

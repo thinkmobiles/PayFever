@@ -18,41 +18,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/white"
             android:text="PayFever" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="@dimen/logo_underline_margin"
-            android:background="@color/colorAccent"/>
+        <View style="@style/LogoUnderline"/>
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
+            style="@style/TextInputLayoutPreReg"
             android:layout_marginTop="@dimen/register_top_margin">
 
             <EditText
                 android:id="@+id/etUserName_FLI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
+                style="@style/EditTextPreReg"
                 android:hint="@string/user_name_FR"/>
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent">
+            style="@style/TextInputLayoutPreReg">
 
             <EditText
                 android:id="@+id/etPassword_FLI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/EditTextPreReg"
                 android:singleLine="true"
                 android:inputType="textPassword"
                 android:hint="@string/password_FR"/>

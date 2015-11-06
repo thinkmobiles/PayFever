@@ -88,7 +88,7 @@ public class LogInFragment extends BaseFragment
 
     @Override
     public void initActionBar() {
-        getToolbarController().setTitle(mActivity.getString(R.string.log_in_title_FLI));
+        getToolbarController().setTitleCenter(mActivity.getString(R.string.log_in_title_FLI));
         getToolbarController().showBackButton(mActivity);
     }
 

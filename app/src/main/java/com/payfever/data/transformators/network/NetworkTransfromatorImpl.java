@@ -25,7 +25,7 @@ public class NetworkTransfromatorImpl implements NetworkTransformator {
             if (networkUser != null) {
                 networkUser.setUserName((String) userMap.get("userName"));
                 networkUser.setmPushChannel((String) userMap.get("userName"));
-                networkUser.setmIsFirstLevel(false);
+                networkUser.setmIsFirstLevel(true);
                 networkUsers.add(networkUser);
             }
         }
