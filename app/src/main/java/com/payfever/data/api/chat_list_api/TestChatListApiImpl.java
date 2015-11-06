@@ -17,7 +17,7 @@ public class TestChatListApiImpl implements ChatListApi {
     @Override
     public GetChatListResponse getChatListData() throws ParseException {
         try {
-            Thread.currentThread().sleep(3000);
+            Thread.currentThread().sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -34,8 +34,8 @@ public class TestChatListApiImpl implements ChatListApi {
         List<ChatListModel> list = new ArrayList<>();
         for (int i = 0; i < 40; i++) {
             ChatListModel chatListModel = new ChatListModel();
-            chatListModel.setUserName("Name: " + i);
-            chatListModel.setDecription("Decription: " + i);
+            chatListModel.setUserName("Linda Corel");
+            chatListModel.setDecription("It is actually pritty good! My special project");
             chatListModel.setPushChannel("push channel: " + i);
             list.add(chatListModel);
         }

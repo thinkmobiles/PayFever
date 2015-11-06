@@ -118,6 +118,11 @@ public class MainActivity extends FABActivity implements MainView, FragmentDrawe
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     public void onMenuItemSelected(View view, int position) {
         displayView(position);
     }

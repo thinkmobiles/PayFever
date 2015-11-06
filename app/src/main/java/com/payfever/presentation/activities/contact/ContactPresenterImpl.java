@@ -2,6 +2,7 @@ package com.payfever.presentation.activities.contact;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 
 import com.payfever.data.model.ContactModel;
@@ -10,6 +11,7 @@ import com.payfever.data.model.response.ContactListModel;
 import com.payfever.domain.basics.BasePostGetInteractor;
 import com.payfever.domain.interactors.contactInteractor.ContactInteractorImpl;
 import com.payfever.presentation.PayFeverApplication;
+import com.payfever.presentation.dialogs.AlertDialogManager;
 import com.payfever.presentation.global.Constants;
 
 import java.util.ArrayList;
@@ -28,12 +30,14 @@ public final class ContactPresenterImpl implements ContactPresenter {
     private BasePostGetInteractor<List<String>> contactInteractor;
     private List<ContactModel> contactList;
     private List<ContactModel> contactListToInvite;
-    private ContactListModel contactListModel;
+    private ContactListModel mContactListModel;
+    private SmsManager mSmsManager;
     private boolean mIsFromNetwork;
 
     public ContactPresenterImpl() {
         contactInteractor = new ContactInteractorImpl(PayFeverApplication.getApplication().getBackgroundHandler());
         contactListToInvite = new ArrayList<>();
+        mSmsManager = SmsManager.getDefault();
     }
 
     @Override
@@ -155,7 +159,8 @@ public final class ContactPresenterImpl implements ContactPresenter {
         @Override
         public void onCompleted() {
             mContactView.hideInviteProgress();
-            startNetworkMainActivity();
+
+            mContactView.showSendSmsDialog();
         }
 
         @Override
@@ -166,8 +171,24 @@ public final class ContactPresenterImpl implements ContactPresenter {
 
         @Override
         public void onNext(ContactListModel contactModels) {
-            contactListModel = contactModels;
+            mContactListModel = contactModels;
         }
+    }
+
+    @Override
+    public void sendSMSToUsers() {
+        if (mContactListModel == null) {
+            startNetworkMainActivity();
+            return;
+        }
+
+        List<String> successNumbers = mContactListModel.getSuccessContacts();
+        for (String _number : successNumbers) {
+            mSmsManager.sendTextMessage(_number, null, "Check out PayFever for your smartphone!", null, null);
+        }
+
+        mContactView.result(successNumbers.size());
+        startNetworkMainActivity();
     }
 
     private void checkValidateList() {

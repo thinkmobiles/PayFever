@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 public interface ContactPresenter extends BasePresenter<ContactView> {
-
+    void sendSMSToUsers();
     void invite();
     void skip();
     void selectAll(final boolean _checked);

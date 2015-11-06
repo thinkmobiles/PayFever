@@ -27,6 +27,10 @@ public class Statistic {
         return String.valueOf(mSentOut);
     }
 
+    public int getSentOut() {
+        return mSentOut;
+    }
+
     public void setmSentOut(int mSentOut) {
         this.mSentOut = mSentOut;
     }

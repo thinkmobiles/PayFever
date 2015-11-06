@@ -60,7 +60,9 @@ public final class LoadingProgressManager implements View.OnClickListener {
             mContainerView.setVisibility(View.GONE);
             mProgressBar.setVisibility(View.GONE);
         } else {
-            Toast.makeText(PayFeverApplication.getApplication(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            String error = e.getMessage() == null || e.getMessage().length() == 0
+                    ? "Something went wrong!" : e.getMessage();
+            Toast.makeText(PayFeverApplication.getApplication(), error, Toast.LENGTH_SHORT).show();
         }
     }
 

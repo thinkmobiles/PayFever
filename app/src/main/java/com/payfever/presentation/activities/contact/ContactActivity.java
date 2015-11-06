@@ -1,8 +1,10 @@
 package com.payfever.presentation.activities.contact;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -94,6 +96,13 @@ public class ContactActivity extends NetworkExceptionActivity
         setSupportActionBar(getToolbarController().getToolbar());
         getToolbarController().showBackButton(this);
         tvSkip.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void result(int _successUser) {
+        Intent intent = new Intent();
+        intent.putExtra(Constants.EXTRA_INTEGER, _successUser);
+        setResult(Activity.RESULT_OK, intent);
     }
 
     @Override
@@ -200,12 +209,34 @@ public class ContactActivity extends NetworkExceptionActivity
 
         AlertDialogManager.showAlertDialog(this, model, new TwoButtonDialogListener() {
             @Override
-            public void secondButtonClick() {
+            public void secondButtonClick(DialogInterface dialog) {
                 startMainActivity();
             }
 
             @Override
-            public void oneButtonClick() {
+            public void oneButtonClick(DialogInterface dialog) {
+            }
+        });
+    }
+
+    @Override
+    public void showSendSmsDialog() {
+        AlertDialogModel model = new AlertDialogModel.Builder()
+                .setTitle(getResources().getString(R.string.send_sms_title_CA))
+                .setMessage(getResources().getString(R.string.send_sms_body_CA))
+                .setPositiveText(getResources().getString(R.string.send_sms_ok_CA))
+                .setNegativeText(getResources().getString(R.string.send_sms_cancel_CA))
+                .build();
+
+        AlertDialogManager.showAlertDialog(this, model, new TwoButtonDialogListener() {
+            @Override
+            public void secondButtonClick(DialogInterface dialog) {
+                dialog.dismiss();
+            }
+
+            @Override
+            public void oneButtonClick(DialogInterface dialog) {
+                mContactsPresenter.sendSMSToUsers();
             }
         });
     }

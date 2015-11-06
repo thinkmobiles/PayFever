@@ -164,19 +164,20 @@ public class BalanceFragment extends BaseFABFragment implements BalanceView {
             yVals.add(new Entry(mValues[i], i));
         }
         set1.setColor(mSecondaryColor);
-//        set1.setCircleColor(mPrimaryColor);
+        set1.setCircleColor(mSecondaryColor);
 //        set1.setValueTextColor(mPrimaryColor);
 //        set1.setFillColor(mPrimaryColor);
         set1.setLineWidth(mLineWidth);
         set1.setDrawCubic(true);
         set1.setDrawValues(false);
-        set1.setDrawCircles(false);
+        set1.setDrawCircles(true);
 //        set1.setDrawFilled(true);
-//        set1.setCircleSize(mCircleWidth);
+        set1.setCircleSize(mCircleWidth);
         LineData data = new LineData(mMonths, set1);
 //        data.setValueTextColor(mPrimaryColor);
         lcBalance.setData(data);
         lcBalance.notifyDataSetChanged();
+        lcBalance.animateY(2000);
     }
 
     @Override

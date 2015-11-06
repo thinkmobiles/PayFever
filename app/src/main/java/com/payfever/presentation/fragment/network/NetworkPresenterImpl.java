@@ -1,11 +1,14 @@
 package com.payfever.presentation.fragment.network;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.payfever.data.model.network.NetworkResponse;
 import com.payfever.domain.basics.BaseInteractor;
 import com.payfever.domain.interactors.network.NetworkInteractor;
 import com.payfever.presentation.PayFeverApplication;
+import com.payfever.presentation.global.Constants;
 
 import rx.Subscriber;
 
@@ -57,6 +60,17 @@ public class NetworkPresenterImpl implements NetworkPresenter {
     @Override
     public void fabClicked() {
         mView.openInviteContacts();
+    }
+
+    @Override
+    public void onActivityResult(int _resultCode, int _requestCode, Intent _data) {
+        if (_requestCode == MyNetworkFragment.REQUEST_CODE_INVITE &&
+                _resultCode == Activity.RESULT_OK && mData != null) {
+            Integer successUser = _data.getIntExtra(Constants.EXTRA_INTEGER, 0);
+            mData.getmNetworkStatistic()
+                    .setmSentOut(mData.getmNetworkStatistic().getSentOut() + successUser);
+            mView.setStaticData(mData.getmNetworkStatistic());
+        }
     }
 
     private class DownloadListener extends Subscriber<NetworkResponse> {

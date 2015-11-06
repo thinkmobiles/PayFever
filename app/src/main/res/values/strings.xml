@@ -7,6 +7,10 @@
     <string name="app_contact_skip_dialog_title">Are you sure?</string>
     <string name="app_contact_skip_dialog_message">You don\'t want to expand your Network? Without Network, you can\'t make more money!</string>
     <string name="app_contact_dialog_earn_more">EARN MORE</string>
+    <string name="send_sms_title_CA">Alert</string>
+    <string name="send_sms_body_CA">An SMS invitation will be sent to the selected Contacts</string>
+    <string name="send_sms_ok_CA">OK</string>
+    <string name="send_sms_cancel_CA">Cancel</string>
 
     <!--Register-->
     <string name="user_name_FR">User name</string>

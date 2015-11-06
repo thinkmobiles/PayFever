@@ -40,6 +40,7 @@
             android:layout_marginEnd="@dimen/simple_margin"
             android:layout_toLeftOf="@id/ivLetter_IMN"
             android:ellipsize="end"
+            android:singleLine="true"
             tools:text="1st level" />
 
     </RelativeLayout>

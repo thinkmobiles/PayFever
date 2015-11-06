@@ -12,7 +12,6 @@ import com.payfever.presentation.utils.RingtoneController;
 import java.io.IOException;
 import java.util.List;
 
-import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 
@@ -133,7 +132,7 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
         @Override
         public void onCompleted() {
             RingtoneController.setRingtone(ringtonePath, ringtoneName);
-            mRingtoneInteractor.updateUserProfile(new SubscriberRIngtoneSetted(),
+            mRingtoneInteractor.updateUserProfile(new SubscriberRingtoneSetted(),
                     mRingtone.getObjectId());
             mRingtones.remove(mRingtone);
             mRingtonesView.notifyData();
@@ -154,7 +153,7 @@ public final class RingtonesPresenterImpl implements RingtonesPresenter {
         }
     }
 
-    private class SubscriberRIngtoneSetted implements Observer<Boolean> {
+    private class SubscriberRingtoneSetted implements Observer<Boolean> {
         @Override
         public void onCompleted() {
 

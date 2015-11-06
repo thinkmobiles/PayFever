@@ -30,11 +30,13 @@ public class NetworkTransfromatorImpl implements NetworkTransformator {
             }
         }
 
+        int networkLevelCount = 0;
         List<List<Map<String, Object>>> networkLevel = (List<List<Map<String, Object>>>) _data.get("networkLevel");
         for (List<Map<String, Object>> networkLevelList : networkLevel) {
             for (Map<String, Object> userMap : networkLevelList) {
                 NetworkUser networkUser = transform((NetworkParseWrapper) userMap.get("item"));
                 if (networkUser != null) {
+                    networkLevelCount++;
                     networkUser.setUserName((String) userMap.get("userName"));
                     networkUser.setmPushChannel((String) userMap.get("userName"));
                     networkUser.setmIsFirstLevel(false);
@@ -42,6 +44,9 @@ public class NetworkTransfromatorImpl implements NetworkTransformator {
                 }
             }
         }
+
+        response.setmFirstLevel(firstLevel.size());
+        response.setmNetworkLevel(networkLevelCount);
 
         response.setmUsers(networkUsers);
 

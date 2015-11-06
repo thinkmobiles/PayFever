@@ -65,6 +65,6 @@ public final class TermsConditionsFragment extends BaseFragment implements View.
 
     @Override
     public void setTitle() {
-        getToolbarController().setTitle(getString(R.string.terms_and_conditions));
+        getToolbarController().setTitleCenter(getString(R.string.terms_and_conditions));
     }
 }

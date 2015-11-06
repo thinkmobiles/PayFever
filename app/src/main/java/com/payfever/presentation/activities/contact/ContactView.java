@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 public interface ContactView extends BaseView<List<ContactModel>> {
-
+    void showSendSmsDialog();
     void skip();
     void setEnableInvite();
     void setDisableInvite();
@@ -25,4 +25,5 @@ public interface ContactView extends BaseView<List<ContactModel>> {
     void startMainActivity();
     void onBack();
     void hideSkipShowBack();
+    void result(int _successUser);
 }

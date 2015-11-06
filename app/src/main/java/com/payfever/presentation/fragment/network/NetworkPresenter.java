@@ -1,5 +1,7 @@
 package com.payfever.presentation.fragment.network;
 
+import android.content.Intent;
+
 import com.payfever.presentation.basics.BasePresenter;
 
 /**
@@ -10,4 +12,5 @@ public interface NetworkPresenter extends BasePresenter<NetworkView> {
     void fabClicked();
     void onResume();
     void downloadData();
+    void onActivityResult(int _resultCode, int _requestCode, Intent _data);
 }

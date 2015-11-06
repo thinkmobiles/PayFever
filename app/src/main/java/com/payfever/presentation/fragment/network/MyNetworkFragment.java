@@ -23,6 +23,8 @@ import com.payfever.presentation.global.Constants;
 public class MyNetworkFragment extends BaseFABFragment
         implements NetworkView, AdapterView.OnItemClickListener, View.OnClickListener {
 
+    public static final int REQUEST_CODE_INVITE = 1;
+
     private ListView lvUsers;
     private View mHeaderView;
     private TextView tvDirectSentOut, tvPending, tvExpired,
@@ -104,16 +106,6 @@ public class MyNetworkFragment extends BaseFABFragment
         getLoadingManager().hideProgress();
     }
 
-//    @Override
-//    public void showFAB() {
-//        getFabController().show();
-//    }
-//
-//    @Override
-//    public void hideFAB() {
-//        getFabController().hide();
-//    }
-
     @Override
     public void setTitle() {
         getToolbarController().setTitle(mActivity.getString(R.string.network_fragment_title_HMN));
@@ -152,12 +144,17 @@ public class MyNetworkFragment extends BaseFABFragment
     public void openInviteContacts() {
         Intent intent = ContactActivity.getCallingIntent(mActivity);
         intent.putExtra(Constants.FROM_NETWORK_FRAGMENT, true);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_INVITE);
     }
 
     @Override
     public void showServerError(Throwable e) {
         getLoadingManager().showNetworkExceptionMessage(e);
+    }
+
+    @Override
+    public void notifyDataChanged() {
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -173,6 +170,13 @@ public class MyNetworkFragment extends BaseFABFragment
                 break;
         }
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mPresenter.onActivityResult(resultCode, requestCode, data);
+    }
+
     @Override
     public void retryRequest() {
         mPresenter.downloadData();

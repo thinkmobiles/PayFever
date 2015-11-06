@@ -34,7 +34,7 @@ public abstract class AlertDialogManager {
         builder.setNegativeButton(_model.getNegativeText(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                _listener.secondButtonClick();
+                _listener.secondButtonClick(dialog);
             }
         });
         showDialog(builder, _context);
@@ -47,7 +47,7 @@ public abstract class AlertDialogManager {
         builder.setPositiveButton(_model.getPositiveText(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                _listener.oneButtonClick();
+                _listener.oneButtonClick(dialog);
             }
         });
         return builder;

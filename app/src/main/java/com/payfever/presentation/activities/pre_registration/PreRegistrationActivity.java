@@ -36,7 +36,7 @@ public class PreRegistrationActivity extends NetworkExceptionActivity implements
 
     @Override
     public void showRegistrationFragment() {
-        getFragmentNavigator().addFragment(new RegisterFragment());
+        getFragmentNavigator().replaceFragment(new RegisterFragment());
     }
 
     @Override
